@@ -1,0 +1,50 @@
+/*----------COLORS----------*/
+
+// PRIMARY COLOR
+
+$primary-color-50: #c9fae8;
+$primary-color-100: #93f4d1;
+$primary-color-200: #5cefba;
+$primary-color-300: #26e9a2;
+$primary-color-400: #13c082;
+$primary-color-500: #0E8A5D;
+$primary-color-600: #0c734e;
+$primary-color-700: #095c3e;
+$primary-color-800: #07452f;
+$primary-color-900: #052e1f;
+
+
+// SECONDARY COLOR
+
+$secondary-color-50: #F7EFE7;
+$secondary-color-100: #efdecf;
+$secondary-color-200: #e6ceb8;
+$secondary-color-300: #debda0;
+$secondary-color-400: #d6ad88;
+$secondary-color-500: #CE9C70;
+$secondary-color-600: #c08149;
+$secondary-color-700: #9e6736;
+$secondary-color-800: #764d29;
+$secondary-color-900: #4f331b;
+
+
+// DARK MODE
+
+$dark-mode-50: #525252;
+$dark-mode-100: #464646;
+$dark-mode-200: #3b3b3b;
+$dark-mode-300: #2f2f2f;
+$dark-mode-400: #242424;
+$dark-mode-500: #151515;
+$dark-mode-600: #121212;
+$dark-mode-700: #111111;
+$dark-mode-800: #101010;
+$dark-mode-900: #0f0f0f;
+
+
+
+/*----------TYPOGRAPHY----------*/
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+$font-family-montserrat: 'Montserrat', sans-serif;
