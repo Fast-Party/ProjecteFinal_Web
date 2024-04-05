@@ -1,0 +1,8 @@
+@import '../../../../../styles.scss';
+//Si quito el import no funciona
+
+div{
+    width: 100vw;
+    height: 100vh;
+    background-color: $primary-color-50;
+}
