@@ -1,8 +1,9 @@
-@import '../../../../../styles.scss';
-//Si quito el import no funciona
+@use '../../../../../sass/variables.scss' as stl;
 
 div{
     width: 100vw;
-    height: 100vh;
-    background-color: $primary-color-50;
+    height: 5em;
+    background-color: stl.$dark-mode-100;
+    margin: 1em;
+    font-family: stl.$font-family-montserrat;
 }

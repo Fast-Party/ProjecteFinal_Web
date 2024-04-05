@@ -1,1 +1,5 @@
+@use '../../../sass/variables.scss' as stl;
 
+.poligon1{
+    background-color: stl.$primary-color-500;
+}
