@@ -1,0 +1,58 @@
+@use '../../../../../sass/variables.scss' as stl;
+
+.containerNV{
+    background-color: rgba(stl.$dark-mode-500, 0.8);
+    height: 88.67px;
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    color: white;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .logoContainer{
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px;
+    
+        img{
+            width: 32px;
+            height: 38.67px;
+        }
+    
+        h4{
+            font-size: 27.6px;
+            font-weight: 600;
+        }
+    }
+
+    ul{
+        display: flex;
+        text-decoration: none;
+        list-style: none;
+        cursor: pointer;
+    }
+
+    .ul-opciones{
+        gap: 12px;
+        li:nth-child(2){
+            button{
+                background-color: transparent;
+                border: none;
+                color: white;
+                cursor: pointer;
+            }
+        }
+        li:nth-child(3){
+            button{
+                background-color: stl.$primary-color-400;
+                border: none;
+                color: stl.$dark-mode-500;
+                cursor: pointer;
+            }
+        }
+    }
+}
+
