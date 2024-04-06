@@ -1,0 +1,7 @@
+@use "../../../sass/variables.scss" as stl;
+
+.contenedorRombo{
+    display: flex;
+    justify-content: center;
+    height: fit-content;
+}
