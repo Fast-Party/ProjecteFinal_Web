@@ -1,9 +1,5 @@
 @use '../../../../../sass/variables.scss' as stl;
 
-div{
-    width: 100vw;
-    height: 5em;
-    background-color: stl.$dark-mode-100;
-    margin: 1em;
-    font-family: stl.$font-family-montserrat;
+.pageLP{
+    background-color: stl.$dark-mode-500;
 }
