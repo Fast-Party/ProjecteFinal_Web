@@ -1,7 +1,7 @@
 @use '../../../../../sass/variables.scss' as stl;
 
 .containerNV{
-    background-color: rgba(stl.$dark-mode-500, 0.8);
+    background-color: rgba(stl.$dark-mode-500, 0.5);
     border-radius: 15px;
     backdrop-filter: blur(10px);
     color: white;

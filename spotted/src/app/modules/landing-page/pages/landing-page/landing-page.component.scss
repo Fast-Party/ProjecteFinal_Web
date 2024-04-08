@@ -20,7 +20,7 @@ main {
     align-items: center;
     justify-content: center;
     gap: 24px;
-    margin-top: 7%;
+    margin-top: 5em;
 
     h1 {
       font-size: 60px;
@@ -29,10 +29,10 @@ main {
 
       span {
         color: stl.$primary-color-500;
-        transition: .3s ease-in-out;
+        transition: 0.3s ease-in-out;
       }
 
-      span:hover{
+      span:hover {
         color: stl.$primary-color-300;
       }
     }
@@ -91,6 +91,64 @@ main {
   }
 }
 
+@mixin black-gradient {
+	background: linear-gradient(to right,  stl.$dark-mode-500 0%, #00000000 100%);
+}
+
+$animationSpeed: 40s;
+
+.carousel{
+  width: 100%;
+  margin: 40px 0;
+  overflow: hidden;
+  height: auto;
+  position: relative;
+  padding-block: 8px;
+
+  &::before,
+	&::after {
+		@include black-gradient;
+		content: "";
+		height: 100%;
+		position: absolute;
+		width: 15%;
+		z-index: 2;
+	}
+
+  &::after {
+		right: 0;
+		top: 0;
+		transform: rotateZ(180deg);
+	}
+
+	&::before {
+		left: 0;
+		top: 0;
+	}
+}
+
+.carousel-track {
+  animation: scroll $animationSpeed linear infinite;
+  display: flex;
+  gap: 40px;
+  width: calc(300px * 14);
+}
+
+// Arreglar corte de animacion en el carrusel
+.dsg-img {
+  width: 300px;
+  height: 266.96px;
+  border: 5px solid  stl.$primary-color-400;
+  border-radius: 33px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  object-fit: cover;
+  transition: .3s ease-in-out;
+}
+
+.dsg-img:hover {
+  transform: scale(1.05);
+}
+
 @keyframes moveDown {
   0% {
     transform: translateX(-50%) translateY(0);
@@ -103,4 +161,8 @@ main {
   }
 }
 
-// Hacer clase para la imagen 
+@keyframes scroll {
+	0% { transform: translateX(0); }
+	100% { transform: translateX(calc(-300px * 7))}
+}
+
