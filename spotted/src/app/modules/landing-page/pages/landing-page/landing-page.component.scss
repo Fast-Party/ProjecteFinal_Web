@@ -1,13 +1,106 @@
-@use '../../../../../sass/variables.scss' as stl;
+@use "../../../../../sass/variables.scss" as stl;
 
-.pageLP{
-    background-color: stl.$dark-mode-500;
-    height: auto;
+.pageLP {
+  background-color: stl.$dark-mode-500;
+  height: auto;
 }
 
-header{
-    padding-block: 12px;
-    padding-inline: 24px;
-    top: 0;
-    position: sticky;
+header {
+  padding-block: 12px;
+  padding-inline: 24px;
+  top: 0;
+  position: sticky;
+  z-index: 1000;
 }
+
+main {
+  .startText {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    margin-top: 7%;
+
+    h1 {
+      font-size: 60px;
+      color: white;
+      font-weight: 700;
+
+      span {
+        color: stl.$primary-color-500;
+        transition: .3s ease-in-out;
+      }
+
+      span:hover{
+        color: stl.$primary-color-300;
+      }
+    }
+
+    p {
+      font-size: 16px;
+      color: white;
+      width: 680px;
+      text-align: center;
+    }
+
+    .btnIcon {
+      background-color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      cursor: pointer;
+
+      img {
+        width: 16px;
+        height: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: 0.3s ease-in-out;
+      }
+
+      border: 0;
+      border-radius: 7px;
+      padding-inline: 14px;
+      padding-block: 10px;
+      font-weight: 600;
+      font-size: 16px;
+      transition: 0.3s ease-in-out;
+    }
+
+    .btnIcon:hover {
+      img {
+        transform: translateX(5px);
+      }
+    }
+  }
+
+  .double-arrow {
+    width: 32px;
+    height: 32px;
+    filter: invert(1);
+
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    animation: moveDown 2s infinite;
+  }
+}
+
+@keyframes moveDown {
+  0% {
+    transform: translateX(-50%) translateY(0);
+  }
+  50% {
+    transform: translateX(-50%) translateY(10px);
+  }
+  100% {
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+// Hacer clase para la imagen 
