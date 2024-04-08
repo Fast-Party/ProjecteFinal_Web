@@ -2,4 +2,12 @@
 
 .pageLP{
     background-color: stl.$dark-mode-500;
+    height: auto;
+}
+
+header{
+    padding-block: 12px;
+    padding-inline: 24px;
+    top: 0;
+    position: sticky;
 }
