@@ -106,7 +106,7 @@ main {
   background: linear-gradient(to right, stl.$dark-mode-500 0%, #00000000 100%);
 }
 
-$animationSpeed: 40s;
+$animationSpeed: 50s;
 
 .carousel {
 
@@ -181,7 +181,7 @@ $animationSpeed: 40s;
     transform: translateX(0);
   }
   100% {
-    transform: translateX(calc(-300px * 7));
+    transform: translateX(calc(-365.5px * 7));
   }
 }
 
