@@ -13,6 +13,10 @@ header {
   z-index: 1000;
 }
 
+app-rombo {
+  z-index: 1;
+}
+
 main {
   .startText {
     display: flex;
@@ -22,11 +26,7 @@ main {
     gap: 24px;
     margin-top: 9em;
 
-    transition: .3s ease-in-out;
-
-    @media screen and (max-width: 1366px) {
-      margin-top: 1em;
-    }
+    transition: 0.3s ease-in-out;
 
     h1 {
       font-size: 60px;
@@ -100,6 +100,37 @@ main {
     }
   }
 
+  .container-strengths {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    z-index: 2;
+    width: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 57.5em);
+
+    h1 {
+      color: white;
+      font-size: 64px;
+      font-weight: 700;
+      text-align: center;
+
+      span {
+        font-weight: 800;
+      }
+    }
+
+    p {
+      color: white;
+      font-size: 16px;
+      max-width: 550px;
+      text-align: center;
+    }
+  }
 }
 
 @mixin black-gradient {
@@ -109,7 +140,6 @@ main {
 $animationSpeed: 50s;
 
 .carousel {
-
   width: 100%;
   margin: 40px 0;
   overflow: hidden;
@@ -138,14 +168,13 @@ $animationSpeed: 50s;
     left: 0;
     top: 0;
   }
-
 }
 
 .carousel-track {
   animation: scroll $animationSpeed linear infinite;
   display: flex;
   gap: 40px;
-  width: calc(300px * 14);  
+  width: calc(300px * 14);
 }
 
 .dsg-img {
@@ -156,7 +185,6 @@ $animationSpeed: 50s;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   object-fit: cover;
   transition: 0.3s ease-in-out;
-  
 }
 
 .dsg-img:hover {
@@ -184,13 +212,27 @@ $animationSpeed: 50s;
   }
 }
 
-
 @media screen and (max-width: 1366px) {
-  app-rombo{
+  app-rombo {
     display: flex;
     justify-content: center;
     transform: translateY(-160px);
 
     overflow: hidden;
+  }
+  
+ main {
+  .double-arrow {
+    bottom: 20px;
+  }
+
+ 
+    .startText {
+      margin-top: 1em;
+    }
+
+    .container-strengths {
+      transform: translate(-50%, 49.5em);
+    }
   }
 }

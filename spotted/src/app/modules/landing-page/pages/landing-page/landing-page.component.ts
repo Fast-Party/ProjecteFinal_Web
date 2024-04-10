@@ -11,4 +11,15 @@ import { NavBarComponent } from '../../components/nav-bar/nav-bar.component';
 })
 export class LandingPageComponent {
 
+  wrdStrgArray = ['aventuras','amigos','hobbies'];
+  wrd = this.wrdStrgArray[0];
+
+  prgStrgArray = [
+  'Nuestra aplicación de organización de planes facilita la coordinación de eventos con una interfaz intuitiva y herramientas de comunicación fluida. Además, nuestra comunidad activa permite descubrir nuevas experiencias y conectar con personas afines para planificar juntos.',
+  'comparte',
+  'disfruta'
+];
+
+prg = this.prgStrgArray[0];
+
 }
