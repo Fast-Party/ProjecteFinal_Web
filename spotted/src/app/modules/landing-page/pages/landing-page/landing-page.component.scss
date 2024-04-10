@@ -13,11 +13,10 @@ header {
   z-index: 1000;
 }
 
-app-rombo {
-  z-index: 1;
-}
-
 main {
+  app-rombo {
+    z-index: 2;
+  }
   .startText {
     display: flex;
     flex-direction: column;
@@ -83,6 +82,68 @@ main {
     }
   }
 
+  @mixin black-gradient {
+    background: linear-gradient(
+      to right,
+      stl.$dark-mode-500 0%,
+      #00000000 100%
+    );
+  }
+
+  .carousel {
+    width: 100%;
+    margin: 40px 0;
+    overflow: hidden;
+    height: auto;
+    position: relative;
+    padding-block: 10px;
+    z-index: 4;
+
+    &::before,
+    &::after {
+      @include black-gradient;
+      content: "";
+      height: 100%;
+      position: absolute;
+      width: 15%;
+      z-index: 2;
+    }
+
+    &::after {
+      right: 0;
+      top: 0;
+      transform: rotateZ(180deg);
+    }
+
+    &::before {
+      left: 0;
+      top: 0;
+    }
+  }
+
+  $animationSpeed: 50s;
+
+  .carousel-track {
+    animation: scroll $animationSpeed linear infinite;
+    display: flex;
+    gap: 40px;
+    width: calc(300px * 14);
+  }
+
+  .dsg-img {
+    width: 280px;
+    height: 249.16px;
+    border: 5px solid stl.$primary-color-400;
+    border-radius: 33px;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    object-fit: cover;
+    transition: 0.3s ease-in-out;
+  }
+
+  .dsg-img:hover {
+    transform: scale(1.08);
+  }
+
   .double-arrow {
     width: 32px;
     height: 32px;
@@ -133,62 +194,16 @@ main {
   }
 }
 
-@mixin black-gradient {
-  background: linear-gradient(to right, stl.$dark-mode-500 0%, #00000000 100%);
-}
-
-$animationSpeed: 50s;
-
-.carousel {
-  width: 100%;
-  margin: 40px 0;
-  overflow: hidden;
-  height: auto;
-  position: relative;
-  padding-block: 10px;
-  z-index: 4;
-
-  &::before,
-  &::after {
-    @include black-gradient;
-    content: "";
-    height: 100%;
-    position: absolute;
-    width: 15%;
-    z-index: 2;
-  }
-
-  &::after {
-    right: 0;
-    top: 0;
-    transform: rotateZ(180deg);
-  }
-
-  &::before {
+.strengths-images {
+  position: absolute;
+  .top-left{
+    position: -ms-page;
     left: 0;
-    top: 0;
+    transform: translateX(17.5em) translateY(27em);
+    z-index: 2;
+
+    //el transform afecta el z-index
   }
-}
-
-.carousel-track {
-  animation: scroll $animationSpeed linear infinite;
-  display: flex;
-  gap: 40px;
-  width: calc(300px * 14);
-}
-
-.dsg-img {
-  width: 280px;
-  height: 249.16px;
-  border: 5px solid stl.$primary-color-400;
-  border-radius: 33px;
-  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-  object-fit: cover;
-  transition: 0.3s ease-in-out;
-}
-
-.dsg-img:hover {
-  transform: scale(1.08);
 }
 
 @keyframes moveDown {
@@ -212,7 +227,7 @@ $animationSpeed: 50s;
   }
 }
 
-@media screen and (max-width: 1366px) {
+@media screen and (max-width: 1600px) {
   app-rombo {
     display: flex;
     justify-content: center;
@@ -220,13 +235,12 @@ $animationSpeed: 50s;
 
     overflow: hidden;
   }
-  
- main {
-  .double-arrow {
-    bottom: 20px;
-  }
 
- 
+  main {
+    .double-arrow {
+      bottom: 20px;
+    }
+
     .startText {
       margin-top: 1em;
     }
