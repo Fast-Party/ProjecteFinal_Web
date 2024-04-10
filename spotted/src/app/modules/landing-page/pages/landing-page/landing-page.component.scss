@@ -89,10 +89,10 @@ main {
     filter: invert(1);
     z-index: 3;
     position: absolute;
-    bottom: 30px;
+    bottom: 40px;
     left: 50%;
     transform: translateX(-50%);
-
+    cursor: pointer;
     animation: moveDown 2s infinite;
 
     @media screen and (max-width: 1366px) {
@@ -148,7 +148,6 @@ $animationSpeed: 50s;
   width: calc(300px * 14);  
 }
 
-// Arreglar corte de animacion en el carrusel
 .dsg-img {
   width: 280px;
   height: 249.16px;
