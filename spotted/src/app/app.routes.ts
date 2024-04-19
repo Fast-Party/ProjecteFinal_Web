@@ -4,7 +4,7 @@ import { RegisterPageComponent } from './modules/register-page/pages/register-pa
 
 export const routes: Routes = [
     {path: 'landing-page', component: LandingPageComponent},
-    {path: 'register-page', component: RegisterPageComponent},
+    {path: 'register', component: RegisterPageComponent},
     
     {path: '', redirectTo: 'landing-page', pathMatch: 'full'}
 ];
