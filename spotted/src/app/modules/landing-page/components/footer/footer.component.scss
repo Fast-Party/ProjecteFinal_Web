@@ -1,0 +1,10 @@
+@use '../../../../../sass/variables.scss' as stl;
+.contenedorFooter{
+    height: 510px;
+    background-color: stl.$dark-mode-700;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+    padding: 28px;
+}
