@@ -14,7 +14,7 @@ header {
 }
 
 main {
-  app-rombo {
+  .absolute-rombo {
     z-index: 2;
   }
   .startText {
@@ -194,6 +194,77 @@ main {
   }
 }
 
+.mini-form-register{
+  height: 260px;
+  width: 100%;
+  background-color: stl.$primary-color-400;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .bkg-rombo-form{
+    filter: opacity(.33);
+    rotate: 90deg;
+  }
+
+  .container-miniform-register{
+    position: absolute;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 48px;
+    h1{
+      font-size: 58.4px;
+      color: stl.$dark-mode-500;
+      font-weight: 800;
+    }
+    .input-group {
+      display: flex;
+      align-items: center;
+    }
+    
+    .input {
+      width: 395px;
+      padding: 12px 125px 12px 12px;
+      color: #fff;
+      font-size: 16px;
+      border: none;
+      border-radius: 7px;
+      background-color: stl.$dark-mode-500;
+    }
+    
+    .button--submit {
+      position: absolute;
+      transform: translateX(-120px) translateY(1px);
+      padding: 11px 15px;
+      border: none;
+      border-radius: 6px;
+      background-color: stl.$primary-color-400;
+      color: stl.$dark-mode-500;
+      font-size: 16px;
+      cursor: pointer;
+      transition: .3s ease-in-out;
+      font-weight: 500;
+
+      @media screen and (max-width: 1600px){
+        transform: translateX(-121px) translateY(1px);
+      }
+    }
+    
+    .button--submit:hover {
+      background-color: transparent;
+      color: stl.$primary-color-400;
+    }
+
+    .input:focus, .input:focus-visible {
+      outline: none;
+    }
+  }
+}
+
 .strengths-images {
   position: absolute;
   .top-left{
@@ -228,7 +299,7 @@ main {
 }
 
 @media screen and (max-width: 1600px) {
-  app-rombo {
+  .absolute-rombo {
     display: flex;
     justify-content: center;
     transform: translateY(-160px);

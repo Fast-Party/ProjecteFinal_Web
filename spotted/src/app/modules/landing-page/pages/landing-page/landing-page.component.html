@@ -119,8 +119,10 @@
       alt="Double arrow down"
     />
     <div class="container-strengths">
-      <h1>Descubre tus <span>{{wrd}}</span></h1>
-      <p>{{prg}}</p>
+      <h1>
+        Descubre tus <span>{{ wrd }}</span>
+      </h1>
+      <p>{{ prg }}</p>
     </div>
     <div class="strengths-images">
       <img
@@ -144,8 +146,27 @@
         alt="fiesta"
       />
     </div>
-    <app-rombo></app-rombo>
+    <app-rombo class="absolute-rombo"></app-rombo>
   </main>
+  <div class="mini-form-register">
+    <app-rombo class="bkg-rombo-form"></app-rombo>
+    <div class="container-miniform-register">
+      <h1>Únete a nuestra comunidad</h1>
+      <div class="input-group">
+        <div class="cont-input-group">
+          <input
+            type="email"
+            class="input"
+            id="Email"
+            name="Email"
+            placeholder="Correo electrónico"
+            autocomplete="off"
+          />
+          <input class="button--submit" value="Registrarte" type="submit" />
+        </div>
+      </div>
+    </div>
+  </div>
   <footer>
     <app-footer></app-footer>
   </footer>
