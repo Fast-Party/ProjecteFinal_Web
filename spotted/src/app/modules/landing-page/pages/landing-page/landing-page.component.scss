@@ -15,6 +15,7 @@ header {
 
 main {
   .absolute-rombo {
+    position: relative;
     z-index: 2;
   }
   .startText {
@@ -140,7 +141,7 @@ main {
     transition: 0.3s ease-in-out;
   }
 
-  .dsg-img:hover {
+  .dsg-img:not(.bottom-left , .bottom-right):hover {
     transform: scale(1.08);
   }
 
@@ -168,7 +169,7 @@ main {
     align-items: center;
     justify-content: center;
     gap: 24px;
-    z-index: 2;
+    z-index: 5;
     width: 100%;
     top: 50%;
     left: 50%;
@@ -268,14 +269,71 @@ main {
 .strengths-images {
   position: absolute;
   .top-left{
-    position: -ms-page;
-    left: 0;
-    transform: translateX(17.5em) translateY(27em);
-    z-index: 2;
+    transform: translateX(14.5vw) translateY(43vh);
+    z-index: 0;
+  }
+  .top-right{
+    position: relative;
+    transform: translateX(56vw) translateY(41vh);
+    z-index: 0;
+  }
+  .bottom-left{
+    position: relative;
+    transform: translateX(-10vw) translateY(80vh);
+    z-index: 10;
+  }
 
-    //el transform afecta el z-index
+  .bottom-right{
+    position: relative;
+    transform: translateX(22vw) translateY(78vh);
+    z-index: 10;
   }
 }
+.container-position-slick-buttons{
+  position: absolute;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  bottom: 0;
+  .container-buttons-slider{
+  position: relative;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  transform: translateY(60em);
+  
+  li{
+    width: 150px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    text-align: center;
+    cursor: pointer;
+    transition: .3s ease-in-out;
+
+    button{
+      width: 100%;
+      background-color: transparent;
+      border: none;
+      height: 60px;
+      color: rgb(255, 255, 255, .5);
+      cursor: pointer;
+      font-size: 12px;
+      transition: .3s ease-in-out;
+    }
+  }
+
+  .slick-active{
+    border-bottom: 3px solid rgba(255, 255, 255);
+
+    button{
+      color: white;
+    }
+  }
+}
+}
+
 
 @keyframes moveDown {
   0% {
