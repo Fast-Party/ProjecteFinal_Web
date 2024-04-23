@@ -16,6 +16,7 @@ export class LandingPageComponent {
     this.activeIndex = index;
     this.wrd = this.wrdStrgArray[index];
     this.prg = this.prgStrgArray[index];
+    this.imgs = this.imgsArray[index];
   }
 
   wrdStrgArray = ['aventuras', 'amigos', 'hobbies'];
@@ -23,44 +24,44 @@ export class LandingPageComponent {
 
   prgStrgArray = [
     'Nuestra aplicación de organización de planes facilita la coordinación de eventos con una interfaz intuitiva y herramientas de comunicación fluida. Además, nuestra comunidad activa permite descubrir nuevas experiencias y conectar con personas afines para planificar juntos.',
-    'comparte',
-    'disfruta',
+    'Con Spotted, puedes encontrar a tus amigos y familiares en un solo lugar, manteniendo un historial de eventos compartidos y creando recuerdos inolvidables. Nuestra aplicación te permite compartir fotos, videos y comentarios para revivir esos momentos especiales.',
+    'Spotted es la plataforma ideal para organizar tus hobbies y actividades favoritas. Puedes unirte a grupos de interés, descubrir eventos cercanos y planificar salidas con personas que comparten tus pasiones. ¡Con Spotted, nunca más te perderás una oportunidad de disfrutar de tus hobbies!',
   ];
 
   prg = this.prgStrgArray[0];
 
   imgsArray = [
     {
-      'img-src-TL':
+      'img_src_TL':
         'https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-      'img-src-TR':
+      'img_src_TR':
         'https://images.unsplash.com/photo-1536909526839-8f10e29ba80c?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-      'img-src-BL':
+      'img_src_BL':
         'https://images.unsplash.com/photo-1581173674215-691f05495866?q=80&w=1467&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-      'img-src-BR':
+      'img_src_BR':
         'https://images.unsplash.com/photo-1592753054398-9fa298d40e85?q=80&w=1365&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     },
     {
-      'img-src-TL':
-        'https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-      'img-src-TR':
-        'https://images.unsplash.com/photo-1536909526839-8f10e29ba80c?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-      'img-src-BL':
-        'https://images.unsplash.com/photo-1581173674215-691f05495866?q=80&w=1467&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-      'img-src-BR':
-        'https://images.unsplash.com/photo-1592753054398-9fa298d40e85?q=80&w=1365&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      'img_src_TL':
+        'https://images.unsplash.com/photo-1496843916299-590492c751f4?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      'img_src_TR':
+        'https://images.unsplash.com/photo-1519111887837-a48ccf9edc00?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      'img_src_BL':
+        'https://images.unsplash.com/photo-1566737236500-c8ac43014a67?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      'img_src_BR':
+        'https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     },
     {
-      'img-src-TL':
-        'https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-      'img-src-TR':
-        'https://images.unsplash.com/photo-1536909526839-8f10e29ba80c?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-      'img-src-BL':
-        'https://images.unsplash.com/photo-1581173674215-691f05495866?q=80&w=1467&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-      'img-src-BR':
-        'https://images.unsplash.com/photo-1592753054398-9fa298d40e85?q=80&w=1365&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      'img_src_TL':
+        'https://images.unsplash.com/photo-1575444758702-4a6b9222336e?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      'img_src_TR':
+        'https://images.unsplash.com/photo-1574879948818-1cfda7aa5b1a?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      'img_src_BL':
+        'https://images.unsplash.com/photo-1496337589254-7e19d01cec44?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      'img_src_BR':
+        'https://images.unsplash.com/photo-1523301343968-6a6ebf63c672?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     },
   ];
 
-  img = this.imgsArray[0];
+  imgs = this.imgsArray[0];
 }

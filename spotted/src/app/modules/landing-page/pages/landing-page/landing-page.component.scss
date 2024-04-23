@@ -125,7 +125,7 @@ main {
   $animationSpeed: 50s;
 
   .carousel-track {
-    animation: scroll $animationSpeed linear infinite;
+    animation: infiniteScroll $animationSpeed linear infinite;
     display: flex;
     gap: 40px;
     width: calc(300px * 14);
@@ -335,26 +335,7 @@ main {
 }
 
 
-@keyframes moveDown {
-  0% {
-    transform: translateX(-50%) translateY(0);
-  }
-  50% {
-    transform: translateX(-50%) translateY(10px);
-  }
-  100% {
-    transform: translateX(-50%) translateY(0);
-  }
-}
 
-@keyframes scroll {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(calc(-365.5px * 7));
-  }
-}
 
 @media screen and (max-width: 1600px) {
   .absolute-rombo {
