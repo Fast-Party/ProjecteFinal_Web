@@ -1,5 +1,11 @@
 <div>
     @for (plan of planes; track plan) {
-
+    <div [class]="planContainer">
+        <h2>{{plan.Titulo}}</h2>
+        <p>{{plan.Descripcion}}</p>
+        <p>{{plan.IdAutor}}</p>
+        <p>{{plan.Fecha}}</p>
+        <p>{{plan.Localizacion}}</p>
+    </div>
     }
 </div>

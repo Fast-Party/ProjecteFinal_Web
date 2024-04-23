@@ -12,9 +12,11 @@ import { PlanModel } from '../../../../models/plan.model';
   styleUrl: './home-page.component.scss'
 })
 export class HomePageComponent implements OnInit {
-  planes: PlanModel;
-  constructor(private http: HttpClient, private router: Router) {
-    this.planes = new PlanModel();
+
+  planContainer = 'plan-container';
+
+  planes: PlanModel[] = [];
+  constructor(private http: HttpClient) {
   }
 
   ngOnInit(): void {
@@ -26,8 +28,9 @@ export class HomePageComponent implements OnInit {
       this.http.get('http://localhost:3000/getPlanes').subscribe((res: any) => {
         console.log('hola');
         if (res) {
-          console.log(res)
-          this.planes = res
+          console.log(res.results[2])
+          this.planes = res.results
+          console.log(this.planes)
         } else {
           console.log('empty')
           console.log(res)
