@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { HttpClientModule } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { catchError } from 'rxjs';
 
 @Component({
   selector: 'app-login-page',
@@ -22,8 +23,11 @@ export class LoginPageComponent {
 
   onLogin() {
     try {
-      this.http.post('http://localhost:3000/login', this.loginObj).subscribe((res: any) => {
-        console.log('dsdfsfd'+res.status);
+      this.http.post('http://localhost:3000/login', this.loginObj).pipe(catchError(error => {
+        console.log('error is: ', error);
+        return error;
+      })).subscribe((res: any) => {
+        console.log('dsdfsfd' + res.status);
         if (res['isAuthenticated']) {
           this.router.navigateByUrl('/landing-page')
         } else {
