@@ -25,6 +25,9 @@ export class LoginPageComponent {
     try {
       this.http.post('http://localhost:3000/login', this.loginObj).pipe(catchError(error => {
         console.log('error is: ', error);
+        if (error.status === 404) {
+          console.log('user data wrong')
+        }
         return error;
       })).subscribe((res: any) => {
         console.log('dsdfsfd' + res.status);
