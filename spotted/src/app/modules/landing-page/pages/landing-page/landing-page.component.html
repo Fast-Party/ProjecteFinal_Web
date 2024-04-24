@@ -118,42 +118,51 @@
       src="../../../../../assets/icons/regular/caret-double-down.svg"
       alt="Double arrow down"
     />
-    <div class="container-strengths">
-      <h1>
-        Descubre tus <span>{{ wrd }}</span>
-      </h1>
-      <p>{{ prg }}</p>
-    </div>
-    <div class="strengths-images">
-      <img
-        class="dsg-img top-left"
-        src= {{imgs.img_src_TL}}
-        alt="fiesta"
-      />
-      <img
-        class="dsg-img top-right"
-        src={{imgs.img_src_TR}}
-        alt="fiesta"
-      />
-      <img
-        class="dsg-img bottom-left"
-        src={{imgs.img_src_BL}}
-        alt="fiesta"
-      />
-      <img
-        class="dsg-img bottom-right"
-        src={{imgs.img_src_BR}}
-        alt="fiesta"
-      />
-    </div>
+
     <div class="container-position-slick-buttons">
       <ul class="container-buttons-slider">
-        <li [class.slick-active]="activeIndex === 0"><button (click)="changeSlide(0)">01</button></li>
-        <li [class.slick-active]="activeIndex === 1"><button (click)="changeSlide(1)">02</button></li>
-        <li [class.slick-active]="activeIndex === 2"><button (click)="changeSlide(2)">03</button></li>      
+        <li [class.slick-active]="activeIndex === 0">
+          <button (click)="changeSlide(0)">01</button>
+        </li>
+        <li [class.slick-active]="activeIndex === 1">
+          <button (click)="changeSlide(1)">02</button>
+        </li>
+        <li [class.slick-active]="activeIndex === 2">
+          <button (click)="changeSlide(2)">03</button>
+        </li>
       </ul>
     </div>
-    <app-rombo class="absolute-rombo"></app-rombo>
+    <div class="container-rombo-strenghts-images">
+      <div class="container-strengths">
+        <h1>
+          Descubre tus <span>{{ wrd }}</span>
+        </h1>
+        <p>{{ prg }}</p>
+      </div>
+      <div class="strengths-images">
+        <img
+          class="dsg-img top-left"
+          src="{{ imgs.img_src_TL }}"
+          alt="fiesta"
+        />
+        <img
+          class="dsg-img top-right"
+          src="{{ imgs.img_src_TR }}"
+          alt="fiesta"
+        />
+        <img
+          class="dsg-img bottom-left"
+          src="{{ imgs.img_src_BL }}"
+          alt="fiesta"
+        />
+        <img
+          class="dsg-img bottom-right"
+          src="{{ imgs.img_src_BR }}"
+          alt="fiesta"
+        />
+      </div>
+      <app-rombo class="absolute-rombo"></app-rombo>
+    </div>
   </main>
   <div class="mini-form-register">
     <app-rombo class="bkg-rombo-form"></app-rombo>
