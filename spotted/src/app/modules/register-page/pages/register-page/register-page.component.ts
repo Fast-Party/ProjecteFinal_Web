@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { HttpClientModule } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { catchError } from 'rxjs';
 
 @Component({
   selector: 'app-register-page',
@@ -20,7 +21,10 @@ export class RegisterPageComponent {
 
   onregister() {
     try {
-      this.http.post('http://localhost:3000/registrarUsuario', this.registerObj).subscribe((res: any) => {
+      this.http.post('http://localhost:3000/registrarUsuario', this.registerObj).pipe(catchError(error => {
+        console.log('error is: ', error);
+        return error;
+      })).subscribe((res: any) => {
         console.log(res['message']);
         if (res['message'] === "User registered correctly.") {
           this.router.navigateByUrl('/landing-page')
