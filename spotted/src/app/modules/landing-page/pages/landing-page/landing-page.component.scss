@@ -294,33 +294,44 @@ main {
 
   .container-find-inter{
     position: relative;
-    height: 200vh;
-    background-color: wheat;
-    overflow: hidden;
+    height: 300vh;
     display: flex;
-
-    .sectionFI-left{
+    flex-direction: column;
+    .container-rombos-FI{
+      position: sticky;
+      height: 100vh;
+      width: 100%;
+      overflow: hidden;
+      display: flex;
       top: 0;
-      left: -34.5em;
-      position: absolute;
-      @media screen and (max-width: 1600px){
-      
-        margin-top: auto;
-        
+      .sectionFI-left{
+        top: 0;
+        left: -34.5em;
+        position: absolute;
+        @media screen and (max-width: 1600px){
+          margin-top: auto;
+          
+        }
+      }
+      .sectionFI-right{
+        top: 0;
+        right: -34.5em;
+        position: absolute;
+        @media screen and (max-width: 1600px){
+           margin-top: auto;
+        }
       }
     }
-    .sectionFI-right{
-      top: 0;
-      right: -34.5em;
-      position: absolute;
-      @media screen and (max-width: 1600px){
-      
-         margin-top: auto;
-        
-      }
+    .find-inter{
+      height: 100vh;
+      width: 100%;
+      background-color: rgba(stl.$dark-mode-900, .9);
+      z-index: 20;
     }
 
-
+    .find-inter:last-child{
+      background-color: rgba(stl.$dark-mode-900, .9);
+    }
   }
 }
 
