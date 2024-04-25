@@ -1,0 +1,108 @@
+@use "../../../../../sass/variables.scss" as stl;
+
+.contenedorFooter {
+  height: 510px;
+  background-color: stl.$dark-mode-700;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+  padding: 28px;
+  color: white;
+  .container-footer-logo-RRSS {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 28px;
+
+    .footer-RRSS {
+      display: flex;
+      align-items: flex-start;
+      gap: 32px;
+
+      img {
+        width: 24px;
+        height: 24px;
+        filter: invert(1);
+      }
+    }
+  }
+
+  .container-footer-sections {
+    display: flex;
+    align-items: flex-start;
+    gap: 48px;
+
+    .container-column-section {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 16px;
+      h6 {
+        font-size: 17.8px;
+        font-weight: 500;
+      }
+      .column-section {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 8px;
+        align-self: stretch;
+
+        a {
+          color: white;
+          font-size: 14px;
+          font-weight: 400;
+          text-decoration: none;
+          transition: all 0.3s;
+        }
+      }
+    }
+  }
+  .container-footer-stores {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .container-footer-policies {
+    font-size: 12px;
+    font-weight: 300;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+
+    .container-policies {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+
+      select {
+        background-color: transparent;
+        color: white;
+        border: none;
+        font-size: 12px;
+        font-weight: 300;
+        padding: 4px;
+        cursor: pointer;
+        option {
+            background-color: stl.$dark-mode-900;
+        }
+
+        &:focus {
+          outline: none;
+        }
+      }
+
+      a {
+        color: white;
+        font-weight: 300;
+        text-decoration: none;
+        transition: all 0.3s;
+      }
+    }
+  }
+}
