@@ -1,0 +1,17 @@
+<div class="loginDiv">
+    <form class="loginForm" action="#">
+        <input class="loginInputs" [(ngModel)]="plan.IdAutor" [ngModelOptions]="{standalone: true}" type="number"
+            placeholder="Autor">
+        <input class="loginInputs" [(ngModel)]="plan.Titulo" [ngModelOptions]="{standalone: true}" type="text"
+            placeholder="Title">
+        <input class="loginInputs" [(ngModel)]="plan.Fecha" [ngModelOptions]="{standalone: true}" type="date"
+            placeholder="Date">
+        <input class="loginInputs" [(ngModel)]="plan.ZonaHoraria" [ngModelOptions]="{standalone: true}" type="number"
+            placeholder="Zona Horaria">
+        <input class="loginInputs" [(ngModel)]="plan.Localizacion" [ngModelOptions]="{standalone: true}" type="text"
+            placeholder="Localización">
+        <input class="loginInputs" [(ngModel)]="plan.Descripcion" [ngModelOptions]="{standalone: true}" type="text"
+            placeholder="Descripcion">
+        <button type="button" class="btnLogin" (click)="postPlan()">Create</button>
+    </form>
+</div>
