@@ -23,6 +23,9 @@ export class RegisterPageComponent {
     try {
       this.http.post('http://localhost:3000/registrarUsuario', this.registerObj).pipe(catchError(error => {
         console.log('error is: ', error);
+        if (error.status === 400) {
+          window.alert('There are fields that must be filled')
+        }
         return error;
       })).subscribe((res: any) => {
         console.log(res['message']);
