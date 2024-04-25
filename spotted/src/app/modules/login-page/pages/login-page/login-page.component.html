@@ -1,0 +1,8 @@
+<div class="loginDiv">
+    <form class="loginForm" action="#">
+        <input class="loginInputs" [(ngModel)]="loginObj.NombreUsuario" [ngModelOptions]="{standalone: true}" type="text" placeholder="Username, email or Phone">
+        <input class="loginInputs" [(ngModel)]="loginObj.Contrasenya" [ngModelOptions]="{standalone: true}" type="password" placeholder="Password">
+
+        <button type="button" class="btnLogin" (click)="onLogin()">Login</button>
+    </form>
+</div>

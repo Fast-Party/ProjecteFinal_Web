@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { HttpClientModule } from '@angular/common/http';
 import { PlanModel } from '../../../../models/plan.model';
 import { RouterLink } from '@angular/router';
+import { catchError } from 'rxjs';
 
 @Component({
   selector: 'app-home-page',
@@ -25,7 +26,13 @@ export class HomePageComponent implements OnInit {
 
   fetchPlanes() {
     try {
-      this.http.get('http://localhost:3000/getPlanes').subscribe((res: any) => {
+      this.http.get('http://localhost:3000/getPlanes').pipe(catchError(error => {
+        console.log('error is: ', error);
+        if (error.status === 404) {
+          window.alert('Couldnt load planes');
+        }
+        return error;
+      })).subscribe((res: any) => {
         console.log('hola');
         if (res) {
           this.planes = res.results
