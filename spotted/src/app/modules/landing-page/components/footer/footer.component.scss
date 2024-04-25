@@ -91,6 +91,10 @@
         option {
             background-color: stl.$dark-mode-900;
         }
+
+        &:focus {
+          outline: none;
+        }
       }
 
       a {
