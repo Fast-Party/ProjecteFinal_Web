@@ -24,11 +24,15 @@ export class CreatePlanPageComponent {
     try {
       this.http.post('http://localhost:3000/postPlan', this.plan).pipe(catchError(error => {
         console.log('error is: ', error);
+        if (error.status === 400) {
+          window.alert('There are empty fields that must be filled');
+        }
         return error;
       })).subscribe((res: any) => {
         console.log('hola');
         if (res) {
           console.log("plan posted correctly");
+          window.alert('plan posted correctly');
           this.router.navigateByUrl('/home')
         } else {
           console.log('couldnt post plan')
