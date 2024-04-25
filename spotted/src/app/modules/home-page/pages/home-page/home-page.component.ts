@@ -2,12 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { HttpClientModule } from '@angular/common/http';
 import { PlanModel } from '../../../../models/plan.model';
+import { RouterLink } from '@angular/router';
 import { catchError } from 'rxjs';
 
 @Component({
   selector: 'app-home-page',
   standalone: true,
-  imports: [HttpClientModule],
+  imports: [HttpClientModule, RouterLink],
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.scss'
 })
@@ -34,7 +35,6 @@ export class HomePageComponent implements OnInit {
       })).subscribe((res: any) => {
         console.log('hola');
         if (res) {
-          console.log(res.results[2])
           this.planes = res.results
           console.log(this.planes)
         } else {
