@@ -327,10 +327,37 @@ main {
       width: 100%;
       background-color: rgba(stl.$dark-mode-900, .9);
       z-index: 20;
-    }
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .content-find-inter{
+        display: flex;
+        gap: 14px;
 
-    .find-inter:last-child{
-      background-color: rgba(stl.$dark-mode-900, .9);
+        .content-text-find-inter{
+            max-width: 44rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 40px;
+            padding: 20px;
+            h1{
+              font-size: 64px;
+              color: white;
+              font-weight: 700;
+              text-align: center;
+              text-transform: uppercase;
+            }
+
+            h6{
+              font-size: 19.2px;
+              color: white;
+              font-weight: 400;
+              text-align: center;
+            
+            }
+        }
+      }
     }
   }
 }
