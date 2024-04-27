@@ -193,6 +193,172 @@ main {
       text-align: center;
     }
   }
+
+  .container-rombo-strenghts-images{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .strengths-images {
+      position: absolute;
+      .top-left{
+        transform: translateX(-7em) translateY(-10.5em);
+        z-index: 0;
+  
+        @media screen and (max-width: 1600px){
+          transform: translateX(-7em) translateY(-15em);
+        }
+      }
+      .top-right{
+        position: relative;
+        transform: translateX(42em) translateY(-12em);
+        z-index: 0;
+  
+        @media screen and (max-width: 1600px){
+          transform: translateX(42em) translateY(-16.5em);
+        
+        }
+      }
+      .bottom-left{
+        position: relative;
+        transform: translateX(-36.5em) translateY(14em);
+        z-index: 10;
+  
+        @media screen and (max-width: 1600px){
+          transform: translateX(-36.5em) translateY(9.5em);
+        }
+      }
+    
+      .bottom-right{
+        position: relative;
+        transform: translateX(1.5em) translateY(11.5em);
+        z-index: 10;
+  
+        @media screen and (max-width: 1600px){
+          transform: translateX(1.5em) translateY(7em);
+        
+        }
+      }
+    }
+  }
+  
+  
+  .container-position-slick-buttons{
+    position: absolute;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    bottom: 0;
+    .container-buttons-slider{
+    position: relative;
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    transform: translateY(60em);
+
+    @media screen and (max-width: 1600px){
+      transform: translateY(55.5em);
+    }
+    
+    li{
+      width: 150px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+      text-align: center;
+      cursor: pointer;
+      transition: .3s ease-in-out;
+  
+      button{
+        width: 100%;
+        background-color: transparent;
+        border: none;
+        height: 60px;
+        color: rgb(255, 255, 255, .5);
+        cursor: pointer;
+        font-size: 12px;
+        transition: .3s ease-in-out;
+      }
+    }
+  
+    .slick-active{
+      border-bottom: 3px solid rgba(255, 255, 255);
+  
+      button{
+        color: white;
+      }
+    }
+  }
+  }
+
+  .container-find-inter{
+    position: relative;
+    height: 300vh;
+    display: flex;
+    flex-direction: column;
+    .container-rombos-FI{
+      position: sticky;
+      height: 100vh;
+      width: 100%;
+      overflow: hidden;
+      display: flex;
+      top: 0;
+      .sectionFI-left{
+        top: 0;
+        left: -34.5em;
+        position: absolute;
+        @media screen and (max-width: 1600px){
+          margin-top: auto;
+          
+        }
+      }
+      .sectionFI-right{
+        top: 0;
+        right: -34.5em;
+        position: absolute;
+        @media screen and (max-width: 1600px){
+           margin-top: auto;
+        }
+      }
+    }
+    .find-inter{
+      height: 100vh;
+      width: 100%;
+      background-color: rgba(stl.$dark-mode-900, .9);
+      z-index: 20;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .content-find-inter{
+        display: flex;
+        gap: 14px;
+
+        .content-text-find-inter{
+            max-width: 44rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 40px;
+            padding: 20px;
+            h1{
+              font-size: 64px;
+              color: white;
+              font-weight: 700;
+              text-align: center;
+              text-transform: uppercase;
+            }
+
+            h6{
+              font-size: 19.2px;
+              color: white;
+              font-weight: 400;
+              text-align: center;
+            
+            }
+        }
+      }
+    }
+  }
 }
 
 .mini-form-register{
@@ -267,109 +433,11 @@ main {
 }
 
 
-
-.container-rombo-strenghts-images{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  .strengths-images {
-    position: absolute;
-    .top-left{
-      transform: translateX(-7em) translateY(-10.5em);
-      z-index: 0;
-
-      @media screen and (max-width: 1600px){
-        transform: translateX(-7em) translateY(-20em);
-      }
-    }
-    .top-right{
-      position: relative;
-      transform: translateX(42em) translateY(-12em);
-      z-index: 0;
-
-      @media screen and (max-width: 1600px){
-        transform: translateX(42em) translateY(-21.5em);
-      
-      }
-    }
-    .bottom-left{
-      position: relative;
-      transform: translateX(-36.5em) translateY(14em);
-      z-index: 10;
-
-      @media screen and (max-width: 1600px){
-        transform: translateX(-36.5em) translateY(4.5em);
-      }
-    }
-  
-    .bottom-right{
-      position: relative;
-      transform: translateX(1.5em) translateY(11.5em);
-      z-index: 10;
-
-      @media screen and (max-width: 1600px){
-        transform: translateX(1.5em) translateY(2em);
-      
-      }
-    }
-  }
-}
-
-
-.container-position-slick-buttons{
-  position: absolute;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  bottom: 0;
-  .container-buttons-slider{
-  position: relative;
-  z-index: 5;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto;
-  transform: translateY(60em);
-  
-  li{
-    width: 150px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-    text-align: center;
-    cursor: pointer;
-    transition: .3s ease-in-out;
-
-    button{
-      width: 100%;
-      background-color: transparent;
-      border: none;
-      height: 60px;
-      color: rgb(255, 255, 255, .5);
-      cursor: pointer;
-      font-size: 12px;
-      transition: .3s ease-in-out;
-    }
-  }
-
-  .slick-active{
-    border-bottom: 3px solid rgba(255, 255, 255);
-
-    button{
-      color: white;
-    }
-  }
-}
-}
-
-
-
-
 @media screen and (max-width: 1600px) {
   .absolute-rombo {
     display: flex;
     justify-content: center;
-    transform: translateY(-160px);
-
+    margin-top: -155px;
     overflow: hidden;
   }
 
