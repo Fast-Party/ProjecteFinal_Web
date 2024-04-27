@@ -156,10 +156,6 @@ main {
     transform: translateX(-50%);
     cursor: pointer;
     animation: moveDown 2s infinite;
-
-    @media screen and (max-width: 1366px) {
-      bottom: 20px;
-    }
   }
 
   .container-strengths {
@@ -180,22 +176,37 @@ main {
       font-size: 64px;
       font-weight: 700;
       text-align: center;
-
+      position: relative;
+      display: flex;
+      gap: 16px;
+      
       span {
+        min-width: 339px;
+        text-align: start;
         font-weight: 800;
+      }
+
+      .animation-text-strengths{
+        animation: fade-in-bottom .5s cubic-bezier(0.39, 0.575, 0.565, 1);
       }
     }
 
     p {
+      display: flex;
       color: white;
       font-size: 16px;
       max-width: 550px;
       text-align: center;
     }
+
+    .animation-text-strengths{
+      animation: fade-in-top .5s cubic-bezier(0.39, 0.575, 0.565, 1);
+    }
   }
 
   .container-rombo-strenghts-images{
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     .strengths-images {
@@ -239,32 +250,31 @@ main {
         }
       }
     }
+    .animation-img-strengths{
+      animation: img-focus-in .5s cubic-bezier(0.39, 0.575, 0.565, 1);
+    }
   }
   
   
   .container-position-slick-buttons{
-    position: absolute;
+    position: sticky;
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    bottom: 0;
-    .container-buttons-slider{
-    position: relative;
+    bottom: 20px;
     z-index: 5;
+    //transform: translateY(100px);
+    .container-buttons-slider{
+    backdrop-filter: blur(10px);
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0 auto;
-    transform: translateY(60em);
-
-    @media screen and (max-width: 1600px){
-      transform: translateY(55.5em);
-    }
-    
+    margin: 0 auto;    
     li{
       width: 150px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+      border-bottom: 2px solid rgba(255, 255, 255, 0.3);
       text-align: center;
       cursor: pointer;
       transition: .3s ease-in-out;
@@ -282,8 +292,7 @@ main {
     }
   
     .slick-active{
-      border-bottom: 3px solid rgba(255, 255, 255);
-  
+      border-bottom: 2px solid rgba(255, 255, 255);
       button{
         color: white;
       }

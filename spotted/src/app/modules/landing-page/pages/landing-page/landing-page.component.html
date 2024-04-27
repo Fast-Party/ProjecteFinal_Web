@@ -118,50 +118,53 @@
       src="../../../../../assets/icons/regular/caret-double-down.svg"
       alt="Double arrow down"
     />
-
-    <div class="container-position-slick-buttons">
-      <ul class="container-buttons-slider">
-        <li [class.slick-active]="activeIndex === 0">
-          <button (click)="changeSlide(0)">01</button>
-        </li>
-        <li [class.slick-active]="activeIndex === 1">
-          <button (click)="changeSlide(1)">02</button>
-        </li>
-        <li [class.slick-active]="activeIndex === 2">
-          <button (click)="changeSlide(2)">03</button>
-        </li>
-      </ul>
-    </div>
     <div class="container-rombo-strenghts-images">
       <div class="container-strengths">
         <h1>
-          Descubre tus <span>{{ wrd }}</span>
+          Descubre tus <span [class.animation-text-strengths]="applyAnimation">{{ wrd }}</span>
         </h1>
-        <p>{{ prg }}</p>
+        <p [class.animation-text-strengths]="applyAnimation">{{ prg }}</p>
       </div>
       <div class="strengths-images">
         <img
+        [class.animation-img-strengths]="applyAnimation"
           class="dsg-img top-left"
           src="{{ imgs.img_src_TL }}"
           alt="fiesta"
         />
         <img
+        [class.animation-img-strengths]="applyAnimation"
           class="dsg-img top-right"
           src="{{ imgs.img_src_TR }}"
           alt="fiesta"
         />
         <img
+        [class.animation-img-strengths]="applyAnimation"
           class="dsg-img bottom-left"
           src="{{ imgs.img_src_BL }}"
           alt="fiesta"
         />
         <img
+        [class.animation-img-strengths]="applyAnimation"
           class="dsg-img bottom-right"
           src="{{ imgs.img_src_BR }}"
           alt="fiesta"
         />
       </div>
       <app-rombo class="absolute-rombo"></app-rombo>
+      <div class="container-position-slick-buttons">
+        <ul class="container-buttons-slider">
+          <li [class.slick-active]="activeIndex === 0">
+            <button (click)="changeSlide(0)">Aventuras</button>
+          </li>
+          <li [class.slick-active]="activeIndex === 1">
+            <button (click)="changeSlide(1)">Amigos</button>
+          </li>
+          <li [class.slick-active]="activeIndex === 2">
+            <button (click)="changeSlide(2)">Hobbies</button>
+          </li>
+        </ul>
+      </div>
     </div>
     <section class="container-find-inter">
       <div class="container-rombos-FI">
