@@ -1,28 +1,115 @@
-@use 'variables.scss' as stl;
-
+@use "variables.scss" as stl;
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: stl.$font-family-montserrat;
-  
 }
 
-html{
+html {
   overflow-x: hidden;
   scrollbar-width: none;
 }
 
-ul{
+ul {
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
-
-
-
 /*------------------ANIMATIONS--------------------*/
+
+@media screen and (max-width: 1600px) {
+  @keyframes scroll-reveal-slick-buttons {
+    0% {
+      transform: translateY(150px);
+      visibility: hidden;
+    }
+    10% {
+      transform: translateY(60px);
+      visibility: visible;
+    }
+    30% {
+      transform: translateY(10px);
+      opacity: 1;
+      visibility: visible;
+    }
+    60% {
+      transform: translateY(0);
+      opacity: 1;
+      visibility: visible;
+    }
+    70% {
+      transform: translateY(20px);
+      opacity: 0;
+    }
+    90% {
+      transform: translateY(50px);
+      visibility: hidden;
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(150px);
+      visibility: hidden;
+      opacity: 0;
+    }
+  }
+}
+
+@keyframes scroll-reveal-slick-buttons {
+  0% {
+    transform: translateY(150px);
+    visibility: hidden;
+  }
+  10% {
+    transform: translateY(60px);
+    visibility: visible;
+  }
+  30% {
+    transform: translateY(10px);
+    opacity: 1;
+    visibility: visible;
+  }
+  60% {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+  }
+  70% {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  90% {
+    transform: translateY(50px);
+    visibility: hidden;
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(150px);
+    visibility: hidden;
+    opacity: 0;
+  }
+}
+
+@mixin scroll-reveal($direction, $distance) {
+  from {
+    #{$direction}: -100em;
+    filter: blur(20px);
+  }
+  to {
+    #{$direction}: $distance;
+    visibility: visible;
+    filter: blur(0);
+  }
+}
+
+@keyframes scroll-reveal-romboFI-left {
+  @include scroll-reveal(left, -34.5em);
+}
+
+@keyframes scroll-reveal-romboFI-right {
+  @include scroll-reveal(right, -34.5em);
+}
 
 @keyframes moveDown {
   0% {
@@ -45,46 +132,65 @@ ul{
   }
 }
 
+@mixin fade-in($pixels) {
+  from {
+    transform: translateY($pixels);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
 @keyframes fade-in-bottom {
+  @include fade-in(33px);
+}
+
+@keyframes fade-in-top {
+  @include fade-in(-15px);
+}
+
+@keyframes fade-in-top-header {
   0% {
-    transform: translateY(33px);
+    transform: translateY(-50px);
     opacity: 0;
   }
   100% {
     transform: translateY(0);
     opacity: 1;
-  }
-}
-
-@keyframes fade-in-top{
-  0% {
-    transform: translateY(-15px);
-    opacity: 0;
-  }
-  100% {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-@keyframes tracking-in-expand {
-  0% {
-    letter-spacing: -0.5em;
-    opacity: 0;
-  }
-  40% {
-    opacity: 0.6;
-  }
-  100% {
-    opacity: 1;
+    backdrop-filter: blur(20px);
   }
 }
 
 @keyframes img-focus-in {
   0% {
-    filter: brightness(.5) ;
+    filter: brightness(0.5);
   }
   100% {
-    filter: brightness(1) ;    
+    filter: brightness(1);
+  }
+}
+
+@keyframes text-appear{
+  from{
+    opacity: 0;
+    gap: 100px;
+    visibility: hidden;
+  }
+  to{
+    opacity: 1;
+    gap: 14px;
+    visibility: visible;
+  }
+}
+
+@keyframes appear{
+  from{
+    opacity: 0;
+
+  }
+  to{
+    opacity: 1;
   }
 }

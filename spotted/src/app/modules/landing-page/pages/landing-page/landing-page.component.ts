@@ -1,8 +1,15 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 import { RomboComponent } from '../../../../components/rombo/rombo.component';
 import { NavBarComponent } from '../../components/nav-bar/nav-bar.component';
 import { FooterComponent } from '../../components/footer/footer.component';
 import { RouterLink } from '@angular/router';
+import { elementAt } from 'rxjs';
 
 @Component({
   selector: 'app-landing-page',
@@ -11,20 +18,52 @@ import { RouterLink } from '@angular/router';
   templateUrl: './landing-page.component.html',
   styleUrl: './landing-page.component.scss',
 })
-export class LandingPageComponent implements OnInit, AfterViewInit  {
+export class LandingPageComponent implements OnInit, AfterViewInit {
   activeIndex: number = 0;
   applyAnimation: boolean = false;
+  @ViewChild('romboRight') romboRight!: ElementRef;
+  @ViewChild('romboLeft') romboLeft!: ElementRef;
 
   constructor() {}
 
-  ngOnInit(): void {
-    // Lógica de inicialización del componente
-  }
+  ngOnInit(): void {}
 
   ngAfterViewInit(): void {
     // Se queda todo el rato cargando la web
-    
     //this.startInterval();
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          switch (entry.target) {
+            case this.romboRight.nativeElement:
+              const romboRight = document.querySelector('.romboFI-right');
+              romboRight?.classList.add('romboFI-right-reveal');
+              break;
+            case this.romboLeft.nativeElement:
+              const romboLeft = document.querySelector('.romboFI-left');
+              romboLeft?.classList.add('romboFI-left-reveal');
+              break;
+          }
+        }
+      });
+    });
+
+    observer.observe(this.romboRight.nativeElement);
+    observer.observe(this.romboLeft.nativeElement);
+
+    const observerCFI = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('cont-text-appear');
+        }
+      });
+    });
+
+    const viewbox = document.querySelectorAll('.content-find-inter');
+    viewbox.forEach((cfi) => {
+      observerCFI.observe(cfi);
+    });
   }
 
   /*
@@ -35,6 +74,7 @@ export class LandingPageComponent implements OnInit, AfterViewInit  {
     }, 5000);
   }
 */
+
   changeSlide(index: number) {
     if (index != this.activeIndex) {
       this.applyAnimation = true;

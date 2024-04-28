@@ -152,8 +152,8 @@
         />
       </div>
       <app-rombo class="absolute-rombo"></app-rombo>
-      <div class="container-position-slick-buttons">
-        <ul class="container-buttons-slider">
+      <div class="container-position-slick-buttons ">
+        <ul class="container-buttons-slider scroll-reveal">
           <li [class.slick-active]="activeIndex === 0">
             <button (click)="changeSlide(0)">Aventuras</button>
           </li>
@@ -166,13 +166,13 @@
         </ul>
       </div>
     </div>
-    <section class="container-find-inter">
+    <section class="container-find-inter" #romboRight>
       <div class="container-rombos-FI">
-        <app-rombo class="absolute-rombo sectionFI-right"></app-rombo>
-        <app-rombo class="absolute-rombo sectionFI-left"></app-rombo>
+        <app-rombo class="absolute-rombo romboFI-right"></app-rombo>
+        <app-rombo class="absolute-rombo romboFI-left" ></app-rombo>
       </div>
       <div class="find-inter">
-        <div class="content-find-inter">
+        <div class="content-find-inter" #contentFindInter id="cfi">
           <img
             src="../../../../../assets/img/findInterGroup.svg"
             alt="Img Find Inter"
@@ -188,8 +188,8 @@
           </div>
         </div>
       </div>
-      <div class="find-inter">
-        <div class="content-find-inter">
+      <div class="find-inter" #romboLeft>
+        <div class="content-find-inter" #contentFindInter2 id="cfi2">
           <div class="content-text-find-inter">
             <h1>Meet new people and join out community</h1>
             <h6>
