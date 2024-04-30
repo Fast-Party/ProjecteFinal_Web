@@ -1,1 +1,3 @@
-# ProjecteFinal_Web
+# FastParty
+
+## How to install Angular
