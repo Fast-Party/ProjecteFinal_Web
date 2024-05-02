@@ -5,7 +5,7 @@
 ## Com executar FastParty
 
 Per poder executar l'aplicació primer s'han de garantir certs requisits:
-  1. Instal·lar Node.js. Mitjançant aquest link trobaràs l'última versió d'aquest: https://nodejs.org/en
+  1. Instal·lar Node.js. Mitjançant aquest link trobaràs l'última versió d'aquest: https://nodejs.org/en.
   2. Instal·lar Angular CLI. Executant la següent comanda podràs instal·lar l'eina: "npm install -g @angular/cli"
 
 Ara ja tenim el dispositiu capacitat per treballar amb projectes Angular. 
