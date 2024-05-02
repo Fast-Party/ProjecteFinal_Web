@@ -1,3 +1,84 @@
+<div class="loginPage">
+  <div class="container-form">
+    <div class="container-logo">
+      <img src="../../../../../assets/img/Logo.svg" alt="logo" class="logo" />
+      <h4>Fast Party</h4>
+    </div>
+    <div class="container-form-content">
+      <h1>Iniciar sesión</h1>
+      <form class="login-form" action="#">
+        <div class="login-form-inputs-remember_forgetpwd">
+          <div class="login-form-inputs">
+            <div class="input-container">
+              <input
+                type="text"
+                id="input"
+                [(ngModel)]="loginObj.NombreUsuario"
+                [ngModelOptions]="{ standalone: true }"
+                required
+              />
+              <label for="input" class="label"
+                >Usuario o correo electrónico</label
+              >
+              <div class="underline"></div>
+            </div>
+            <input
+              class="login-input"
+              [(ngModel)]="loginObj.Contrasenya"
+              [ngModelOptions]="{ standalone: true }"
+              type="password"
+              placeholder="Contraseña"
+            />
+          </div>
+          <div class="login-form-remember_forgetpwd">
+            <label class="login-form-remember-checkbox">
+              <input type="checkbox" id="remember" name="remember" />
+              <svg viewBox="0 0 64 64" height="16" width="16">
+                <path
+                  d="M 0 16 V 56 A 8 8 90 0 0 8 64 H 56 A 8 8 90 0 0 64 56 V 8 A 8 8 90 0 0 56 0 H 8 A 8 8 90 0 0 0 8 V 16 L 32 48 L 64 16 V 8 A 8 8 90 0 0 56 0 H 8 A 8 8 90 0 0 0 8 V 56 A 8 8 90 0 0 8 64 H 56 A 8 8 90 0 0 64 56 V 16"
+                  pathLength="575.0541381835938"
+                  class="path"
+                ></path>
+              </svg>
+              Recordarme
+            </label>
+            <a href="#">¿Has olvidado la contraseña?</a>
+          </div>
+        </div>
+        <button type="button" class="btn-login" (click)="onLogin()">
+          Entrar
+        </button>
+      </form>
+      <div class="container-login-RRSS">
+        <div class="separator">
+          <hr class="line" />
+          <span>O</span>
+          <hr class="line" />
+        </div>
+        <div class="container-RRSS">
+          <button class="btn-RRSS">
+            <img
+              src="../../../../../assets/img/logo google.svg"
+              alt="logo google"
+            />
+          </button>
+          <button class="btn-RRSS">
+            <img
+              src="../../../../../assets/img/logo facebook.svg"
+              alt="logo facebook"
+            />
+          </button>
+        </div>
+      </div>
+      <div class="container-login-without_account">
+        <p>¿No tienes cuenta aún?</p>
+        <a href="#">Crear cuenta</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--
 <div class="loginDiv">
     <form class="loginForm" action="#">
         <input class="loginInputs" [(ngModel)]="loginObj.NombreUsuario" [ngModelOptions]="{standalone: true}" type="text" placeholder="Username, email or Phone">
@@ -6,3 +87,4 @@
         <button type="button" class="btnLogin" (click)="onLogin()">Login</button>
     </form>
 </div>
+-->
