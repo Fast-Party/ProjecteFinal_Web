@@ -2,7 +2,7 @@
 
 
 
-## Instal·lar Angular
+## Com treballar amb el repositori
 
 Per poder treballar amb aquest repositori en qualsevol dispositiu, primer s'han de garantir certs requisits:
   1. Instal·lar Node.js. Mitjançant aquest link trobaràs l'última versió d'aquest: https://nodejs.org/en
