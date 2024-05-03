@@ -84,59 +84,43 @@
             .input-container {
               position: relative;
               width: 100%;
-
-
-
-
-                .password-input{
-                  display: flex;
-                  justify-content: center;
-                  align-items: center;
-                  position: relative;
-                  cursor: pointer;
-                  user-select: none;
-
-                  .eye{                    
-                    width: 16px;
-                    height: 16px;
-                    filter: invert(1);
-                  }
-
-                  .input-eye{
-                    background-color: transparent;
-                    border: none;
-                    cursor: pointer;
-                  }
-                  
+              .password-input {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                position: absolute;
+                right: 12px;
+                cursor: pointer;
+                user-select: none;
+                height: 100%;
+                .eye {
+                  width: 16px;
+                  height: 16px;
+                  filter: invert(1);
                 }
 
+                .input-eye {
+                  background-color: transparent;
+                  border: none;
+                  cursor: pointer;
+                }
+              }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-              input[type="text"], input[type="password"] {
+              input[type="text"],
+              input[type="password"] {
                 font-size: 16px;
                 width: 100%;
                 border: none;
                 border-bottom: 1px solid rgba(white, 0.5);
                 color: white;
-                padding: 5px 0;
+                padding: 5px 0; 
+                padding-right: 32px;
                 background-color: transparent;
                 outline: none;
               }
+
               ::-ms-reveal {
-                visibility: hidden;
+                display: none;
               }
 
               .label {
@@ -152,7 +136,7 @@
               input[type="text"]:focus ~ .label,
               input[type="text"]:valid ~ .label,
               input[type="password"]:focus ~ .label,
-              input[type="password"]:valid ~ .label{
+              input[type="password"]:valid ~ .label {
                 top: -20px;
                 font-size: 14px;
                 color: rgba(white, 0.5);
@@ -170,13 +154,13 @@
               input[type="text"]:focus ~ .underline,
               input[type="text"]:valid ~ .underline,
               input[type="password"]:focus ~ .underline,
-              input[type="password"]:valid ~ .underline{
+              input[type="password"]:valid ~ .underline {
                 transform: scaleX(1);
               }
-              input[type="text"]:focus ~ .underline, input[type="password"]:focus ~ .underline {
+              input[type="text"]:focus ~ .underline,
+              input[type="password"]:focus ~ .underline {
                 background-color: stl.$primary-color-400;
               }
-
             }
           }
           .login-form-remember_forgetpwd {
@@ -246,11 +230,21 @@
           align-self: stretch;
           border-radius: 7px;
           border: none;
-          background: linear-gradient(271deg, #a233d8 13.56%, #5e17eb 84.5%);
+          //background: linear-gradient(271deg, #a233d8 13.56%, #5e17eb 84.5%) no-repeat;
           cursor: pointer;
           font-weight: 700;
           color: white;
           font-size: 16px;
+          transition: 0.3s ease-in-out;
+          background: linear-gradient(15deg, #a233d8, #5e17eb, #a233d8) no-repeat;
+          background-position: left center;
+          background-size: 300%;
+
+          &:hover {
+            text-shadow: 0px 0px 10px rgba(#ffffff, 0.5);
+            background-size: 320%;
+            background-position: right center;
+          }
         }
       }
 
@@ -302,7 +296,13 @@
             cursor: pointer;
             border: none;
             border-radius: 7px;
-            background: rgba(0, 0, 0, 0.25);
+            background: rgba(black, 0.25);
+            transition: .3s ease-in-out;
+
+            &:hover {
+              background: rgba(black, 0.6);
+              box-shadow: 0px 8px 28px -6px rgba(#a233d8, 0.12), 0px 18px 88px -4px rgba(#5e17eb, 0.14);
+            }
           }
         }
       }
@@ -324,6 +324,11 @@
           background-clip: text;
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
+          transition: .3s ease-in-out;
+
+          &:hover{
+            text-shadow: 0px 0px 10px rgba(#5e17eb, 0.5);
+          }
         }
       }
     }

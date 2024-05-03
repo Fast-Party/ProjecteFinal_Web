@@ -23,18 +23,6 @@
               <div class="underline"></div>
             </div>
             <div class="input-container">
-              <input
-                type="password"
-                id="input"
-                [(ngModel)]="loginObj.Contrasenya"
-                [ngModelOptions]="{ standalone: true }"
-                required
-              />
-              <label for="input" class="label">Contraseña</label>
-              <div class="underline"></div>
-            </div>
-
-            <div class="input-container">
               <label class="password-input">
                 <button (click)="togglePasswordVisibility()" class="input-eye">
                   @if (!showPassword) {
@@ -55,7 +43,7 @@
               @if (!showPassword) {
                 <input
                 type="password"
-                id="input"
+                id="input "
                 [(ngModel)]="loginObj.Contrasenya"
                 [ngModelOptions]="{ standalone: true }"
                 required
@@ -121,14 +109,3 @@
     </div>
   </div>
 </div>
-
-<!--
-<div class="loginDiv">
-    <form class="loginForm" action="#">
-        <input class="loginInputs" [(ngModel)]="loginObj.NombreUsuario" [ngModelOptions]="{standalone: true}" type="text" placeholder="Username, email or Phone">
-        <input class="loginInputs" [(ngModel)]="loginObj.Contrasenya" [ngModelOptions]="{standalone: true}" type="password" placeholder="Password">
-
-        <button type="button" class="btnLogin" (click)="onLogin()">Login</button>
-    </form>
-</div>
--->
