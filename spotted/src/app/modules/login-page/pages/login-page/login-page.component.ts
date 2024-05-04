@@ -16,6 +16,7 @@ export class LoginPageComponent{
   loginObj: Login;
   prvPss: string;
   showPassword: boolean = false;
+  applyAnimationEye: boolean = false;
   
   constructor(private http: HttpClient, private router: Router) {
     this.loginObj = new Login();
@@ -24,6 +25,7 @@ export class LoginPageComponent{
 
   togglePasswordVisibility() {
     this.showPassword = !this.showPassword;
+    this.applyAnimationEye = true;
 }
 
   onLogin() {

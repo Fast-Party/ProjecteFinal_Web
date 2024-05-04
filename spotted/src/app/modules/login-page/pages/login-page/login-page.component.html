@@ -1,7 +1,7 @@
 <div class="loginPage">
   <div class="container-form">
     <div class="container-logo">
-      <img src="../../../../../assets/img/Logo.svg" alt="logo" class="logo" />
+      <img src="../../../../../assets/img/new logo.svg" alt="logo" class="logo" />
       <h4>Fast Party</h4>
     </div>
     <div class="container-form-content">
@@ -23,25 +23,8 @@
               <div class="underline"></div>
             </div>
             <div class="input-container">
-              <label class="password-input">
-                <button (click)="togglePasswordVisibility()" class="input-eye">
-                  @if (!showPassword) {
-                  <img
-                    class="eye"
-                    src="../../../../../assets/icons/thin/eye-slash-thin.svg"
-                    alt=""
-                  />
-                  }@else {
-                  <img
-                    class="eye"
-                    src="../../../../../assets/icons/thin/eye-thin.svg"
-                    alt=""
-                  />
-                  }
-                </button>
-              </label>
               @if (!showPassword) {
-                <input
+              <input
                 type="password"
                 id="input "
                 [(ngModel)]="loginObj.Contrasenya"
@@ -49,7 +32,7 @@
                 required
               />
               }@else {
-                <input
+              <input
                 type="text"
                 id="input"
                 [(ngModel)]="loginObj.Contrasenya"
@@ -57,7 +40,25 @@
                 required
               />
               }
-
+              <label class="password-input">
+                <button (click)="togglePasswordVisibility()" class="input-eye">
+                  @if (!showPassword) {
+                  <img
+                    class="eye"
+                    [class.new-animations-eye]="applyAnimationEye"
+                    src="../../../../../assets/icons/thin/eye-slash-thin.svg"
+                    alt=""
+                  />
+                  }@else {
+                  <img
+                    class="eye"
+                    [class.new-animations-eye]="applyAnimationEye"
+                    src="../../../../../assets/icons/thin/eye-thin.svg"
+                    alt=""
+                  />
+                  }
+                </button>
+              </label>
               <label for="input" class="label">Contraseña</label>
               <div class="underline"></div>
             </div>
