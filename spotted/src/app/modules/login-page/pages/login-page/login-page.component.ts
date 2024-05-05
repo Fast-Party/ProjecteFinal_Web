@@ -12,14 +12,21 @@ import { catchError } from 'rxjs';
   templateUrl: './login-page.component.html',
   styleUrl: './login-page.component.scss'
 })
-export class LoginPageComponent {
+export class LoginPageComponent{
   loginObj: Login;
   prvPss: string;
-
+  showPassword: boolean = false;
+  applyAnimationEye: boolean = false;
+  
   constructor(private http: HttpClient, private router: Router) {
     this.loginObj = new Login();
     this.prvPss = "test";
   }
+
+  togglePasswordVisibility() {
+    this.showPassword = !this.showPassword;
+    this.applyAnimationEye = true;
+}
 
   onLogin() {
     try {
@@ -43,6 +50,7 @@ export class LoginPageComponent {
 
   }
 }
+
 
 export class Login {
   NombreUsuario: string;

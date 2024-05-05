@@ -118,58 +118,61 @@
       src="../../../../../assets/icons/regular/caret-double-down.svg"
       alt="Double arrow down"
     />
-
-    <div class="container-position-slick-buttons">
-      <ul class="container-buttons-slider">
-        <li [class.slick-active]="activeIndex === 0">
-          <button (click)="changeSlide(0)">01</button>
-        </li>
-        <li [class.slick-active]="activeIndex === 1">
-          <button (click)="changeSlide(1)">02</button>
-        </li>
-        <li [class.slick-active]="activeIndex === 2">
-          <button (click)="changeSlide(2)">03</button>
-        </li>
-      </ul>
-    </div>
     <div class="container-rombo-strenghts-images">
       <div class="container-strengths">
         <h1>
-          Descubre tus <span>{{ wrd }}</span>
+          Descubre tus <span [class.animation-text-strengths]="applyAnimation">{{ wrd }}</span>
         </h1>
-        <p>{{ prg }}</p>
+        <p [class.animation-text-strengths]="applyAnimation">{{ prg }}</p>
       </div>
       <div class="strengths-images">
         <img
+        [class.animation-img-strengths]="applyAnimation"
           class="dsg-img top-left"
           src="{{ imgs.img_src_TL }}"
           alt="fiesta"
         />
         <img
+        [class.animation-img-strengths]="applyAnimation"
           class="dsg-img top-right"
           src="{{ imgs.img_src_TR }}"
           alt="fiesta"
         />
         <img
+        [class.animation-img-strengths]="applyAnimation"
           class="dsg-img bottom-left"
           src="{{ imgs.img_src_BL }}"
           alt="fiesta"
         />
         <img
+        [class.animation-img-strengths]="applyAnimation"
           class="dsg-img bottom-right"
           src="{{ imgs.img_src_BR }}"
           alt="fiesta"
         />
       </div>
       <app-rombo class="absolute-rombo"></app-rombo>
+      <div class="container-position-slick-buttons ">
+        <ul class="container-buttons-slider scroll-reveal">
+          <li [class.slick-active]="activeIndex === 0">
+            <button (click)="changeSlide(0)">Aventuras</button>
+          </li>
+          <li [class.slick-active]="activeIndex === 1">
+            <button (click)="changeSlide(1)">Amigos</button>
+          </li>
+          <li [class.slick-active]="activeIndex === 2">
+            <button (click)="changeSlide(2)">Hobbies</button>
+          </li>
+        </ul>
+      </div>
     </div>
-    <section class="container-find-inter">
+    <section class="container-find-inter" #romboRight>
       <div class="container-rombos-FI">
-        <app-rombo class="absolute-rombo sectionFI-right"></app-rombo>
-        <app-rombo class="absolute-rombo sectionFI-left"></app-rombo>
+        <app-rombo class="absolute-rombo romboFI-right"></app-rombo>
+        <app-rombo class="absolute-rombo romboFI-left" ></app-rombo>
       </div>
       <div class="find-inter">
-        <div class="content-find-inter">
+        <div class="content-find-inter" #contentFindInter id="cfi">
           <img
             src="../../../../../assets/img/findInterGroup.svg"
             alt="Img Find Inter"
@@ -185,8 +188,8 @@
           </div>
         </div>
       </div>
-      <div class="find-inter">
-        <div class="content-find-inter">
+      <div class="find-inter" #romboLeft>
+        <div class="content-find-inter" #contentFindInter2 id="cfi2">
           <div class="content-text-find-inter">
             <h1>Meet new people and join out community</h1>
             <h6>
