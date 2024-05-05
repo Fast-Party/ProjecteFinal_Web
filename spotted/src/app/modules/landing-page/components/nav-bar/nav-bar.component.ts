@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
+import { delay } from 'rxjs';
 
 @Component({
   selector: 'app-nav-bar',
@@ -9,5 +10,10 @@ import { Router, RouterLink } from '@angular/router';
   styleUrl: './nav-bar.component.scss'
 })
 export class NavBarComponent {
+
+  reload() {
+   // window.scrollTo(0, 0);
+    window.location.reload();
+  }
 
 }
