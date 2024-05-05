@@ -1,12 +1,58 @@
-<div class="registerDiv">
-    <form class="registerForm" action="#">
-        <input class="registerInputs" [(ngModel)]="registerObj.NombreUsuario" [ngModelOptions]="{standalone: true}" type="text" placeholder="Username, email or Phone">
-        <input class="registerInputs" [(ngModel)]="registerObj.Nombre" [ngModelOptions]="{standalone: true}" type="text" placeholder="Nombre">
-        <input class="registerInputs" [(ngModel)]="registerObj.Contrasenya" [ngModelOptions]="{standalone: true}" type="password" placeholder="Password">
-        <input class="registerInputs" [(ngModel)]="registerObj.Email" [ngModelOptions]="{standalone: true}" type="email" placeholder="Email">
-        <input class="registerInputs" [(ngModel)]="registerObj.Telefono" [ngModelOptions]="{standalone: true}" type="text" placeholder="Telephone">
-        <input class="registerInputs" [(ngModel)]="registerObj.FechaNacimiento" [ngModelOptions]="{standalone: true}" type="date" placeholder="Birth Date">
+<div class="registerPage">
+  <div class="container-form">
+    <div class="container-logo">
+        <img src="../../../../../assets/img/logo/Logo White.svg" alt="logo" class="logo" />
+        <h4>Fast Party</h4>
+      </div>
+    <div class="registerDiv">
+      <form class="registerForm" action="#">
+        <input
+          class="registerInputs"
+          [(ngModel)]="registerObj.NombreUsuario"
+          [ngModelOptions]="{ standalone: true }"
+          type="text"
+          placeholder="Username, email or Phone"
+        />
+        <input
+          class="registerInputs"
+          [(ngModel)]="registerObj.Nombre"
+          [ngModelOptions]="{ standalone: true }"
+          type="text"
+          placeholder="Nombre"
+        />
+        <input
+          class="registerInputs"
+          [(ngModel)]="registerObj.Contrasenya"
+          [ngModelOptions]="{ standalone: true }"
+          type="password"
+          placeholder="Password"
+        />
+        <input
+          class="registerInputs"
+          [(ngModel)]="registerObj.Email"
+          [ngModelOptions]="{ standalone: true }"
+          type="email"
+          placeholder="Email"
+        />
+        <input
+          class="registerInputs"
+          [(ngModel)]="registerObj.Telefono"
+          [ngModelOptions]="{ standalone: true }"
+          type="text"
+          placeholder="Telephone"
+        />
+        <input
+          class="registerInputs"
+          [(ngModel)]="registerObj.FechaNacimiento"
+          [ngModelOptions]="{ standalone: true }"
+          type="date"
+          placeholder="Birth Date"
+        />
 
-        <button type="button" class="btnRegister" (click)="onregister()">register</button>
-    </form>
+        <button type="button" class="btnRegister" (click)="onregister()">
+          register
+        </button>
+      </form>
+    </div>
+  </div>
 </div>

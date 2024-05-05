@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { HttpClientModule } from '@angular/common/http';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { catchError } from 'rxjs';
 
 @Component({
   selector: 'app-login-page',
   standalone: true,
-  imports: [FormsModule, HttpClientModule],
+  imports: [FormsModule, HttpClientModule,RouterLink],
   templateUrl: './login-page.component.html',
   styleUrl: './login-page.component.scss'
 })
