@@ -94,7 +94,7 @@
             width: 100%;
             opacity: 0;
             animation: scale-in-hor-center 0.5s ease-in-out 0.5s forwards;
-          
+
             .password-input {
               display: flex;
               justify-content: center;
@@ -114,10 +114,10 @@
                 &:hover {
                   filter: invert(0.5);
                 }
-                animation: appear .5s ease-in-out 1s forwards;
+                animation: appear 0.5s ease-in-out 1s forwards;
               }
 
-              .new-animations-eye{
+              .new-animations-eye {
                 animation-delay: 0s;
               }
 
@@ -127,7 +127,7 @@
                 cursor: pointer;
               }
             }
-          
+
             .label {
               position: absolute;
               top: 0;
@@ -137,12 +137,14 @@
               pointer-events: none;
               font-weight: 400;
               opacity: 0;
-              animation: fade-in-top .5s ease-in-out 1s forwards;
+              animation: fade-in-top 0.5s ease-in-out 1s forwards;
             }
 
             input[type="text"],
             input[type="password"],
-            input[type="email"]{
+            input[type="email"],
+            input[type="date"],
+            input[type="tel"] {
               font-size: 16px;
               width: 100%;
               border: none;
@@ -158,12 +160,15 @@
               display: none;
             }
 
+
             input[type="text"]:focus ~ .label,
             input[type="text"]:valid ~ .label,
             input[type="password"]:focus ~ .label,
             input[type="password"]:valid ~ .label,
             input[type="email"]:focus ~ .label,
-            input[type="email"]:valid ~ .label {
+            input[type="email"]:valid ~ .label,
+            input[type="tel"]:focus ~ .label,
+            input[type="tel"]:valid ~ .label {
               top: -20px;
               font-size: 14px;
               color: rgba(stl.$base-color-white, 0.5);
@@ -183,13 +188,51 @@
             input[type="password"]:focus ~ .underline,
             input[type="password"]:valid ~ .underline,
             input[type="email"]:focus ~ .underline,
-            input[type="email"]:valid ~ .underline{
+            input[type="email"]:valid ~ .underline,
+            input[type="tel"]:focus ~ .underline,
+            input[type="tel"]:valid ~ .underline {
               transform: scaleX(1);
             }
             input[type="text"]:focus ~ .underline,
             input[type="password"]:focus ~ .underline,
-            input[type="email"]:focus ~ .underline{
+            input[type="email"]:focus ~ .underline,
+            input[type="tel"]:focus ~ .underline {
               background-color: stl.$primary-color-400;
+            }
+          }
+          .container-input-date{
+            display: flex;
+            align-self: stretch;
+            width: 100%;
+            gap: 24px;
+            
+            select{
+              font-size: 16px;
+              width: 100%;
+              border: none;
+              border-bottom: 1px solid rgba(stl.$base-color-white, 0.5);
+              color: rgba(stl.$base-color-white, 0.5);
+              padding: 5px 0;
+              background-color: transparent;
+              outline: none;
+
+              &:valid{
+                color: stl.$base-color-white;
+              }
+
+              option{
+                background-color: stl.$dark-mode-900;
+                border: none;
+                
+              }
+
+              &:focus ~ .underline, &:valid ~ .underline{
+                transform: scaleX(1);
+              }
+
+              &:focus ~ .underline{
+                background-color: stl.$primary-color-400;
+              }
             }
           }
         }
@@ -208,13 +251,18 @@
           color: stl.$base-color-white;
           font-size: 16px;
           transition: 0.3s ease-in-out;
-          background: linear-gradient(15deg, stl.$primary-color-500, stl.$secondary-color-600, stl.$primary-color-500)
+          background: linear-gradient(
+              15deg,
+              stl.$primary-color-500,
+              stl.$secondary-color-600,
+              stl.$primary-color-500
+            )
             no-repeat;
           background-position: left center;
           background-size: 300%;
 
           opacity: 0;
-          animation: fade-in-bottom  .5s ease-in-out 1s forwards;
+          animation: fade-in-bottom 0.5s ease-in-out 1s forwards;
           &:hover {
             letter-spacing: 1px;
             background-size: 320%;
@@ -230,15 +278,20 @@
         font-size: 14px;
         font-weight: 400;
         opacity: 0;
-        
-        animation: fade-in-top .5s ease-in-out 1.2s forwards;
+
+        animation: fade-in-top 0.5s ease-in-out 1.2s forwards;
         p {
           color: stl.$base-color-white;
         }
         a {
           font-weight: 600;
           text-decoration: none;
-          background: linear-gradient(15deg, stl.$primary-color-500, stl.$secondary-color-600, stl.$primary-color-500);
+          background: linear-gradient(
+            15deg,
+            stl.$primary-color-500,
+            stl.$secondary-color-600,
+            stl.$primary-color-500
+          );
           background-clip: text;
           background-position: left center;
           background-size: 280%;
@@ -252,7 +305,6 @@
           }
         }
       }
-
     }
   }
 }
