@@ -1,39 +1,164 @@
 <div class="registerPage">
   <div class="container-form">
     <div class="container-logo">
-        <img src="../../../../../assets/img/logo/Logo White.svg" alt="logo" class="logo" />
-        <h4>Fast Party</h4>
+      <img
+        src="../../../../../assets/img/logo/Logo White.svg"
+        alt="logo"
+        class="logo"
+      />
+      <h4>Fast Party</h4>
+    </div>
+    <div class="container-form-content">
+      <h1>Crea tu cuenta</h1>
+      <form class="register-form" action="#">
+        <div class="register-form-inputs">
+          <div class="input-container">
+            <input
+              type="text"
+              id="input"
+              [(ngModel)]="registerObj.NombreUsuario"
+              [ngModelOptions]="{ standalone: true }"
+              required
+            />
+            <label for="input" class="label">Nombre de usuario</label>
+            <div class="underline"></div>
+          </div>
+          <div class="input-container">
+            <input
+              type="email"
+              id="input"
+              [(ngModel)]="registerObj.Email"
+              [ngModelOptions]="{ standalone: true }"
+              required
+            />
+            <label for="input" class="label">Correo electrónico</label>
+            <div class="underline"></div>
+          </div>
+          <div class="input-container">
+            @if (!showPassword) {
+            <input
+              type="password"
+              id="input "
+              [(ngModel)]="registerObj.Contrasenya"
+              [ngModelOptions]="{ standalone: true }"
+              required
+            />
+            }@else {
+            <input
+              type="text"
+              id="input"
+              [(ngModel)]="registerObj.Contrasenya"
+              [ngModelOptions]="{ standalone: true }"
+              required
+            />
+            }
+            <label class="password-input">
+              <button (click)="togglePasswordVisibility()" class="input-eye">
+                @if (!showPassword) {
+                <img
+                  class="eye"
+                  [class.new-animations-eye]="applyAnimationEye"
+                  src="../../../../../assets/icons/thin/eye-slash-thin.svg"
+                  alt=""
+                />
+                }@else {
+                <img
+                  class="eye"
+                  [class.new-animations-eye]="applyAnimationEye"
+                  src="../../../../../assets/icons/thin/eye-thin.svg"
+                  alt=""
+                />
+                }
+              </button>
+            </label>
+            <label for="input" class="label">Contraseña</label>
+            <div class="underline"></div>
+          </div>
+          <div class="input-container">
+            @if (!showPassword) {
+            <input
+              type="password"
+              id="input "
+              [(ngModel)]="registerObj.Contrasenya"
+              [ngModelOptions]="{ standalone: true }"
+              required
+            />
+            }@else {
+            <input
+              type="text"
+              id="input"
+              [(ngModel)]="registerObj.Contrasenya"
+              [ngModelOptions]="{ standalone: true }"
+              required
+            />
+            }
+            <label class="password-input">
+              <button (click)="togglePasswordVisibility()" class="input-eye">
+                @if (!showPassword) {
+                <img
+                  class="eye"
+                  [class.new-animations-eye]="applyAnimationEye"
+                  src="../../../../../assets/icons/thin/eye-slash-thin.svg"
+                  alt=""
+                />
+                }@else {
+                <img
+                  class="eye"
+                  [class.new-animations-eye]="applyAnimationEye"
+                  src="../../../../../assets/icons/thin/eye-thin.svg"
+                  alt=""
+                />
+                }
+              </button>
+            </label>
+            <label for="input" class="label">Repetir contraseña</label>
+            <div class="underline"></div>
+          </div>
+          <div class="input-container">
+            <input
+              type="text"
+              id="input"
+              [(ngModel)]="registerObj.Nombre"
+              [ngModelOptions]="{ standalone: true }"
+              required
+            />
+            <label for="input" class="label">Nombre</label>
+            <div class="underline"></div>
+          </div>
+          <div class="input-container">
+            <input
+              type="text"
+              id="input"
+              [(ngModel)]="registerObj.Nombre"
+              [ngModelOptions]="{ standalone: true }"
+              required
+            />
+            <label for="input" class="label">Apellidos</label>
+            <div class="underline"></div>
+          </div>
+          <div class="input-container">
+            <input
+              type="date"
+              id="input"
+              [(ngModel)]="registerObj.FechaNacimiento"
+              [ngModelOptions]="{ standalone: true }"
+              required
+            />
+            <label for="input" class="label">Fecha Nacimiento</label>
+            <div class="underline"></div>
+          </div>
+        </div>
+        <button type="button" class="btn-register">Siguiente</button>
+      </form>
+      <div class="container-register-with_account">
+        <p>¿Ya tienes una cuenta?</p>
+        <a routerLink="/login">Iniciar sesión</a>
       </div>
+    </div>
+
+    <!--
     <div class="registerDiv">
       <form class="registerForm" action="#">
-        <input
-          class="registerInputs"
-          [(ngModel)]="registerObj.NombreUsuario"
-          [ngModelOptions]="{ standalone: true }"
-          type="text"
-          placeholder="Username, email or Phone"
-        />
-        <input
-          class="registerInputs"
-          [(ngModel)]="registerObj.Nombre"
-          [ngModelOptions]="{ standalone: true }"
-          type="text"
-          placeholder="Nombre"
-        />
-        <input
-          class="registerInputs"
-          [(ngModel)]="registerObj.Contrasenya"
-          [ngModelOptions]="{ standalone: true }"
-          type="password"
-          placeholder="Password"
-        />
-        <input
-          class="registerInputs"
-          [(ngModel)]="registerObj.Email"
-          [ngModelOptions]="{ standalone: true }"
-          type="email"
-          placeholder="Email"
-        />
         <input
           class="registerInputs"
           [(ngModel)]="registerObj.Telefono"
@@ -41,18 +166,10 @@
           type="text"
           placeholder="Telephone"
         />
-        <input
-          class="registerInputs"
-          [(ngModel)]="registerObj.FechaNacimiento"
-          [ngModelOptions]="{ standalone: true }"
-          type="date"
-          placeholder="Birth Date"
-        />
-
         <button type="button" class="btnRegister" (click)="onregister()">
           register
         </button>
       </form>
-    </div>
+    </div>-->
   </div>
 </div>

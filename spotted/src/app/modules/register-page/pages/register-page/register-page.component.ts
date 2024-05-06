@@ -1,23 +1,30 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { HttpClientModule } from '@angular/common/http';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { catchError } from 'rxjs';
 
 @Component({
   selector: 'app-register-page',
   standalone: true,
-  imports: [FormsModule, HttpClientModule],
+  imports: [FormsModule, HttpClientModule, RouterLink],
   templateUrl: './register-page.component.html',
   styleUrl: './register-page.component.scss'
 })
 export class RegisterPageComponent {
   registerObj: Register;
+  showPassword: boolean = false;
+  applyAnimationEye: boolean = false;
 
   constructor(private http: HttpClient, private router: Router) {
     this.registerObj = new Register();
   }
+
+  togglePasswordVisibility() {
+    this.showPassword = !this.showPassword;
+    this.applyAnimationEye = true;
+}
 
   onregister() {
     try {

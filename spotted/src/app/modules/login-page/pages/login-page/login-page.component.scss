@@ -36,6 +36,10 @@
       gap: 56px;
     }
 
+    @media screen and (max-height: 680px) {
+      gap: 12px;
+    }
+
     .container-logo {
       display: flex;
       align-items: center;
@@ -275,7 +279,6 @@
           animation: fade-in-bottom  .5s ease-in-out 1s forwards;
           &:hover {
             letter-spacing: 1px;
-            color: stl.$base-color-black;
             background-size: 320%;
             background-position: right center;
           }
