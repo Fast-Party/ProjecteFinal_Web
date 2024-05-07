@@ -29,6 +29,7 @@
     border-radius: 20px;
     background: rgba(stl.$dark-mode-900, 0.5);
     backdrop-filter: blur(20px);
+    transition: .3s ease-in-out gap;
 
     animation: glass-container-appear 0.5s ease-in-out forwards;
 
@@ -67,15 +68,17 @@
       justify-content: center;
       align-items: center;
       gap: 48px;
+        h1 {
+          font-size: 47.78px;
+          font-weight: 700;
+          line-height: normal;
+          color: stl.$base-color-white;
+          opacity: 0;
+          animation: appear 0.5s ease-in-out 0.5s forwards;
+          text-align: center;
+          width: 100%;
+        }
 
-      h1 {
-        font-size: 47.78px;
-        font-weight: 700;
-        line-height: normal;
-        color: stl.$base-color-white;
-        opacity: 0;
-        animation: appear 0.5s ease-in-out 0.5s forwards;
-      }
       .register-form {
         display: flex;
         flex-direction: column;
@@ -86,7 +89,7 @@
         .register-form-inputs {
           display: flex;
           flex-direction: column;
-          gap: 36px;
+          gap: 40px;
           align-self: stretch;
 
           .input-container {
@@ -94,7 +97,6 @@
             width: 100%;
             opacity: 0;
             animation: scale-in-hor-center 0.5s ease-in-out 0.5s forwards;
-
             .password-input {
               display: flex;
               justify-content: center;
@@ -252,7 +254,7 @@
           }
         }
 
-        .container-btnForm-terms {
+        .container-btnForm-btnReturn-terms {
           display: flex;
           flex-direction: column;
           gap: 16px;
@@ -290,13 +292,37 @@
             }
           }
 
-          p{
+          .btn-back{
+            display: flex;
+            padding: 10px 20px;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            align-self: stretch;
+            border-radius: 7px;
+            border: 1px solid stl.$primary-color-400;
+            cursor: pointer;
+            font-weight: 700;
+            color: stl.$primary-color-400;
+            background-color: transparent;
+            font-size: 16px;
+            transition: .3s ease-in-out;
+            opacity: 0;
+            animation: fade-in-top 0.5s ease-in-out .7s forwards;
+
+            &:hover {
+              background-color: stl.$primary-color-400;
+              color: stl.$base-color-white;
+            }
+          }
+
+          p {
             font-size: 13.3px;
             color: white;
             font-weight: 300;
             opacity: 0;
             animation: fade-in-top 0.5s ease-in-out 1s forwards;
-            a{
+            a {
               font-weight: 600;
               text-decoration: none;
               color: stl.$primary-color-500;

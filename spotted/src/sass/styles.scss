@@ -132,23 +132,39 @@ ul {
   }
 }
 
-@mixin fade-in($pixels) {
+@mixin fade-in($pixels, $orientation) {
   from {
-    transform: translateY($pixels);
+    @if $orientation == "vertical" {
+      transform: translateY($pixels);
+    } @else if $orientation == "horizontal" {
+      transform: translateX($pixels);
+    }    
     opacity: 0;
   }
   to {
-    transform: translateY(0);
+    @if $orientation == "vertical" {
+      transform: translateY(0);
+    } @else if $orientation == "horizontal" {
+      transform: translateX(0);
+    }
     opacity: 1;
   }
 }
 
 @keyframes fade-in-bottom {
-  @include fade-in(33px);
+  @include fade-in(33px, vertical);
 }
 
 @keyframes fade-in-top {
-  @include fade-in(-15px);
+  @include fade-in(-15px, vertical);
+}
+
+@keyframes fade-in-left {
+  @include fade-in(-15px, horizontal);
+}
+
+@keyframes fade-in-right {
+  @include fade-in(15px, horizontal);
 }
 
 @keyframes fade-in-top-header {

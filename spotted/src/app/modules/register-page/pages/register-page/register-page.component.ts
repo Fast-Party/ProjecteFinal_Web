@@ -16,7 +16,7 @@ export class RegisterPageComponent {
   registerObj: Register;
   showPassword: boolean = false;
   applyAnimationEye: boolean = false;
-  nextForm: boolean = true;
+  nextForm: boolean = false;
   constructor(private http: HttpClient, private router: Router) {
     this.registerObj = new Register();
   }
@@ -27,7 +27,7 @@ export class RegisterPageComponent {
   }
 
   gestionBoton() {
-    if (this.nextForm) {
+    if (!this.nextForm) {
       this.nextForm = !this.nextForm;
     } else {
       this.onregister();

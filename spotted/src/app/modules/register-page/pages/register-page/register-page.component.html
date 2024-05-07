@@ -1,21 +1,18 @@
 <div class="registerPage">
-  <div class="container-form">
+  <div class="container-form" [class.next-form]="nextForm">
     <div class="container-logo">
       <img
-        src="../../../../../assets/img/logo/Logo White.svg"
+        src="../../../../../assets/img/logo/Logo Linear Gradient.svg"
         alt="logo"
         class="logo"
       />
       <h4>Fast Party</h4>
     </div>
     <div class="container-form-content">
-      <div class="container-title-return">
-        <!--<button type="button" (click)="nextForm"></button>-->
-        <h1>Crea tu cuenta</h1>
-      </div>
+      <h1>Crea tu cuenta</h1>
       <form class="register-form" action="#">
         <div class="register-form-inputs">
-          @if (nextForm) {
+          @if (!nextForm) {
           <div class="input-container">
             <input
               type="text"
@@ -480,18 +477,23 @@
           </div>
           }
         </div>
-        <div class="container-btnForm-terms">
+        <div class="container-btnForm-btnReturn-terms">
           <button type="button" class="btn-register" (click)="gestionBoton()">
-            {{ nextForm ? "Siguiente" : "Crear cuenta" }}
+            {{ nextForm ? "Crear cuenta" : "Siguiente" }}
           </button>
-          <p [hidden]="nextForm">
+          @if (nextForm) {
+          <button type="button" class="btn-back" (click)="nextForm = !nextForm">
+            Atrás
+          </button>
+          <p>
             Al registrarte, aceptas los <a href="#">Términos de servicio</a> y
             la <a href="#">Política de privacidad</a>, incluida la política de
             <a href="#">Uso de Cookies</a>.
           </p>
+          }
         </div>
       </form>
-      @if (nextForm) {
+      @if (!nextForm) {
       <div class="container-register-with_account">
         <p>¿Ya tienes una cuenta?</p>
         <a routerLink="/login">Iniciar sesión</a>
