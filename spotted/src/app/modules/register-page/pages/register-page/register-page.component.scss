@@ -30,15 +30,18 @@
     background: rgba(stl.$dark-mode-900, 0.5);
     backdrop-filter: blur(20px);
     transition: .3s ease-in-out gap;
-
     animation: glass-container-appear 0.5s ease-in-out forwards;
+
+    overflow: hidden auto;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(stl.$primary-color-100, 0.1) transparent;
 
     @media screen and (max-height: 800px) {
       gap: 56px;
     }
 
     @media screen and (max-height: 680px) {
-      gap: 40px;
+      gap: 32px;
     }
 
     .container-logo {
@@ -85,12 +88,16 @@
         align-items: center;
         gap: 32px;
         align-self: stretch;
-
+        
         .register-form-inputs {
           display: flex;
           flex-direction: column;
           gap: 40px;
           align-self: stretch;
+
+          .remove-delay{
+            animation-delay: 0.1s !important;
+          }
 
           .input-container {
             position: relative;
@@ -142,6 +149,10 @@
               animation: fade-in-top 0.5s ease-in-out 1s forwards;
             }
 
+            .remove-delay-input{
+              animation-delay: 0.5s !important;
+            }
+
             input[type="text"],
             input[type="password"],
             input[type="email"],
@@ -157,6 +168,11 @@
               background-color: transparent;
               outline: none;
               animation: text-input-appear 0.7s ease-in-out 1s forwards;
+            }
+
+            .remove-delay-pwd{
+              animation-delay: 0s !important;
+              animation-duration: .0.1s !important;
             }
 
             ::-ms-reveal {
@@ -202,6 +218,8 @@
               background-color: stl.$primary-color-400;
             }
           }
+
+
           .container-input-date {
             display: flex;
             align-self: stretch;
@@ -220,8 +238,8 @@
 
               animation: text-input-appear-date 0.7s ease-in-out 1s forwards;
 
-              &:valid {
-                color: stl.$base-color-white;
+              &:valid  {
+                color: stl.$base-color-white !important;
               }
 
               &::-webkit-scrollbar {
@@ -308,7 +326,7 @@
             font-size: 16px;
             transition: .3s ease-in-out;
             opacity: 0;
-            animation: fade-in-top 0.5s ease-in-out .7s forwards;
+            animation: fade-in-top 0.5s ease-in-out .5s forwards;
 
             &:hover {
               background-color: stl.$primary-color-400;
@@ -321,7 +339,7 @@
             color: white;
             font-weight: 300;
             opacity: 0;
-            animation: fade-in-top 0.5s ease-in-out 1s forwards;
+            animation: fade-in-top 0.5s ease-in-out .7s forwards;
             a {
               font-weight: 600;
               text-decoration: none;
@@ -365,6 +383,10 @@
             background-position: right center;
           }
         }
+      }
+
+      .reduce-delay{
+        animation-delay: 0.5s !important;
       }
     }
   }

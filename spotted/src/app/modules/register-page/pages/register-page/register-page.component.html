@@ -13,29 +13,31 @@
       <form class="register-form" action="#">
         <div class="register-form-inputs">
           @if (!nextForm) {
-          <div class="input-container">
+          <div class="input-container" [class.remove-delay]="applyDelay" >
             <input
               type="text"
               id="input"
               [(ngModel)]="registerObj.NombreUsuario"
               [ngModelOptions]="{ standalone: true }"
               required
+              [class.remove-delay-input]="applyDelay"
             />
-            <label for="input" class="label">Nombre de usuario</label>
+            <label for="input" class="label" [class.remove-delay-input]="applyDelay">Nombre de usuario</label>
             <div class="underline"></div>
           </div>
-          <div class="input-container">
+          <div class="input-container" [class.remove-delay]="applyDelay">
             <input
               type="email"
               id="input"
               [(ngModel)]="registerObj.Email"
               [ngModelOptions]="{ standalone: true }"
               required
+              [class.remove-delay-input]="applyDelay"
             />
-            <label for="input" class="label">Correo electrónico</label>
+            <label for="input" class="label" [class.remove-delay-input]="applyDelay">Correo electrónico</label>
             <div class="underline"></div>
           </div>
-          <div class="input-container">
+          <div class="input-container" [class.remove-delay]="applyDelay">
             @if (!showPassword) {
             <input
               type="password"
@@ -43,6 +45,8 @@
               [(ngModel)]="registerObj.Contrasenya"
               [ngModelOptions]="{ standalone: true }"
               required
+              [class.remove-delay-pwd]="applyAnimationEye"
+              [class.remove-delay-input]="applyDelay"
             />
             }@else {
             <input
@@ -51,16 +55,19 @@
               [(ngModel)]="registerObj.Contrasenya"
               [ngModelOptions]="{ standalone: true }"
               required
+              [class.remove-delay-pwd]="applyAnimationEye"
+              [class.remove-delay-input]="applyDelay"
             />
             }
             <label class="password-input">
-              <button (click)="togglePasswordVisibility()" class="input-eye">
+              <button (click)="togglePasswordVisibility()" class="input-eye" >
                 @if (!showPassword) {
                 <img
                   class="eye"
                   [class.new-animations-eye]="applyAnimationEye"
                   src="../../../../../assets/icons/thin/eye-slash-thin.svg"
                   alt=""
+                  [class.remove-delay-input]="applyDelay"
                 />
                 }@else {
                 <img
@@ -68,14 +75,15 @@
                   [class.new-animations-eye]="applyAnimationEye"
                   src="../../../../../assets/icons/thin/eye-thin.svg"
                   alt=""
+                  [class.remove-delay-input]="applyDelay"
                 />
                 }
               </button>
             </label>
-            <label for="input" class="label">Contraseña</label>
+            <label for="input" class="label" [class.remove-delay-input]="applyDelay">Contraseña</label>
             <div class="underline"></div>
           </div>
-          <div class="input-container">
+          <div class="input-container" [class.remove-delay]="applyDelay">
             @if (!showPassword) {
             <input
               type="password"
@@ -83,6 +91,8 @@
               [(ngModel)]="registerObj.Contrasenya"
               [ngModelOptions]="{ standalone: true }"
               required
+              [class.remove-delay-pwd]="applyAnimationEye"
+              [class.remove-delay-input]="applyDelay"
             />
             }@else {
             <input
@@ -91,37 +101,41 @@
               [(ngModel)]="registerObj.Contrasenya"
               [ngModelOptions]="{ standalone: true }"
               required
+              [class.remove-delay-pwd]="applyAnimationEye"
+              [class.remove-delay-input]="applyDelay"
             />
             }
-            <label for="input" class="label">Repetir contraseña</label>
+            <label for="input" class="label" [class.remove-delay-input]="applyDelay">Repetir contraseña</label>
             <div class="underline"></div>
           </div>
           }@else {
-          <div class="input-container">
+          <div class="input-container" [class.remove-delay]="applyDelay">
             <input
               type="text"
               id="input"
               [(ngModel)]="registerObj.Nombre"
               [ngModelOptions]="{ standalone: true }"
               required
+              [class.remove-delay-input]="applyDelay"
             />
-            <label for="input" class="label">Nombre</label>
+            <label for="input" class="label" [class.remove-delay-input]="applyDelay">Nombre</label>
             <div class="underline"></div>
           </div>
-          <div class="input-container">
+          <div class="input-container" [class.remove-delay]="applyDelay">
             <input
               type="text"
               id="input"
               [(ngModel)]="registerObj.Nombre"
               [ngModelOptions]="{ standalone: true }"
               required
+              [class.remove-delay-input]="applyDelay"
             />
-            <label for="input" class="label">Apellidos</label>
+            <label for="input" class="label" [class.remove-delay-input]="applyDelay">Apellidos</label>
             <div class="underline"></div>
           </div>
           <div class="container-input-date">
-            <div class="input-container">
-              <select id="input" required>
+            <div class="input-container" [class.remove-delay]="applyDelay">
+              <select id="input" required [class.remove-delay-input]="applyDelay">
                 <option class="select-option" label="Día" value>Día</option>
                 <option class="select-option" label="01" value="1">01</option>
                 <option class="select-option" label="02" value="2">02</option>
@@ -157,8 +171,8 @@
               </select>
               <div class="underline"></div>
             </div>
-            <div class="input-container">
-              <select id="input" required>
+            <div class="input-container" [class.remove-delay]="applyDelay">
+              <select id="input" required [class.remove-delay-input]="applyDelay">
                 <option class="select-option" label="Mes" value>Mes</option>
                 <option class="select-option" label="Enero" value="1">
                   Enero
@@ -199,8 +213,8 @@
               </select>
               <div class="underline"></div>
             </div>
-            <div class="input-container">
-              <select id="input" required>
+            <div class="input-container" [class.remove-delay]="applyDelay">
+              <select id="input" required [class.remove-delay-input]="applyDelay">
                 <option class="select-option" label="Año" value>Año</option>
                 <option class="select-option" label="2006" value="2006">
                   2006
@@ -464,15 +478,16 @@
               <div class="underline"></div>
             </div>
           </div>
-          <div class="input-container">
+          <div class="input-container" [class.remove-delay]="applyDelay">
             <input
               type="tel"
               id="input"
               [(ngModel)]="registerObj.Telefono"
               [ngModelOptions]="{ standalone: true }"
               required
+              [class.remove-delay-input]="applyDelay"
             />
-            <label for="input" class="label">Teléfono</label>
+            <label for="input" class="label" [class.remove-delay-input]="applyDelay">Teléfono</label>
             <div class="underline"></div>
           </div>
           }
@@ -494,7 +509,7 @@
         </div>
       </form>
       @if (!nextForm) {
-      <div class="container-register-with_account">
+      <div class="container-register-with_account" [class.reduce-delay]="applyDelay">
         <p>¿Ya tienes una cuenta?</p>
         <a routerLink="/login">Iniciar sesión</a>
       </div>

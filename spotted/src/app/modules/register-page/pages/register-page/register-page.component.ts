@@ -16,6 +16,7 @@ export class RegisterPageComponent {
   registerObj: Register;
   showPassword: boolean = false;
   applyAnimationEye: boolean = false;
+  applyDelay: boolean = false;
   nextForm: boolean = false;
   constructor(private http: HttpClient, private router: Router) {
     this.registerObj = new Register();
@@ -27,6 +28,8 @@ export class RegisterPageComponent {
   }
 
   gestionBoton() {
+    this.applyAnimationEye = false;
+    this.applyDelay = true;
     if (!this.nextForm) {
       this.nextForm = !this.nextForm;
     } else {
