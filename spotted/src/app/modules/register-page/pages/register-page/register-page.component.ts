@@ -1,26 +1,62 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { HttpClientModule } from '@angular/common/http';
 import { Router, RouterLink } from '@angular/router';
-import { FormsModule } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { catchError } from 'rxjs';
 
 @Component({
   selector: 'app-register-page',
   standalone: true,
-  imports: [FormsModule, HttpClientModule, RouterLink],
+  imports: [FormsModule, HttpClientModule, RouterLink, ReactiveFormsModule],
   templateUrl: './register-page.component.html',
   styleUrl: './register-page.component.scss',
 })
 export class RegisterPageComponent {
+  RegisterForm!: FormGroup;
   registerObj: Register;
   showPassword: boolean = false;
   applyAnimationEye: boolean = false;
   applyDelay: boolean = false;
   nextForm: boolean = false;
-  constructor(private http: HttpClient, private router: Router) {
+  constructor(
+    private http: HttpClient, 
+    private router: Router,
+    private fb : FormBuilder
+  
+  ) {
     this.registerObj = new Register();
   }
+
+  ngOnInit(): void {
+   this.RegisterForm = this.fb.group({
+    NombreUsuario: new FormControl('', [
+      Validators.required,
+      Validators.maxLength(30),
+    ]),
+    Email: new FormControl('', [
+      Validators.required,
+      Validators.email,
+    ]),
+    Contrasenya: new FormControl('', [
+      Validators.required,
+      Validators.minLength(8),
+      Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9]+$'),
+    ]),
+    RepetirContrasenya: new FormControl('', [
+      Validators.required,
+      Validators.minLength(8),
+    ]),
+   });
+  }
+
+  /*
+  comparePasswords(password : FormControl) {
+    return password.value === this.registerObj.Contrasenya
+      ? null
+      : { notSame: true };
+  }  
+*/
 
   togglePasswordVisibility() {
     this.showPassword = !this.showPassword;

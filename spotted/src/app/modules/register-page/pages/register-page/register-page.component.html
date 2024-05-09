@@ -10,7 +10,7 @@
     </div>
     <div class="container-form-content">
       <h1>Crea tu cuenta</h1>
-      <form class="register-form" action="#">
+      <form [formGroup]="RegisterForm" class="register-form" action="#">
         <div class="register-form-inputs">
           @if (!nextForm) {
           <div class="input-container" [class.remove-delay]="applyDelay" >
@@ -18,24 +18,39 @@
               type="text"
               id="input"
               [(ngModel)]="registerObj.NombreUsuario"
-              [ngModelOptions]="{ standalone: true }"
+              formControlName="NombreUsuario"
               required
               [class.remove-delay-input]="applyDelay"
             />
             <label for="input" class="label" [class.remove-delay-input]="applyDelay">Nombre de usuario</label>
             <div class="underline"></div>
+            @if(RegisterForm.get('NombreUsuario')?.touched && 
+            RegisterForm.get('NombreUsuario')?.hasError('required')) {
+            <p class="error-message">El nombre de usuario es obligatorio</p>
+            }@else if (RegisterForm.get('NombreUsuario')?.dirty &&
+            RegisterForm.get('NombreUsuario')!.hasError('maxlength')) {
+            <p class="error-message">El nombre de usuario no puede tener más de 30 caracteres</p>
+            }
           </div>
           <div class="input-container" [class.remove-delay]="applyDelay">
             <input
-              type="email"
+              type="text"
               id="input"
               [(ngModel)]="registerObj.Email"
-              [ngModelOptions]="{ standalone: true }"
               required
+              formControlName="Email"
               [class.remove-delay-input]="applyDelay"
+              [class.error-input]="applyAnimationEye"
             />
             <label for="input" class="label" [class.remove-delay-input]="applyDelay">Correo electrónico</label>
             <div class="underline"></div>
+            @if(RegisterForm.get('Email')?.touched && 
+            RegisterForm.get('Email')?.hasError('required')) {
+            <p class="error-message">El correo electrónico es obligatorio</p>
+            }@else if (RegisterForm.get('Email')?.touched &&
+            RegisterForm.get('Email')!.hasError('email')) {
+            <p class="error-message">El correo electrónico no es valido</p>
+            }
           </div>
           <div class="input-container" [class.remove-delay]="applyDelay">
             @if (!showPassword) {
@@ -43,8 +58,8 @@
               type="password"
               id="input "
               [(ngModel)]="registerObj.Contrasenya"
-              [ngModelOptions]="{ standalone: true }"
               required
+              formControlName="Contrasenya"
               [class.remove-delay-pwd]="applyAnimationEye"
               [class.remove-delay-input]="applyDelay"
             />
@@ -53,7 +68,7 @@
               type="text"
               id="input"
               [(ngModel)]="registerObj.Contrasenya"
-              [ngModelOptions]="{ standalone: true }"
+              formControlName="Contrasenya"
               required
               [class.remove-delay-pwd]="applyAnimationEye"
               [class.remove-delay-input]="applyDelay"
@@ -82,6 +97,13 @@
             </label>
             <label for="input" class="label" [class.remove-delay-input]="applyDelay">Contraseña</label>
             <div class="underline"></div>
+            @if(RegisterForm.get('Contrasenya')?.touched &&
+            RegisterForm.get('Contrasenya')?.hasError('required')) {
+            <p class="error-message">La contraseña es obligatoria</p>
+            }@else if (RegisterForm.get('Contrasenya')?.touched &&
+            RegisterForm.get('Contrasenya')!.hasError('minlength')) {
+            <p class="error-message">La contraseña debe tener al menos 8 caracteres</p>
+            }
           </div>
           <div class="input-container" [class.remove-delay]="applyDelay">
             @if (!showPassword) {
@@ -89,7 +111,7 @@
               type="password"
               id="input "
               [(ngModel)]="registerObj.Contrasenya"
-              [ngModelOptions]="{ standalone: true }"
+              formControlName="RepetirContrasenya"
               required
               [class.remove-delay-pwd]="applyAnimationEye"
               [class.remove-delay-input]="applyDelay"
@@ -99,7 +121,7 @@
               type="text"
               id="input"
               [(ngModel)]="registerObj.Contrasenya"
-              [ngModelOptions]="{ standalone: true }"
+              formControlName="RepetirContrasenya"
               required
               [class.remove-delay-pwd]="applyAnimationEye"
               [class.remove-delay-input]="applyDelay"

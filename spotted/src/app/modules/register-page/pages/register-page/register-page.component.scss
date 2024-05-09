@@ -92,7 +92,7 @@
         .register-form-inputs {
           display: flex;
           flex-direction: column;
-          gap: 40px;
+          gap: 44px;
           align-self: stretch;
 
           .remove-delay{
@@ -216,6 +216,17 @@
             input[type="email"]:focus ~ .underline,
             input[type="tel"]:focus ~ .underline {
               background-color: stl.$primary-color-400;
+            }
+
+            .error-message{
+              position: absolute;
+              bottom: -20px;
+              left: 0;
+              color: stl.$error-color-500;
+              font-size: 12px;
+              font-weight: 500;
+              opacity: 0;
+              animation: fade-in-top 0.5s ease-in-out forwards;
             }
           }
 
