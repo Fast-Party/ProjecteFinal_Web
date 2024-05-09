@@ -13,7 +13,10 @@
       <form [formGroup]="RegisterForm" class="register-form" action="#">
         <div class="register-form-inputs">
           @if (!nextForm) {
-          <div class="input-container" [class.remove-delay]="applyDelay" >
+          <div 
+          class="input-container" 
+          [class.remove-delay]="applyDelay"
+          [class.input-container-error]="RegisterForm.get('NombreUsuario')?.invalid && (RegisterForm.get('NombreUsuario')?.touched || RegisterForm.get('NombreUsuario')?.dirty)">
             <input
               type="text"
               id="input"
@@ -32,7 +35,11 @@
             <p class="error-message">El nombre de usuario no puede tener más de 30 caracteres</p>
             }
           </div>
-          <div class="input-container" [class.remove-delay]="applyDelay">
+          <div 
+          class="input-container" 
+          [class.remove-delay]="applyDelay"
+          [class.input-container-error]="RegisterForm.get('Email')?.invalid && (RegisterForm.get('Email')?.touched)"
+          >
             <input
               type="text"
               id="input"
@@ -52,7 +59,11 @@
             <p class="error-message">El correo electrónico no es valido</p>
             }
           </div>
-          <div class="input-container" [class.remove-delay]="applyDelay">
+          <div 
+          class="input-container" 
+          [class.remove-delay]="applyDelay"
+          [class.input-container-error]="RegisterForm.get('Contrasenya')?.invalid && (RegisterForm.get('Contrasenya')?.touched || RegisterForm.get('Contrasenya')?.dirty)"
+          >
             @if (!showPassword) {
             <input
               type="password"
@@ -100,35 +111,43 @@
             @if(RegisterForm.get('Contrasenya')?.touched &&
             RegisterForm.get('Contrasenya')?.hasError('required')) {
             <p class="error-message">La contraseña es obligatoria</p>
-            }@else if (RegisterForm.get('Contrasenya')?.touched &&
+            }@else if (RegisterForm.get('Contrasenya')?.dirty &&
             RegisterForm.get('Contrasenya')!.hasError('minlength')) {
             <p class="error-message">La contraseña debe tener al menos 8 caracteres</p>
-            }
+          }@else if (RegisterForm.get('Contrasenya')?.dirty &&
+          RegisterForm.get('Contrasenya')!.hasError('pattern')) {
+          <p class="error-message">La contraseña debe contener minimo una letra, un número o un símbolo.</p>
+          }
           </div>
           <div class="input-container" [class.remove-delay]="applyDelay">
             @if (!showPassword) {
             <input
               type="password"
-              id="input "
-              [(ngModel)]="registerObj.Contrasenya"
+              id="input"
+              [(ngModel)]="repetirContrasenya"
               formControlName="RepetirContrasenya"
               required
               [class.remove-delay-pwd]="applyAnimationEye"
               [class.remove-delay-input]="applyDelay"
+              (keyup)="comparePasswords()"
             />
             }@else {
             <input
               type="text"
               id="input"
-              [(ngModel)]="registerObj.Contrasenya"
+              [(ngModel)]="repetirContrasenya"
               formControlName="RepetirContrasenya"
               required
               [class.remove-delay-pwd]="applyAnimationEye"
               [class.remove-delay-input]="applyDelay"
+              (keyup)="comparePasswords()"
             />
             }
             <label for="input" class="label" [class.remove-delay-input]="applyDelay">Repetir contraseña</label>
             <div class="underline"></div>
+            @if(RegisterForm.get('RepetirContrasenya')?.touched && !samePassword){
+            <p class="error-message">Las contraseñas no coinciden</p>
+            }
           </div>
           }@else {
           <div class="input-container" [class.remove-delay]="applyDelay">

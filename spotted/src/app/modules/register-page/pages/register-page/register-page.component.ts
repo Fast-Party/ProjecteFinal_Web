@@ -19,6 +19,10 @@ export class RegisterPageComponent {
   applyAnimationEye: boolean = false;
   applyDelay: boolean = false;
   nextForm: boolean = false;
+
+  repetirContrasenya: string = '';
+  samePassword: boolean = false;
+
   constructor(
     private http: HttpClient, 
     private router: Router,
@@ -41,22 +45,20 @@ export class RegisterPageComponent {
     Contrasenya: new FormControl('', [
       Validators.required,
       Validators.minLength(8),
-      Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9]+$'),
+      Validators.pattern('^(?=(?:.*[a-zA-Z]))(?=(?:.*[0-9]))|(?=(?:.*[a-zA-Z]))(?=(?:.*[^a-zA-Z0-9]))|(?=(?:.*[0-9]))(?=(?:.*[^a-zA-Z0-9])).{8,}$')
     ]),
     RepetirContrasenya: new FormControl('', [
       Validators.required,
-      Validators.minLength(8),
     ]),
    });
+   
   }
 
-  /*
-  comparePasswords(password : FormControl) {
-    return password.value === this.registerObj.Contrasenya
-      ? null
-      : { notSame: true };
+  comparePasswords() {
+    this.samePassword = this.repetirContrasenya === this.registerObj.Contrasenya;
   }  
-*/
+
+
 
   togglePasswordVisibility() {
     this.showPassword = !this.showPassword;
