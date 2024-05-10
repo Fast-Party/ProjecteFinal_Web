@@ -16,7 +16,8 @@
           <div 
           class="input-container" 
           [class.remove-delay]="applyDelay"
-          [class.input-container-error]="RegisterForm.get('NombreUsuario')?.invalid && (RegisterForm.get('NombreUsuario')?.touched || RegisterForm.get('NombreUsuario')?.dirty)">
+          [class.input-container-error]="RegisterForm.get('NombreUsuario')?.invalid && (RegisterForm.get('NombreUsuario')?.touched || RegisterForm.get('NombreUsuario')?.dirty)"
+          >
             <input
               type="text"
               id="input"
@@ -119,7 +120,11 @@
           <p class="error-message">La contraseña debe contener minimo una letra, un número o un símbolo.</p>
           }
           </div>
-          <div class="input-container" [class.remove-delay]="applyDelay">
+          <div 
+          class="input-container" 
+          [class.remove-delay]="applyDelay"
+          [class.input-container-error]="!samePassword && (RegisterForm.get('RepetirContrasenya')?.touched && registerObj.Contrasenya !== '' || RegisterForm.get('RepetirContrasenya')?.touched)"
+          >
             @if (!showPassword) {
             <input
               type="password"
@@ -145,34 +150,56 @@
             }
             <label for="input" class="label" [class.remove-delay-input]="applyDelay">Repetir contraseña</label>
             <div class="underline"></div>
-            @if(RegisterForm.get('RepetirContrasenya')?.touched && !samePassword){
+            @if(RegisterForm.get('RepetirContrasenya')?.touched && !samePassword && registerObj.Contrasenya !== '') {
             <p class="error-message">Las contraseñas no coinciden</p>
             }
           </div>
           }@else {
-          <div class="input-container" [class.remove-delay]="applyDelay">
+          <div 
+          class="input-container" 
+          [class.remove-delay]="applyDelay"
+          [class.input-container-error]="RegisterForm.get('Nombre')?.invalid && (RegisterForm.get('Nombre')?.touched || RegisterForm.get('Nombre')?.dirty)"
+          >
             <input
               type="text"
               id="input"
               [(ngModel)]="registerObj.Nombre"
-              [ngModelOptions]="{ standalone: true }"
+              formControlName="Nombre"
               required
               [class.remove-delay-input]="applyDelay"
             />
             <label for="input" class="label" [class.remove-delay-input]="applyDelay">Nombre</label>
             <div class="underline"></div>
+            @if(RegisterForm.get('Nombre')?.touched && 
+            RegisterForm.get('Nombre')?.hasError('required')) {
+            <p class="error-message">El nombre es obligatorio</p>
+            }@else if (RegisterForm.get('Nombre')?.dirty &&
+            RegisterForm.get('Nombre')!.hasError('maxlength')) {
+            <p class="error-message">El nombre no puede tener más de 150 caracteres</p>
+            }
           </div>
-          <div class="input-container" [class.remove-delay]="applyDelay">
+          <div 
+          class="input-container" 
+          [class.remove-delay]="applyDelay"
+          [class.input-container-error]="RegisterForm.get('Apellidos')?.invalid && (RegisterForm.get('Apellidos')?.touched || RegisterForm.get('Apellidos')?.dirty)"
+          >
             <input
               type="text"
               id="input"
-              [(ngModel)]="registerObj.Nombre"
-              [ngModelOptions]="{ standalone: true }"
+              [(ngModel)]="registerObj.Apellidos"
+              formControlName="Apellidos"
               required
               [class.remove-delay-input]="applyDelay"
             />
             <label for="input" class="label" [class.remove-delay-input]="applyDelay">Apellidos</label>
             <div class="underline"></div>
+            @if(RegisterForm.get('Apellidos')?.touched && 
+            RegisterForm.get('Apellidos')?.hasError('required')) {
+            <p class="error-message">Los apellidos son obligatorios</p>
+            }@else if (RegisterForm.get('Apellidos')?.dirty &&
+            RegisterForm.get('Apellidos')!.hasError('maxlength')) {
+            <p class="error-message">Los apellidos no pueden tener más de 150 caracteres</p>
+            }
           </div>
           <div class="container-input-date">
             <div class="input-container" [class.remove-delay]="applyDelay">
@@ -519,17 +546,28 @@
               <div class="underline"></div>
             </div>
           </div>
-          <div class="input-container" [class.remove-delay]="applyDelay">
+          <div 
+          class="input-container" 
+          [class.remove-delay]="applyDelay"
+          [class.input-container-error]="RegisterForm.get('Telefono')?.invalid && (RegisterForm.get('Telefono')?.touched || RegisterForm.get('Telefono')?.dirty)"
+          >
             <input
               type="tel"
               id="input"
               [(ngModel)]="registerObj.Telefono"
-              [ngModelOptions]="{ standalone: true }"
+              formControlName="Telefono"
               required
               [class.remove-delay-input]="applyDelay"
             />
             <label for="input" class="label" [class.remove-delay-input]="applyDelay">Teléfono</label>
             <div class="underline"></div>
+            @if(RegisterForm.get('Telefono')?.touched && 
+            RegisterForm.get('Telefono')?.hasError('required')) {
+            <p class="error-message">El telefono es obligatorio</p>
+            }@else if (RegisterForm.get('Telefono')?.dirty &&
+            RegisterForm.get('Telefono')!.hasError('pattern')) {
+            <p class="error-message">El telefono solo puede contener 9 números</p>
+            }
           </div>
           }
         </div>
@@ -538,7 +576,7 @@
             {{ nextForm ? "Crear cuenta" : "Siguiente" }}
           </button>
           @if (nextForm) {
-          <button type="button" class="btn-back" (click)="nextForm = !nextForm">
+          <button type="button" class="btn-back" (click)=" this.nextForm = !this.nextForm;">
             Atrás
           </button>
           <p>

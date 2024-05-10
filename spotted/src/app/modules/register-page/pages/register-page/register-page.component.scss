@@ -142,14 +142,11 @@
                 filter: invert(1);
                 transition: 0.3s ease-in-out;
                 opacity: 0;
-                &:hover {
-                  filter: invert(0.5);
-                }
                 animation: appear 0.5s ease-in-out 1s forwards;
               }
 
               .new-animations-eye {
-                animation-delay: 0s;
+                animation-delay: 0s !important;
               }
 
               .input-eye {
@@ -194,7 +191,7 @@
 
             .remove-delay-pwd{
               animation-delay: 0s !important;
-              animation-duration: .0.1s !important;
+              animation-duration: 0.1s !important;
             }
 
             ::-ms-reveal {

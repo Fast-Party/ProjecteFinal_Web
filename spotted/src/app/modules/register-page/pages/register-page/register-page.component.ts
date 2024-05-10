@@ -20,6 +20,11 @@ export class RegisterPageComponent {
   applyDelay: boolean = false;
   nextForm: boolean = false;
 
+  /*HACER UN ARRAY QUE SE RELLENE CON LOS AÑOS PARA TENER ENTRE 16 Y 100 AÑO
+  
+  OBTENER EL AÑO ACTUAL Y RESTARLE 16 Y 100 PARA OBTENER LOS AÑOS
+  */
+
   repetirContrasenya: string = '';
   samePassword: boolean = false;
 
@@ -49,6 +54,18 @@ export class RegisterPageComponent {
     ]),
     RepetirContrasenya: new FormControl('', [
       Validators.required,
+    ]),
+    Nombre: new FormControl('', [
+      Validators.required,
+      Validators.maxLength(150),
+    ]),
+    Apellidos: new FormControl('', [
+      Validators.required,
+      Validators.maxLength(250),
+    ]),
+    Telefono: new FormControl('', [
+      Validators.required,
+      Validators.pattern('^[0-9]{9}$')
     ]),
    });
    
@@ -105,6 +122,7 @@ export class RegisterPageComponent {
 export class Register {
   NombreUsuario: string;
   Nombre: string;
+  Apellidos: string;
   Contrasenya: string;
   Email: string;
   Telefono: string;
@@ -113,6 +131,7 @@ export class Register {
   constructor() {
     this.NombreUsuario = '';
     this.Nombre = '';
+    this.Apellidos = '';
     this.Contrasenya = '';
     this.Email = '';
     this.Telefono = '';
