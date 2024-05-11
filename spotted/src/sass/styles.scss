@@ -17,6 +17,17 @@ ul {
   margin: 0;
 }
 
+.error-message-input {
+  position: absolute;
+  bottom: -20px;
+  left: 0;
+  color: stl.$error-color-500;
+  font-size: 12px;
+  font-weight: 500;
+  opacity: 0;
+  animation: fade-in-top 0.5s ease-in-out forwards;
+}
+
 /*------------------ANIMATIONS--------------------*/
 
 @media screen and (max-width: 1600px) {
@@ -138,7 +149,7 @@ ul {
       transform: translateY($pixels);
     } @else if $orientation == "horizontal" {
       transform: translateX($pixels);
-    }    
+    }
     opacity: 0;
   }
   to {
@@ -188,25 +199,24 @@ ul {
   }
 }
 
-@keyframes text-appear{
-  from{
+@keyframes text-appear {
+  from {
     opacity: 0;
     gap: 100px;
     visibility: hidden;
   }
-  to{
+  to {
     opacity: 1;
     gap: 14px;
     visibility: visible;
   }
 }
 
-@keyframes appear{
-  from{
+@keyframes appear {
+  from {
     opacity: 0;
-
   }
-  to{
+  to {
     opacity: 1;
   }
 }

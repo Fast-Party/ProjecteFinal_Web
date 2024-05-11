@@ -186,7 +186,7 @@
               padding-right: 32px;
               background-color: transparent;
               outline: none;
-              animation: text-input-appear 0.7s ease-in-out 1s forwards;
+              animation: text-input-appear 0.3s ease-in-out 1s forwards;
             }
 
             .remove-delay-pwd{
@@ -236,19 +236,40 @@
             input[type="tel"]:focus ~ .underline {
               background-color: stl.$primary-color-400;
             }
+          }
 
-            .error-message{
-              position: absolute;
-              bottom: -20px;
-              left: 0;
-              color: stl.$error-color-500;
-              font-size: 12px;
-              font-weight: 500;
-              opacity: 0;
-              animation: fade-in-top 0.5s ease-in-out forwards;
+          .container-input-date-label-error{
+
+            .label-date{
+              color: stl.$error-color-500 !important;
+              font-weight: 500 !important;
+            }
+
+            .container-input-date{
+              select{
+                border-bottom: 1px solid stl.$error-color-500 !important;
+                &:focus ~ .underline,
+                &:valid ~ .underline {
+                  background-color: stl.$error-color-500 !important;
+                }
+              }
             }
           }
 
+          .container-input-date-label{
+            display: flex;
+            flex-direction: column;
+            position: relative;
+
+            .label-date{
+              position: absolute;
+              top: -20px;
+              font-size: 14px;
+              color: rgba(stl.$base-color-white, 0.5);
+              opacity: 0;
+              transition: all 0.3s ease-in-out;
+              animation: fade-in-top 0.5s ease-in-out .5s forwards;
+            }
 
           .container-input-date {
             display: flex;
@@ -266,10 +287,10 @@
               background-color: transparent;
               outline: none;
 
-              animation: text-input-appear-date 0.7s ease-in-out 1s forwards;
+              animation: text-input-appear-date 0.3s ease-in-out forwards;
 
               &:valid  {
-                color: stl.$base-color-white !important;
+                animation: text-input-appear-date-valid 0.3s ease-in-out forwards ;
               }
 
               &::-webkit-scrollbar {
@@ -300,6 +321,7 @@
               }
             }
           }
+        }
         }
 
         .container-btnForm-btnReturn-terms {
@@ -450,5 +472,14 @@
   }
   to {
     color: rgba(stl.$base-color-white, 0.5);
+  }
+}
+
+@keyframes text-input-appear-date-valid {
+  from {
+    color: transparent;
+  }
+  to {
+    color: stl.$base-color-white;
   }
 }

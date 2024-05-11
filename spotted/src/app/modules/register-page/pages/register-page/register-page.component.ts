@@ -20,10 +20,9 @@ export class RegisterPageComponent {
   applyDelay: boolean = false;
   nextForm: boolean = false;
 
-  /*HACER UN ARRAY QUE SE RELLENE CON LOS AÑOS PARA TENER ENTRE 16 Y 100 AÑO
-  
-  OBTENER EL AÑO ACTUAL Y RESTARLE 16 Y 100 PARA OBTENER LOS AÑOS
-  */
+  daysArray: number[] = Array.from({ length: 31 }, (_, i) => i + 1);
+  yearsArray: number[] = Array.from({ length: 85 }, (_, i) => new Date().getFullYear() - 16 - i);
+  isAgeValid: boolean = true;
 
   repetirContrasenya: string = '';
   samePassword: boolean = false;
@@ -67,6 +66,15 @@ export class RegisterPageComponent {
       Validators.required,
       Validators.pattern('^[0-9]{9}$')
     ]),
+    FechaNacimientoDia: new FormControl('', [
+      Validators.required,
+    ]),
+    FechaNacimientoMes: new FormControl('', [
+      Validators.required,
+    ]),
+    FechaNacimientoAno: new FormControl('', [
+      Validators.required,
+    ]),
    });
    
   }
@@ -75,6 +83,34 @@ export class RegisterPageComponent {
     this.samePassword = this.repetirContrasenya === this.registerObj.Contrasenya;
   }  
 
+  chekingBornDate() : boolean{
+    const bornDate = new Date(
+      this.RegisterForm.get('FechaNacimientoAno')?.value,
+      (this.RegisterForm.get('FechaNacimientoMes')?.value - 1),
+      this.RegisterForm.get('FechaNacimientoDia')?.value
+    ); 
+
+    // Obtenemos la fecha actual
+    const today = new Date();
+
+    // Calculamos la diferencia de años
+    let age = today.getFullYear() - bornDate.getFullYear();
+    const m = today.getMonth() - bornDate.getMonth();
+    const d = today.getDate() - bornDate.getDate();
+
+    if (m < 0 || (m === 0 && d < 0)) {
+      age--;
+    }
+
+    if (age < 16) {
+      this.RegisterForm.get('FechaNacimientoDia')?.setErrors({ invalid: true });
+      return false;
+    }
+
+    this.registerObj.FechaNacimiento = bornDate;
+    return true;
+
+  }
 
 
   togglePasswordVisibility() {
@@ -88,7 +124,8 @@ export class RegisterPageComponent {
     if (!this.nextForm) {
       this.nextForm = !this.nextForm;
     } else {
-      this.onregister();
+      this.isAgeValid = this.chekingBornDate();
+      //this.onregister();
     }
   }
 
