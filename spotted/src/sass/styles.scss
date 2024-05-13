@@ -178,6 +178,10 @@ ul {
   @include fade-in(15px, horizontal);
 }
 
+@keyframes fade-in-bottom-icons {
+  @include fade-in(10px, vertical);
+}
+
 @keyframes fade-in-top-header {
   0% {
     transform: translateY(-50px);
