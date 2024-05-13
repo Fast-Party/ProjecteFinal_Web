@@ -17,6 +17,17 @@ ul {
   margin: 0;
 }
 
+.error-message-input {
+  position: absolute;
+  bottom: -20px;
+  left: 0;
+  color: stl.$error-color-500;
+  font-size: 12px;
+  font-weight: 500;
+  opacity: 0;
+  animation: fade-in-top 0.5s ease-in-out forwards;
+}
+
 /*------------------ANIMATIONS--------------------*/
 
 @media screen and (max-width: 1600px) {
@@ -132,23 +143,39 @@ ul {
   }
 }
 
-@mixin fade-in($pixels) {
+@mixin fade-in($pixels, $orientation) {
   from {
-    transform: translateY($pixels);
+    @if $orientation == "vertical" {
+      transform: translateY($pixels);
+    } @else if $orientation == "horizontal" {
+      transform: translateX($pixels);
+    }
     opacity: 0;
   }
   to {
-    transform: translateY(0);
+    @if $orientation == "vertical" {
+      transform: translateY(0);
+    } @else if $orientation == "horizontal" {
+      transform: translateX(0);
+    }
     opacity: 1;
   }
 }
 
 @keyframes fade-in-bottom {
-  @include fade-in(33px);
+  @include fade-in(33px, vertical);
 }
 
 @keyframes fade-in-top {
-  @include fade-in(-15px);
+  @include fade-in(-15px, vertical);
+}
+
+@keyframes fade-in-left {
+  @include fade-in(-15px, horizontal);
+}
+
+@keyframes fade-in-right {
+  @include fade-in(15px, horizontal);
 }
 
 @keyframes fade-in-top-header {
@@ -172,25 +199,24 @@ ul {
   }
 }
 
-@keyframes text-appear{
-  from{
+@keyframes text-appear {
+  from {
     opacity: 0;
     gap: 100px;
     visibility: hidden;
   }
-  to{
+  to {
     opacity: 1;
     gap: 14px;
     visibility: visible;
   }
 }
 
-@keyframes appear{
-  from{
+@keyframes appear {
+  from {
     opacity: 0;
-
   }
-  to{
+  to {
     opacity: 1;
   }
 }

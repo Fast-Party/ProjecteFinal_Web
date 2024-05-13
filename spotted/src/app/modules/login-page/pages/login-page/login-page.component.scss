@@ -32,8 +32,17 @@
 
     animation: glass-container-appear .5s ease-in-out forwards;
 
+    overflow: hidden auto;
+    scrollbar-width: thin;
+    scrollbar-color: stl.$primary-color-500 transparent;
+
+
     @media screen and (max-height: 800px) {
       gap: 56px;
+    }
+
+    @media screen and (max-height: 680px) {
+      gap: 32px;
     }
 
     .container-logo {
@@ -275,7 +284,6 @@
           animation: fade-in-bottom  .5s ease-in-out 1s forwards;
           &:hover {
             letter-spacing: 1px;
-            color: stl.$base-color-black;
             background-size: 320%;
             background-position: right center;
           }
