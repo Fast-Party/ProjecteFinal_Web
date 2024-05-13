@@ -1,0 +1,53 @@
+@use "../../../sass/variables.scss" as stl;
+
+.container-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  //background-color: burlywood;
+  .img_cover-local_name-icons {
+    flex: 1 0 0;
+    align-self: stretch;
+    
+    .img_cover {
+      width: 278px;
+      height: 265px;
+      border-radius: 12px;
+      object-fit: cover;
+    }
+  }
+  .event_info-icon_like {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+
+    .event_info {
+      display: flex;
+      flex-direction: column;
+
+      .event_title {
+        font-weight: 600;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        font-size: 16px;
+      }
+
+      .event_date {
+        color: rgba(stl.$base-color-black, 0.5);
+        font-size: 14px;
+
+        span {
+          font-weight: 600;
+        }
+      }
+    }
+
+    .icon_like {
+      width: 24px;
+      height: 24px;
+      cursor: pointer;
+    }
+  }
+}

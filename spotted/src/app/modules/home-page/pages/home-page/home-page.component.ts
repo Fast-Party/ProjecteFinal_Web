@@ -4,11 +4,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { PlanModel } from '../../../../models/plan.model';
 import { RouterLink } from '@angular/router';
 import { catchError } from 'rxjs';
+import { CardContainerComponent } from '../../../../share/card-container/card-container.component';
 
 @Component({
   selector: 'app-home-page',
   standalone: true,
-  imports: [HttpClientModule, RouterLink],
+  imports: [HttpClientModule, RouterLink, CardContainerComponent],
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.scss'
 })
