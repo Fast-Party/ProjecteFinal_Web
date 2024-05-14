@@ -39,7 +39,7 @@ export class LoginPageComponent{
       })).subscribe((res: any) => {
         console.log('dsdfsfd' + res.status);
         if (res['isAuthenticated']) {
-          this.router.navigateByUrl('/landing-page')
+          this.router.navigateByUrl('/home')
         } else {
           console.log('error 401')
         }
