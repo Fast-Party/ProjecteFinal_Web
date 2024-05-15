@@ -2,11 +2,11 @@
   <div class="img_cover-local_name-icons">
     <img
       class="img_cover"
-      src="https://www.salarazzmatazz.com/storage/img_cache/room1Dirty24web__1000x540.jpg"
+      src="https://www.cadizturismo.com/storage/app/media/uploaded-files/BRESH-30-DE-JUNIO.jpg"
       alt="Img Cover"
     />
     <div class="local_info-icons">
-      <div class="local_img-local_name">
+      <div class="local_img-local_name" [routerLink]="['/profile', plan?.IdAutor]">
         <img
           class="local_img"
           src="https://scontent-bcn1-1.xx.fbcdn.net/v/t39.30808-6/352821287_3304685189792355_2898452865604277350_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=5f2048&_nc_ohc=mZu7JYFxGEsQ7kNvgFoeyyo&_nc_ht=scontent-bcn1-1.xx&oh=00_AYCTKP4eQ1UwlM6_cmmzfc9aEc0bhkpVjUAmeP7TZP54oQ&oe=6648525A"
@@ -21,9 +21,10 @@
               class="local_img_popup"
               src="https://scontent-bcn1-1.xx.fbcdn.net/v/t39.30808-6/352821287_3304685189792355_2898452865604277350_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=5f2048&_nc_ohc=mZu7JYFxGEsQ7kNvgFoeyyo&_nc_ht=scontent-bcn1-1.xx&oh=00_AYCTKP4eQ1UwlM6_cmmzfc9aEc0bhkpVjUAmeP7TZP54oQ&oe=6648525A"
               alt="Local Img"
+              [routerLink]="['/profile', plan?.IdAutor]"
             />
             <div class="local_name_popup-local-ubi">
-              <p class="local_name_popup">{{ plan?.NombreAutor }}</p>
+              <p class="local_name_popup" [routerLink]="['/profile', plan?.IdAutor]">{{ plan?.NombreAutor }}</p>
               <div class="container_local_ubi">
                 <img
                   src="../../../assets/icons/fill/map-pin-fill.svg"
@@ -95,8 +96,8 @@
         {{ plan?.Titulo }}
       </p>
       <p class="event_date">
-        {{ diaSemana }}. <span>{{ dia }}</span> {{ mes }} {{ year }} -
-        <span>{{ hora }}:{{ minutos }}</span>
+        {{ diaSemana }}. <span>{{ refactorNumberDate(dia) }}</span> {{ mes }} {{ year }} -
+        <span>{{ refactorNumberDate(hora) }}:{{ refactorNumberDate(minutos) }}</span>
       </p>
     </div>
     <label class="container-icon_like">

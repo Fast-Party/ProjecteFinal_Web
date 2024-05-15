@@ -1,10 +1,12 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { PlanModel } from '../../models/plan.model';
+import { RouterLink } from '@angular/router';
+
 
 @Component({
   selector: 'app-card-container',
   standalone: true,
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './card-container.component.html',
   styleUrl: './card-container.component.scss'
 })
@@ -37,7 +39,8 @@ export class CardContainerComponent implements OnInit{
      this.year = date.getFullYear();
      this.hora = date.getHours();
      this.minutos = date.getMinutes();
-  
+
+     
      if(this.plan?.IsFollowing){
        this.isFollowing = true;
      }else{
@@ -47,5 +50,17 @@ export class CardContainerComponent implements OnInit{
      if(this.plan?.IdAutor === this.idUsuario){
         this.buttonFollowingEnable = false;
      }
+
+     if(this.plan?.RatingAutor === null){
+      this.plan.RatingAutor = 0;
+     }
   }
+
+  refactorNumberDate(numero: number): string{
+    if(numero < 10){
+      return '0' + numero;
+    }else{
+      return numero.toString();
+    }
+   }
 }
