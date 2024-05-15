@@ -12,7 +12,7 @@
           src="https://scontent-bcn1-1.xx.fbcdn.net/v/t39.30808-6/352821287_3304685189792355_2898452865604277350_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=5f2048&_nc_ohc=mZu7JYFxGEsQ7kNvgFoeyyo&_nc_ht=scontent-bcn1-1.xx&oh=00_AYCTKP4eQ1UwlM6_cmmzfc9aEc0bhkpVjUAmeP7TZP54oQ&oe=6648525A"
           alt="Local Img"
         />
-        <p class="local_name">Razzmatazz</p>
+        <p class="local_name">{{ plan?.NombreAutor }}</p>
       </div>
       <div class="container-local_more_info_popup">
         <div class="local_more_info_popup">
@@ -23,19 +23,19 @@
               alt="Local Img"
             />
             <div class="local_name_popup-local-ubi">
-              <p class="local_name_popup">Razzmatazz</p>
+              <p class="local_name_popup">{{ plan?.NombreAutor }}</p>
               <div class="container_local_ubi">
                 <img
                   src="../../../assets/icons/fill/map-pin-fill.svg"
                   alt="Map Pin"
                 />
-                <p class="local_ubi">{{plan?.Localizacion}}, España</p>
+                <p class="local_ubi">{{ plan?.LocalidadAutor }} ,España</p>
               </div>
             </div>
           </div>
           <div class="local_stats_popup">
             <div class="local_stats_followers">
-              <p class="local_stats_followers_number">894</p>
+              <p class="local_stats_followers_number">{{ plan?.Seguidores }}</p>
               <p class="local_stats_followers_text">Seguidores</p>
             </div>
             <div class="separator"></div>
@@ -44,15 +44,16 @@
                 src="../../../assets/icons/fill/star-fill.svg"
                 alt="Star fill Rating"
               />
-              <p class="local_stats_rating_number">4,7</p>
+              <p class="local_stats_rating_number">{{ plan?.RatingAutor }}</p>
             </div>
           </div>
-          <button class="popup_following_btn" (click)="isFollowing = !isFollowing">
-            @if (!isFollowing) {
-              Seguir
-            }@else {
-              Siguiendo
-            }
+          <button
+            class="popup_following_btn"
+            (click)="isFollowing = !isFollowing"
+            [class.popup_following_btn-disable]="!buttonFollowingEnable"
+            [disabled]="!buttonFollowingEnable"
+          >
+            @if (!isFollowing) { Seguir }@else { Siguiendo }
           </button>
         </div>
       </div>
@@ -91,10 +92,11 @@
   <div class="event_info-icon_like">
     <div class="event_info">
       <p class="event_title">
-        {{plan?.Titulo}}
+        {{ plan?.Titulo }}
       </p>
       <p class="event_date">
-        {{diaSemana}}. <span>{{dia}}</span> {{mes}} {{year}} - <span>{{hora}}:{{minutos}}</span>
+        {{ diaSemana }}. <span>{{ dia }}</span> {{ mes }} {{ year }} -
+        <span>{{ hora }}:{{ minutos }}</span>
       </p>
     </div>
     <label class="container-icon_like">
@@ -114,11 +116,11 @@
                 <stop offset="100%" stop-color="#A233D8" />
               </linearGradient>
             </defs>
-            <rect width="256" height="256"  fill="none" />
+            <rect width="256" height="256" fill="none" />
             <path
               d="M240,102c0,70-103.79,126.66-108.21,129a8,8,0,0,1-7.58,0C119.79,228.66,16,172,16,102A62.07,62.07,0,0,1,78,40c20.65,0,38.73,8.88,50,23.89C139.27,48.88,157.35,40,178,40A62.07,62.07,0,0,1,240,102Z"
               fill="url(#gradient)"
-              />
+            />
           </svg>
         </div>
         }

@@ -252,6 +252,12 @@
               background-position: right center;
             }
           }
+
+          .popup_following_btn-disable{
+            opacity: 0;
+            cursor: auto;
+            pointer-events: none;
+          }
         }
       }
 

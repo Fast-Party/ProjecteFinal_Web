@@ -11,13 +11,14 @@ import { PlanModel } from '../../models/plan.model';
 export class CardContainerComponent implements OnInit{
 
   @Input() plan: PlanModel | null = null;
+  @Input() idUsuario: any = null;
 
   isLiked: boolean = false;
   isFollowing: boolean = false;
+  buttonFollowingEnable: boolean = true;
 
   //FECHA
-  //originalDate: any = this.plan?.Fecha; No funciona
-  originalDate: any = '2024-03-13T16:24:16.000Z';
+  originalDate: any ;
   diaSemana: string = '';
   dia: number = 0;
   mes: string = '';
@@ -28,8 +29,7 @@ export class CardContainerComponent implements OnInit{
   constructor() { }
    
   ngOnInit(): void {
-    console.log((this.plan?.Fecha)?.toString());
-
+    this.originalDate = this.plan?.Fecha;
     const date = new Date(this.originalDate);
      this.diaSemana = new Intl.DateTimeFormat("es-ES", { weekday: "short" }).format(date);
      this.dia = date.getDate();
@@ -38,5 +38,14 @@ export class CardContainerComponent implements OnInit{
      this.hora = date.getHours();
      this.minutos = date.getMinutes();
   
+     if(this.plan?.IsFollowing){
+       this.isFollowing = true;
+     }else{
+       this.isFollowing = false;
+     }
+
+     if(this.plan?.IdAutor === this.idUsuario){
+        this.buttonFollowingEnable = false;
+     }
   }
 }

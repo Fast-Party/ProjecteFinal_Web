@@ -1,8 +1,9 @@
 <div class="homePage">
- <!-- <app-card-container [plan]="plan"></app-card-container>  -->
-
  @for (plan of planes; track plan) {
-    <app-card-container [plan]="plan"></app-card-container>
+    <app-card-container 
+    [plan]="plan"
+    [idUsuario]="idUsuario"
+    ></app-card-container>
     }
 </div>
 

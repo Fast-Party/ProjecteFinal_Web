@@ -15,4 +15,14 @@ export class PlanModel {
     'Precio'?: number
     'Valoracion'?: number
     'FechaPublicacion': Date
+
+    'NombreAutor': string
+    'RatingAutor': number
+    'IsFollowing': number
+    'LocalidadAutor': string
+    'Seguidores': number
+
+    'ImagenPortada': string
+    'ImagenLogoAutor': string
+
 }
