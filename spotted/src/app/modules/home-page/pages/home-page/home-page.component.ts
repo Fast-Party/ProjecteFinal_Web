@@ -5,7 +5,6 @@ import { PlanModel } from '../../../../models/plan.model';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { catchError } from 'rxjs';
 import { CardContainerComponent } from '../../../../share/card-container/card-container.component';
-import { version } from 'os';
 
 @Component({
   selector: 'app-home-page',
@@ -19,13 +18,20 @@ export class HomePageComponent implements OnInit {
   planContainer = 'plan-container';
 
   planes: PlanModel[] = [];
-  constructor(private route: ActivatedRoute, private http: HttpClient) {}
 
-  ngOnInit(): void {
-    this.fetchPlanes();
+  imageAutorDefault =
+    'https://static.vecteezy.com/system/resources/previews/005/005/788/large_2x/user-icon-in-trendy-flat-style-isolated-on-grey-background-user-symbol-for-your-web-site-design-logo-app-ui-illustration-eps10-free-vector.jpg';
+
+  constructor(private route: ActivatedRoute, private http: HttpClient) {
   }
 
-  fetchPlanes() {
+  async ngOnInit() {
+    await this.fetchPlanes(); // Espera a que se completen las llamadas para obtener los planes
+
+
+  }
+
+  async fetchPlanes() {
     try {
       this.idUsuario = parseInt(this.route.snapshot.paramMap.get('idUsuario')!);
     } catch (error) {
@@ -46,14 +52,21 @@ export class HomePageComponent implements OnInit {
             })
           )
           .subscribe((res: any) => {
-            console.log('hola');
             if (res) {
+              console.log(res);
               this.planes = res.results;
               console.log(this.planes);
+
+              this.planes.forEach((plan) => {
+                plan.ImagenLogoAutor = this.getImageAutorPath(plan);
+                plan.ImagenPortada = this.getImagePortadaPath(plan);
+              });
+              
             } else {
               console.log('empty');
               console.log(res);
             }
+
           });
       } catch (error) {
         return console.log('sdfd');
@@ -190,11 +203,111 @@ export class HomePageComponent implements OnInit {
           versiones: [
             {
               nombreVersion: 'Sudor',
-              imagenPortada: 'https://www.salamandra.cat/uploads/_images/club/3/resized/428_backendGallery.jpg',
+              imagenPortada:
+                'https://www.salamandra.cat/uploads/_images/club/3/resized/428_backendGallery.jpg',
             },
           ],
-        }
+        },
       ],
     },
   ];
+  getImageAutorPath(plan: PlanModel): string {
+    const AutorName = plan.NombreAutor;
+
+    // quiero obtener el path del autor que contenga el nombre del autor
+    const matchedImageAutor = this.imagenesEventosAndAutor.find(
+      (autor) =>
+        autor.nombreAutor.replace(/\s/g, '').toUpperCase() ===
+        AutorName.replace(/\s/g, '').toUpperCase()
+    );
+
+    if (matchedImageAutor) {
+      return plan.ImagenLogoAutor = matchedImageAutor.imagenLogo;
+    } else {
+      return this.imageAutorDefault;
+    }
+  }
+
+  getImagePortadaPath(plan: PlanModel): string {
+    const AutorName = plan.NombreAutor;
+    const EventTitle = plan.Titulo;
+
+    // Quiero obtener las dos primeras palabras
+    let EventName = EventTitle.split(' ').slice(0, 2).join(' ');
+
+    // Tambien quiero quitar los caracteres especiales de la cadena y los espacios tambien
+    EventName = EventName.replace(/[-:\/]/g, '');
+
+    // Quiero obtener todo lo que hay despues de la primera palabra
+    let VersionName = EventTitle.split(' ').slice(2).join(' ');
+
+    VersionName = VersionName.replace(/[-:\/]/g, '');
+
+    VersionName = VersionName === '' ? EventName : VersionName;
+
+    VersionName =
+      VersionName.length === 1 ? EventName + VersionName : VersionName;
+
+    // quiero obtener el path del autor que contenga el nombre del autor
+    const matchedImageAutor = this.imagenesEventosAndAutor.find(
+      (autor) =>
+        autor.nombreAutor.replace(/\s/g, '').toUpperCase() ===
+        AutorName.replace(/\s/g, '').toUpperCase()
+    );
+
+    if (matchedImageAutor) {
+      //plan.ImagenLogoAutor = matchedImageAutor.imagenLogo;
+
+      const matchedImageEvento = matchedImageAutor.eventos.find(
+        (evento) =>
+          evento.nombreEvento.replace(/\s/g, '').toUpperCase() ===
+          EventName.replace(/\s/g, '').toUpperCase()
+      );
+      if (matchedImageEvento) {
+        const matchedVersion = matchedImageEvento.versiones.find(
+          (version) =>
+            version.nombreVersion.replace(/\s/g, '').toUpperCase() ===
+            VersionName.replace(/\s/g, '').toUpperCase()
+        );
+
+        if (matchedVersion) {
+          return plan.ImagenPortada = matchedVersion?.imagenPortada;
+        } else {
+          const indexRandom = Math.floor(
+            Math.random() * matchedImageEvento.versiones.length
+          );
+          return matchedImageEvento.versiones[indexRandom].imagenPortada;
+        }
+      } else {
+        const indexRandom = Math.floor(
+          Math.random() * matchedImageAutor?.eventos.length
+        );
+        const indexRandomVersion = Math.floor(
+          Math.random() *
+            matchedImageAutor?.eventos[indexRandom].versiones.length
+        );
+        return matchedImageAutor.eventos[indexRandom].versiones[
+            indexRandomVersion
+          ].imagenPortada;
+      }
+    } else {
+      //plan.ImagenLogoAutor = this.imageAutorDefault;
+
+      const indexRandom = Math.floor(
+        Math.random() * this.imagenesEventosAndAutor.length
+      );
+      const indexRandomEvento = Math.floor(
+        Math.random() * this.imagenesEventosAndAutor[indexRandom].eventos.length
+      );
+      const indexRandomVersion = Math.floor(
+        Math.random() *
+          this.imagenesEventosAndAutor[indexRandom].eventos[indexRandomEvento]
+            .versiones.length
+      );
+
+      return this.imagenesEventosAndAutor[indexRandom].eventos[
+          indexRandomVersion
+        ].versiones[indexRandomVersion].imagenPortada;
+    }
+  }
 }

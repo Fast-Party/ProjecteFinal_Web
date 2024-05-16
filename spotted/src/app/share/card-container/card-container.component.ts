@@ -28,9 +28,11 @@ export class CardContainerComponent implements OnInit{
   hora: number = 0;
   minutos: number = 0;
 
-  constructor() { }
+  constructor() {
+  }
    
   ngOnInit(): void {
+
     this.originalDate = this.plan?.Fecha;
     const date = new Date(this.originalDate);
      this.diaSemana = new Intl.DateTimeFormat("es-ES", { weekday: "short" }).format(date);

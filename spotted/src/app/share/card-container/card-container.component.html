@@ -2,14 +2,14 @@
   <div class="img_cover-local_name-icons">
     <img
       class="img_cover"
-      src="https://www.cadizturismo.com/storage/app/media/uploaded-files/BRESH-30-DE-JUNIO.jpg"
+      src="{{ plan?.ImagenPortada}}"
       alt="Img Cover"
     />
     <div class="local_info-icons">
       <div class="local_img-local_name" [routerLink]="['/profile', plan?.IdAutor]">
         <img
           class="local_img"
-          src="https://scontent-bcn1-1.xx.fbcdn.net/v/t39.30808-6/352821287_3304685189792355_2898452865604277350_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=5f2048&_nc_ohc=mZu7JYFxGEsQ7kNvgFoeyyo&_nc_ht=scontent-bcn1-1.xx&oh=00_AYCTKP4eQ1UwlM6_cmmzfc9aEc0bhkpVjUAmeP7TZP54oQ&oe=6648525A"
+          src="{{plan?.ImagenLogoAutor}}"
           alt="Local Img"
         />
         <p class="local_name">{{ plan?.NombreAutor }}</p>
@@ -19,7 +19,7 @@
           <div class="local_img_popup-local_name_popup-local_ubi">
             <img
               class="local_img_popup"
-              src="https://scontent-bcn1-1.xx.fbcdn.net/v/t39.30808-6/352821287_3304685189792355_2898452865604277350_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=5f2048&_nc_ohc=mZu7JYFxGEsQ7kNvgFoeyyo&_nc_ht=scontent-bcn1-1.xx&oh=00_AYCTKP4eQ1UwlM6_cmmzfc9aEc0bhkpVjUAmeP7TZP54oQ&oe=6648525A"
+              src="{{plan?.ImagenLogoAutor}}"
               alt="Local Img"
               [routerLink]="['/profile', plan?.IdAutor]"
             />
