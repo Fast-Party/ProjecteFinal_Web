@@ -5,7 +5,7 @@
   flex-direction: column;
   align-items: flex-start;
   gap: 8px;
-  width: 23vw;
+  width: 23.4vw;
   min-width: 278px;
   //width: 278px;
   // max-width: 20rem;
@@ -339,7 +339,7 @@
       .event_date {
         color: rgba(stl.$base-color-black, 0.5);
         font-size: 14px;
-
+        text-transform: capitalize;
         opacity: 0;
         animation: text-appear 0.5s ease-in-out 0.7s forwards;
 

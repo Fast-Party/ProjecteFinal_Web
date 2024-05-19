@@ -1,19 +1,97 @@
+@use "../../../../../sass/variables.scss" as stl;
 
+.homePage {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  padding: 8px 24px 24px 24px;
+  gap: 32px;
+  header {
+    position: sticky;
+    top: 8px;
+    z-index: 100;
 
-.homePage{
+    animation: fade-in-top-header 0.7s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+  }
+
+  .union-tag_menu-list_events {
     display: flex;
-    width: 100%;
-    height: 100%;
-    padding: 4vh;
+    flex-direction: column;
+    gap: 40px;
+    .tag_menu-filters {
+      display: flex;
+      width: 100%;
+      position: relative;
+      justify-content: end;
 
-    .container-list_events{
-        width: 100%;
+      animation: fade-in-top 0.7s cubic-bezier(0.39, 0.575, 0.565, 1) 0.3s both;
+
+      .container_tag_menu {
+        position: absolute;
+        display: inline-flex;
+
+        justify-content: center;
+        align-items: center;
+        height: 40px;
+        border-radius: 50px;
+        background-color: rgba(stl.$base-color-black, 0.05);
+        left: 50%;
+        transform: translateX(-50%);
+
+        div[role="button"] {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 100%;
+          height: 100%;
+          cursor: pointer;
+          padding-inline: 20px;
+
+          p {
+            height: 100%;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            font-size: 16px;
+            font-weight: 600;
+            color: rgba(stl.$base-color-black, 0.5);
+            transition: 0.3s ease-in-out;
+          }
+
+          .tag-select {
+            color: stl.$base-color-black;
+          }
+        }
+      }
+
+      .container-filters {
         display: flex;
-        flex-wrap: wrap;
-        column-gap: 24px;
-        row-gap: 40px;
-        justify-content: flex-start;
-
-        animation: appear .7s ease-in-out forwards;
+        align-items: center;
+        padding: 8px 12px;
+        background-color: rgba(stl.$base-color-black, 0.05);
+        border-radius: 50px;
+        gap: 8px;
+        margin-right: 12px;
+        cursor: pointer;
+        img {
+          width: 24px;
+          height: 24px;
+          cursor: pointer;
+          transition: 0.3s ease-in-out;
+        }
+      }
     }
+
+    .container-list_events {
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      column-gap: 24px;
+      row-gap: 40px;
+      justify-content: flex-start;
+
+      animation: appear 0.7s ease-in-out forwards;
+    }
+  }
 }

@@ -1,10 +1,40 @@
 <div class="homePage">
-  <div class="container-list_events">
-    @for (plan of planes; track plan) {
-    <app-card-container
-      [plan]="plan"
-      [idUsuario]="idUsuario"
-    ></app-card-container>
-    }
+  <header>
+    <app-global-nav></app-global-nav>
+  </header>
+  <div class="union-tag_menu-list_events">
+    <div class="tag_menu-filters">
+      <div class="container_tag_menu">
+        <div
+          class="tag-for_you"
+          role="button"
+          (click)="foryouOrFollowing = !foryouOrFollowing"
+        >
+          <p [class.tag-select]="foryouOrFollowing">Para ti</p>
+        </div>
+        <div
+          class="tag-following"
+          role="button"
+          (click)="foryouOrFollowing = !foryouOrFollowing"
+        >
+          <p [class.tag-select]="!foryouOrFollowing">Siguiendo</p>
+        </div>
+      </div>
+      <div class="container-filters" role="button">
+        <img
+          src="../../../../../assets/icons/light/funnel-simple-light.svg"
+          alt="filter"
+        />
+        <p>Filtros</p>
+      </div>
+    </div>
+    <div class="container-list_events">
+      @for (plan of planes; track plan) {
+      <app-card-container
+        [plan]="plan"
+        [idUsuario]="idUsuario"
+      ></app-card-container>
+      }
+    </div>
   </div>
 </div>

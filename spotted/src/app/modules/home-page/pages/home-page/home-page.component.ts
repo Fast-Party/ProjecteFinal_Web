@@ -4,18 +4,23 @@ import { HttpClientModule } from '@angular/common/http';
 import { PlanModel } from '../../../../models/plan.model';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { catchError } from 'rxjs';
+
+//Componentes	
 import { CardContainerComponent } from '../../../../share/card-container/card-container.component';
+import { GlobalNavComponent } from '../../../../components/global-nav/global-nav.component';
+
 
 @Component({
   selector: 'app-home-page',
   standalone: true,
-  imports: [HttpClientModule, RouterLink, CardContainerComponent],
+  imports: [HttpClientModule, RouterLink, CardContainerComponent, GlobalNavComponent],
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.scss',
 })
 export class HomePageComponent implements OnInit {
   idUsuario?: number;
   planContainer = 'plan-container';
+  foryouOrFollowing : boolean = true;
 
   planes: PlanModel[] = [];
 

@@ -1,0 +1,103 @@
+<div class="container-global_nav">
+  <nav class="app_logo-nav">
+    <ul class="ul-app_logo-pages">
+      <li>
+        <div class="app_logo">
+          <img
+            src="../../../assets/img/logo/Logo Linear Gradient.svg"
+            alt="logo"
+            class="logo"
+          />
+          <h4>Fast Party</h4>
+        </div>
+      </li>
+      <li>
+        <a
+          (click)="statePage = 1"
+          class="home-link"
+          routerLink="/home"
+          [class.statePage]="statePage === 1"
+          >Inicio</a
+        >
+      </li>
+      <li>
+        <a
+          (click)="statePage = 2"
+          class="explore-link"
+          routerLink="/explore"
+          [class.statePage]="statePage === 2"
+          >Explorar</a
+        >
+      </li>
+      <li>
+        <a
+          (click)="statePage = 3"
+          class="my_events-link"
+          routerLink="/my_events"
+          [class.statePage]="statePage === 3"
+          >Mis eventos</a
+        >
+      </li>
+    </ul>
+  </nav>
+  <div class="searcher">
+    <img
+      src="../../../assets/icons/regular/magnifying-glass.svg"
+      alt="search_icon"
+    />
+    <input
+      type="text"
+      placeholder="Buscar"
+      class="input_searcher"
+      name="searcher"
+    />
+  </div>
+  <div class="icon_messages-icon_notifications-user_setup">
+    <nav class="nav-messages-notifications">
+      <ul class="ul-messages-notifications">
+        <li>
+          <div (click)="stateMessage = !stateMessage" role="button">
+            @if (!stateMessage) {
+            <img
+              src="../../../assets/icons/regular/chats-teardrop.svg"
+              alt=""
+            />
+            }@else {
+            <img
+              src="../../../assets/icons/fill/chats-teardrop-fill.svg"
+              alt=""
+            />
+            }
+          </div>
+        </li>
+        <li>
+          <div (click)="stateNotif = !stateNotif" role="button">
+            @if (!stateNotif) {
+            <img src="../../../assets/icons/regular/bell-simple.svg" alt="" />
+            }@else {
+            <img src="../../../assets/icons/fill/bell-simple-fill.svg" alt="" />
+            }
+          </div>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="container-user_setup">
+      <div
+      role="button"
+      >
+        <img
+          src="https://scontent-bcn1-1.xx.fbcdn.net/v/t39.30808-6/352821287_3304685189792355_2898452865604277350_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=5f2048&_nc_ohc=mZu7JYFxGEsQ7kNvgFoeyyo&_nc_ht=scontent-bcn1-1.xx&oh=00_AYCTKP4eQ1UwlM6_cmmzfc9aEc0bhkpVjUAmeP7TZP54oQ&oe=6648525A"
+          alt="user_logo"
+        />
+      </div>
+      <div class="container-user_name-icon_down_arrow">
+        <h4>Razzmatazz</h4>
+        <img
+          src="../../../assets/icons/regular/caret-down.svg"
+          alt="arrow_down"
+        />
+      </div>
+    </div>
+  </div>
+</div>
