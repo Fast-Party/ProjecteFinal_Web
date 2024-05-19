@@ -1,9 +1,19 @@
-.plan-container {
+
+
+.homePage{
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 25vw;
-    height: 33vh;
-    background-color: lightpink;
+    width: 100%;
+    height: 100%;
+    padding: 4vh;
+
+    .container-list_events{
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        column-gap: 24px;
+        row-gap: 40px;
+        justify-content: flex-start;
+
+        animation: appear .7s ease-in-out forwards;
+    }
 }

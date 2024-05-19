@@ -125,7 +125,7 @@ export class RegisterPageComponent {
       this.nextForm = !this.nextForm;
     } else {
       this.isAgeValid = this.chekingBornDate();
-      //this.onregister();
+      this.onregister();
     }
   }
 
@@ -145,7 +145,7 @@ export class RegisterPageComponent {
         .subscribe((res: any) => {
           console.log(res['message']);
           if (res['message'] === 'User registered correctly.') {
-            this.router.navigateByUrl('/landing-page');
+            this.router.navigateByUrl('/home');
           } else {
             console.log('error 401');
           }

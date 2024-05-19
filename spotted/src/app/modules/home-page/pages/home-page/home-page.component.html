@@ -1,13 +1,10 @@
-<div>
+<div class="homePage">
+  <div class="container-list_events">
     @for (plan of planes; track plan) {
-    <div [class]="planContainer">
-        <h2>{{plan.Titulo}}</h2>
-        <p>{{plan.Descripcion}}</p>
-        <a [routerLink]="['/profile', plan.IdAutor]">
-            <p>{{plan.IdAutor}}</p>
-        </a>
-        <p>{{plan.Fecha}}</p>
-        <p>{{plan.Localizacion}}</p>
-    </div>
+    <app-card-container
+      [plan]="plan"
+      [idUsuario]="idUsuario"
+    ></app-card-container>
     }
+  </div>
 </div>
