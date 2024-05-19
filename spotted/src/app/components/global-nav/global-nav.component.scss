@@ -39,7 +39,6 @@
       li {
         cursor: pointer;
         a {
-          //font-size: 16px;
           font-size: 14px;
           font-weight: 600;
           padding: 10px;
@@ -201,6 +200,14 @@
         img {
           width: 16px;
           height: 16px;
+        }
+      }
+
+      @media screen and (max-width: 1050px){
+        background-color: transparent;
+
+        .container-user_name-icon_down_arrow {
+          display: none;
         }
       }
     }

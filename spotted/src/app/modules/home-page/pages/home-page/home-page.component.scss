@@ -39,6 +39,12 @@
         left: 50%;
         transform: translateX(-50%);
 
+        @media screen and (max-width: 768px) {
+            left: 0 !important;
+            transform: translateX(0) !important;
+            
+        }
+
         div[role="button"] {
           display: flex;
           align-items: center;
@@ -72,7 +78,7 @@
         background-color: rgba(stl.$base-color-black, 0.05);
         border-radius: 50px;
         gap: 8px;
-        margin-right: 12px;
+
         cursor: pointer;
         img {
           width: 24px;
@@ -82,16 +88,14 @@
         }
       }
     }
-
+    
     .container-list_events {
-      width: 100%;
-      display: flex;
-      flex-wrap: wrap;
-      column-gap: 24px;
-      row-gap: 40px;
-      justify-content: flex-start;
-
-      animation: appear 0.7s ease-in-out forwards;
-    }
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        row-gap: 40px;
+        column-gap: 24px;
+        animation: appear 0.7s ease-in-out forwards;
+      }
   }
 }
