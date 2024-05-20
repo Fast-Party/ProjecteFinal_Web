@@ -11,11 +11,12 @@ export class GlobalNavComponent {
   statePage: number = 0;
   stateNotif: boolean = false;
   stateMessage: boolean = false;
+  user_id: string = '';
 
   constructor(private router: Router) { }
 
   ngOnInit() {
-    console.log(this.router.url);
+    this.user_id = this.router.url.charAt(this.router.url.length - 1);
     
     if (this.router.url.includes('home')){
       this.statePage = 1;
