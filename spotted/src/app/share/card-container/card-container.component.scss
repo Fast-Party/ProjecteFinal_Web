@@ -107,7 +107,7 @@
           flex-direction: column;
           position: absolute;
           top: 15px;
-          background-color: rgba(stl.$base-color-black, 0.7);
+          background-color: rgba(stl.$base-color-white, 0.7);
           border-radius: 12px;
           padding: 8px;
           width: 278px;
@@ -129,7 +129,7 @@
             height: 0;
             border-left: 10px solid transparent;
             border-right: 10px solid transparent;
-            border-bottom: 10px solid rgba(stl.$base-color-black, 0.7);
+            border-bottom: 10px solid rgba(stl.$base-color-white, 0.7);
 
             @media screen and (min-width: 1600px) {
               top: -10px;
@@ -162,7 +162,7 @@
               gap: 3px;
               align-self: stretch;
               .local_name_popup {
-                color: stl.$base-color-white;
+                color: stl.$base-color-black;
                 font-size: 16px;
                 font-weight: 600;
                 cursor: pointer;
@@ -176,14 +176,14 @@
                 img {
                   width: 12px;
                   height: 12px;
-                  filter: invert(1);
+                  //filter: invert(0);
                   opacity: 0.5;
                   cursor: pointer;
                 }
                 .local_ubi {
-                  color: stl.$base-color-white;
+                  color: stl.$base-color-black;
                   font-size: 12px;
-                  font-weight: 300;
+                  font-weight: 400;
                   opacity: 0.5;
                   display: -webkit-box;
                   -webkit-box-orient: vertical;
@@ -208,13 +208,13 @@
               align-items: center;
               gap: 2px;
               .local_stats_followers_number {
-                color: stl.$base-color-white;
+                color: stl.$base-color-black;
                 font-size: 14px;
                 font-weight: 400;
                 text-align: center;
               }
               .local_stats_followers_text {
-                color: rgba(stl.$base-color-white, 0.5);
+                color: rgba(stl.$base-color-black, 0.5);
                 font-size: 12px;
                 font-weight: 300;
                 text-align: center;
@@ -223,7 +223,7 @@
             .separator {
               height: 30px;
               width: 1px;
-              background-color: #ffffff;
+              background-color: stl.$base-color-black;
             }
             .local_stats_rating {
               display: flex;
@@ -235,10 +235,10 @@
               img {
                 width: 12px;
                 height: 12px;
-                filter: invert(1);
+                //filter: invert(1);
               }
               .local_stats_rating_number {
-                color: stl.$base-color-white;
+                color: stl.$base-color-black;
                 font-size: 14px;
                 font-weight: 400;
                 text-align: center;

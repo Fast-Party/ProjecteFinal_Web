@@ -12,8 +12,17 @@ export class GlobalNavComponent {
   stateNotif: boolean = false;
   stateMessage: boolean = false;
   user_id: string = '';
-
+  vision_menu: boolean = false;
   constructor(private router: Router) { }
+
+  onCheckboxChange(event: Event): void {
+    const checkbox = event.target as HTMLInputElement;
+    if (checkbox.checked) {
+      this.vision_menu = true;
+    } else {
+      this.vision_menu = false;
+    }
+  }
 
   ngOnInit() {
     this.user_id = this.router.url.charAt(this.router.url.length - 1);
