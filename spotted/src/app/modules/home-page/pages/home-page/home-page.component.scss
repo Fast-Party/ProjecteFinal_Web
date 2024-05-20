@@ -7,6 +7,16 @@
   height: 100%;
   padding: 8px 24px 24px 24px;
   gap: 32px;
+
+  @media screen and (max-width: 400px) {
+    padding: 0px;
+
+    header{
+      top: 0 !important;
+    }
+    
+  }
+
   header {
     position: sticky;
     top: 8px;
@@ -19,6 +29,10 @@
     display: flex;
     flex-direction: column;
     gap: 40px;
+
+    @media screen and (max-width: 400px) {
+      margin-inline: 24px;
+    }
     .tag_menu-filters {
       display: flex;
       width: 100%;
@@ -80,11 +94,29 @@
         gap: 8px;
 
         cursor: pointer;
+
+        @media screen and (max-width: 400px) {
+          padding: 8px !important;
+
+          p{
+            display: none;
+          }
+          
+        }
         img {
           width: 24px;
           height: 24px;
           cursor: pointer;
           transition: 0.3s ease-in-out;
+        }
+
+        p{
+          //display: none;
+          font-size: 16px;
+          font-weight: 400;
+          color: stl.$base-color-black;
+          transition: 0.3s ease-in-out;
+        
         }
       }
     }
@@ -96,6 +128,11 @@
         row-gap: 40px;
         column-gap: 24px;
         animation: appear 0.7s ease-in-out forwards;
+
+        @media screen and (max-width: 768px) {
+          grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+          
+        }
       }
   }
 }

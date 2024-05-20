@@ -56,6 +56,14 @@
     <nav class="nav-messages-notifications">
       <ul class="ul-messages-notifications">
         <li>
+          <div class="icon-search" role="button">
+            <img
+              src="../../../assets/icons/regular/magnifying-glass.svg"
+              alt="search_icon"
+            />
+          </div>
+        </li>
+        <li>
           <div (click)="stateMessage = !stateMessage" role="button">
             @if (!stateMessage) {
             <img
@@ -79,13 +87,22 @@
             }
           </div>
         </li>
+        <li>
+          <div class="icon-menu">
+            <label class="hamburger">
+              <input type="checkbox">
+              <svg viewBox="0 0 32 32">
+                <path class="line line-top-bottom" d="M27 10 13 10C10.8 10 9 8.2 9 6 9 3.5 10.8 2 13 2 15.2 2 17 3.8 17 6L17 26C17 28.2 18.8 30 21 30 23.2 30 25 28.2 25 26 25 23.8 23.2 22 21 22L7 22"></path>
+                <path class="line" d="M7 16 27 16"></path>
+              </svg>
+            </label>
+          </div>
+        </li>
       </ul>
     </nav>
 
     <div class="container-user_setup">
-      <div
-      role="button"
-      >
+      <div role="button">
         <img
           src="https://scontent-bcn1-1.xx.fbcdn.net/v/t39.30808-6/352821287_3304685189792355_2898452865604277350_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=5f2048&_nc_ohc=mZu7JYFxGEsQ7kNvgFoeyyo&_nc_ht=scontent-bcn1-1.xx&oh=00_AYCTKP4eQ1UwlM6_cmmzfc9aEc0bhkpVjUAmeP7TZP54oQ&oe=6648525A"
           alt="user_logo"
