@@ -446,12 +446,21 @@
     transform: translateX(500px);
     right: 0;
     width: 320px;
-    height: 105vh;
+    height: 101vh;
     background-color: stl.$base-color-white;
     z-index: 0;
     transition: 0.3s ease-in-out;
     padding: 16px;
     will-change: transform;
+    overflow-y: auto;
+
+    scrollbar-width: thin;
+    scrollbar-color: rgba(stl.$base-color-black, 0.1) transparent;
+
+    @media screen and (min-width: 830px) {
+      display: none;
+      pointer-events: none;
+    }
 
     .content-menu {
       margin-top: 40px;
@@ -463,6 +472,7 @@
         display: flex;
         flex-direction: column;
         gap: 48px;
+        cursor: pointer;
         .user_info-user_logo--menu {
           display: flex;
           flex-direction: column;
@@ -572,11 +582,67 @@
       }
     }
 
+    .info-footer{
+      ul{
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
 
+        li{
+          display: flex;
+          gap: 8px;
+          cursor: pointer;
+          transition: 0.3s ease-in-out;
+          padding: 8px;
+          align-self: stretch;
+          align-items: center;
+          border-radius: 4px;
+          p{
+            font-size: 12px;
+            font-weight: 300;
+            color: stl.$base-color-black;
+            width: 100%;
+            padding-bottom: 8px;
+            padding-left: 4px;
+          }
+
+          select {
+            background-color: transparent;
+            color: stl.$base-color-black;
+            border: none;
+            font-size: 12px;
+            font-weight: 500;
+            cursor: pointer;
+            option {
+                color: stl.$base-color-black;
+                background-color: stl.$base-color-white;
+            }
+    
+            &:focus {
+              outline: none;
+            }
+          }
+
+          a{
+            font-size: 12px;
+            font-weight: 500;
+            color: stl.$base-color-black;
+            text-decoration: none;
+            width: 100%;
+            padding-left: 4px;
+          }
+        }
+      }
+    }
   }
 
   .control-popup_menu{
     position: absolute;
+
+    @media screen and (min-width: 830px) {
+      display: none;
+      pointer-events: none;
+    }
   }
   .popup_menu_visible {
     pointer-events: all;

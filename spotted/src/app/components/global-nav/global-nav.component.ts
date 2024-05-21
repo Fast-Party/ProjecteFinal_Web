@@ -13,6 +13,7 @@ export class GlobalNavComponent {
   stateMessage: boolean = false;
   user_id: string = '';
   vision_menu: boolean = false;
+  actualYear: number = new Date().getFullYear();
   constructor(private router: Router) { }
 
   onCheckboxChange(event: Event): void {

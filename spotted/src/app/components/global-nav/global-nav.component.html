@@ -90,7 +90,11 @@
         <li>
           <div class="icon-menu">
             <label class="i-menu">
-              <input type="checkbox" (change)="onCheckboxChange($event)" [checked]="vision_menu"/>
+              <input
+                type="checkbox"
+                (change)="onCheckboxChange($event)"
+                [checked]="vision_menu"
+              />
               <svg viewBox="0 0 32 32">
                 <path
                   class="line line-top-bottom"
@@ -166,7 +170,11 @@
       </div>
     </ul>
   </div>
-  <div class="control-popup_menu" [class.control-popup_menu_visible]="vision_menu" (click)="vision_menu = !vision_menu"></div>
+  <div
+    class="control-popup_menu"
+    [class.control-popup_menu_visible]="vision_menu"
+    (click)="vision_menu = !vision_menu"
+  ></div>
   <div class="popup_menu" [class.popup_menu_visible]="vision_menu">
     <div class="content-menu">
       <div class="user_info-nav_pages--menu">
@@ -218,7 +226,28 @@
           </li>
         </ul>
       </div>
+      <div class="info-footer">
+        <ul>
+          <li>
+            <p>
+              © <span>{{ actualYear }}</span> Fast Party. All rights reserved
+            </p>
+          </li>
+          <li>
+            <select name="idioms" id="idioms">
+              <option value="spanish" selected>Español</option>
+              <option value="catalan">Catalán</option>
+              <option value="english">Inglés</option>
+              <option value="italian">Italiano</option>
+              <option value="french">Francés</option>
+              <option value="portuguese">Portugués</option>
+            </select>
+          </li>
+          <li><a href="" class="" id="">Términos del servicio</a></li>
+          <li><a href="" class="" id="">Política de privacidad</a></li>
+          <li><a href="" class="" id="">Administrar privacidad</a></li>
+        </ul>
+      </div>
     </div>
   </div>
- 
 </div>
