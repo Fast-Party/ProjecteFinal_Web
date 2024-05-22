@@ -1,5 +1,5 @@
 @use "../../../../../sass/variables.scss" as stl;
-
+/*
 .homePage {
   display: flex;
   flex-direction: column;
@@ -29,7 +29,7 @@
     margin-inline: 24px;
     animation: fade-in-top-header 0.7s cubic-bezier(0.39, 0.575, 0.565, 1) both;
   }
-
+*/
   .union-tag_menu-list_events {
     display: flex;
     flex-direction: column;
@@ -139,4 +139,6 @@
     position: fixed;
     width: 100%; 
   }
+  /*
 }
+*/

@@ -6,7 +6,7 @@
       alt="Img Cover"
     />
     <div class="local_info-icons">
-      <div class="local_img-local_name" [routerLink]="['/profile', plan?.IdAutor]">
+      <div class="local_img-local_name" [routerLink]="['profile', plan?.IdAutor]">
         <img
           class="local_img"
           src="{{plan?.ImagenLogoAutor}}"
@@ -21,10 +21,10 @@
               class="local_img_popup"
               src="{{plan?.ImagenLogoAutor}}"
               alt="Local Img"
-              [routerLink]="['/profile', plan?.IdAutor]"
+              [routerLink]="['profile', plan?.IdAutor]"
             />
             <div class="local_name_popup-local-ubi">
-              <p class="local_name_popup" [routerLink]="['/profile', plan?.IdAutor]">{{ plan?.NombreAutor }}</p>
+              <p class="local_name_popup" [routerLink]="['profile', plan?.IdAutor]">{{ plan?.NombreAutor }}</p>
               <div class="container_local_ubi">
                 <img
                   src="../../../assets/icons/fill/map-pin-fill.svg"

@@ -15,7 +15,7 @@
         <a
           (click)="statePage = 1"
           class="home-link"
-          routerLink="/home"
+          [routerLink]="['home', this.user_id]"
           [class.statePage]="statePage === 1"
           >Inicio</a
         >
@@ -109,7 +109,7 @@
     </nav>
 
     <ul class="menu">
-      <li role="button" [routerLink]="['/profile', this.user_id]">
+      <li role="button" [routerLink]="['profile', this.user_id]">
         <div role="button">
           <img
             src="https://scontent-bcn1-1.xx.fbcdn.net/v/t39.30808-6/352821287_3304685189792355_2898452865604277350_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=5f2048&_nc_ohc=mZu7JYFxGEsQ7kNvgFoeyyo&_nc_ht=scontent-bcn1-1.xx&oh=00_AYCTKP4eQ1UwlM6_cmmzfc9aEc0bhkpVjUAmeP7TZP54oQ&oe=6648525A"
@@ -129,7 +129,7 @@
           <div
             class="smart-info_user"
             role="button"
-            [routerLink]="['/profile', this.user_id]"
+            [routerLink]="['profile', this.user_id]"
           >
             <img
               src="https://scontent-bcn1-1.xx.fbcdn.net/v/t39.30808-6/352821287_3304685189792355_2898452865604277350_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=5f2048&_nc_ohc=mZu7JYFxGEsQ7kNvgFoeyyo&_nc_ht=scontent-bcn1-1.xx&oh=00_AYCTKP4eQ1UwlM6_cmmzfc9aEc0bhkpVjUAmeP7TZP54oQ&oe=6648525A"
@@ -142,7 +142,7 @@
           </div>
           <div class="container-options_users-option_sign_out">
             <div class="options_user">
-              <li role="button" [routerLink]="['/profile', this.user_id]">
+              <li role="button" [routerLink]="['profile', this.user_id]">
                 <img
                   src="../../../assets/icons/regular/user.svg"
                   alt="user_profile"
@@ -181,7 +181,7 @@
         <div
           class="user_info-user_logo--menu"
           role="button"
-          [routerLink]="['/profile', this.user_id]"
+          [routerLink]="['profile', this.user_id]"
         >
           <img
             src="https://scontent-bcn1-1.xx.fbcdn.net/v/t39.30808-6/352821287_3304685189792355_2898452865604277350_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=5f2048&_nc_ohc=mZu7JYFxGEsQ7kNvgFoeyyo&_nc_ht=scontent-bcn1-1.xx&oh=00_AYCTKP4eQ1UwlM6_cmmzfc9aEc0bhkpVjUAmeP7TZP54oQ&oe=6648525A"
@@ -194,7 +194,7 @@
         </div>
         <div class="nav_pages--menu">
           <ul>
-            <li><a routerLink="/home">Inicio</a></li>
+            <li><a [routerLink]="['home', this.user_id]">Inicio</a></li>
             <li><a routerLink="/explore">Explorar</a></li>
             <li><a routerLink="/my_events">Mis eventos</a></li>
           </ul>
@@ -203,7 +203,7 @@
       <hr />
       <div class="user_setup--menu">
         <ul>
-          <li role="button" [routerLink]="['/profile', this.user_id]">
+          <li role="button" [routerLink]="['profile', this.user_id]">
             <img
               src="../../../assets/icons/regular/user.svg"
               alt="user_profile"

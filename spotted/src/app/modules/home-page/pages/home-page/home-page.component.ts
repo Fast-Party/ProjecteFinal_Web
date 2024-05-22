@@ -32,8 +32,6 @@ export class HomePageComponent implements OnInit {
 
   async ngOnInit() {
     await this.fetchPlanes(); // Espera a que se completen las llamadas para obtener los planes
-
-
   }
 
   async fetchPlanes() {

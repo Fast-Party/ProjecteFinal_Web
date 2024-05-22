@@ -45,7 +45,7 @@ export class LoginPageComponent {
           if (res.length > 0) {
             console.log(res[0].IdUsuario);
             //this.router.navigateByUrl('/home/' + res[0].IdUsuario);
-            this.router.navigateByUrl('/home');
+            this.router.navigateByUrl('/_/home/' + res[0].IdUsuario);
           } else {
             console.log('Datos incorrectos');
           }
