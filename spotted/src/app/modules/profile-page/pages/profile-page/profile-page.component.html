@@ -1,0 +1,21 @@
+<div>
+    <div [class]="profileContainer">
+        <h2>{{perfilUsuario.NombreUsuario}}</h2>
+        <p>{{perfilUsuario.Seguidores}}</p>
+        <p>{{perfilUsuario.FechaNacimiento}}</p>
+        <p>{{perfilUsuario.Descripcion}}</p>
+        <p>{{perfilUsuario.Valoracion}}</p>
+    </div>
+</div>
+
+<div>
+    @for (plan of planesUsuario; track plan) {
+    <div [class]="planContainer">
+        <h2>{{plan.Titulo}}</h2>
+        <p>{{plan.Descripcion}}</p>
+        <p>{{plan.IdAutor}}</p>
+        <p>{{plan.Fecha}}</p>
+        <p>{{plan.Localizacion}}</p>
+    </div>
+    }
+</div>

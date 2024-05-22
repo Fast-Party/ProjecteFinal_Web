@@ -1,0 +1,136 @@
+/*----------COLORS----------*/
+
+// PRIMARY COLOR
+// original color: 500
+
+$primary-color-50: #f6eafd;
+$primary-color-100: #eed8fc;
+$primary-color-200: #e1baf8;
+$primary-color-300: #cf8ef2;
+$primary-color-400: #bc62ea;
+$primary-color-500: #A233D8;
+$primary-color-600: #9230c0;
+$primary-color-700: #7b2c9d;
+$primary-color-800: #64257e;
+$primary-color-900: #450f5c;
+
+
+// SECONDARY COLOR
+// original color: 600
+
+$secondary-color-50: #ebe7ff;
+$secondary-color-100: #d8d2ff;
+$secondary-color-200: #bcaeff;
+$secondary-color-300: #9a80ff;
+$secondary-color-400: #7b4cff;
+$secondary-color-500: #6b28ff;
+$secondary-color-600: #5e17eb;
+$secondary-color-700: #4e12c5;
+$secondary-color-800: #4111a1;
+$secondary-color-900: #25076e;
+
+
+
+// TERTIARY COLOR
+// original color: 800
+
+$tertiary-color-50: #d1f1ff;
+$tertiary-color-100: #aee7ff;
+$tertiary-color-200: #76daff;
+$tertiary-color-300: #35c3ff;
+$tertiary-color-400: #079fff;
+$tertiary-color-500: #0079ff;
+$tertiary-color-600: #0060ff;
+$tertiary-color-700: #004fd7;
+$tertiary-color-800: #004aad;
+$tertiary-color-900: #062c65;
+
+
+// QUATERNARY COLOR
+// original color: 900
+
+$quaternary-color-50: #d1f2ff;
+$quaternary-color-100: #ade9ff;
+$quaternary-color-200: #75deff;
+$quaternary-color-300: #35c8ff;
+$quaternary-color-400: #07a5ff;
+$quaternary-color-500: #007fff;
+$quaternary-color-600: #0066ff;
+$quaternary-color-700: #0054d8;
+$quaternary-color-800: #004ba8;
+$quaternary-color-900: #041F44;
+
+
+// SUCCESS COLOR
+// original color: 500
+
+$success-color-50: #dcf7e8;
+$success-color-100: #b9f0d0;
+$success-color-200: #97e8b9;
+$success-color-300: #74e0a2;
+$success-color-400: #51d98a;
+$success-color-500: #2ED173;
+$success-color-600: #26ae60;
+$success-color-700: #1f8b4d;
+$success-color-800: #17693a;
+$success-color-900: #0f4626;
+
+
+// WARNING COLOR
+// original color: 500
+
+$warning-color-50: #fff1da;
+$warning-color-100: #ffe2b5;
+$warning-color-200: #ffd390;
+$warning-color-300: #fec56b;
+$warning-color-400: #feb646;
+$warning-color-500: #FEA821;
+$warning-color-600: #ee9201;
+$warning-color-700: #be7501;
+$warning-color-800: #8f5801;
+$warning-color-900: #5f3a00;
+
+
+// ERROR COLOR
+// original color: 500
+
+$error-color-50: #ffe4e6;
+$error-color-100: #fdced4;
+$error-color-200: #fca5af;
+$error-color-300: #f97385;
+$error-color-400: #f1425e;
+$error-color-500: #d91f46;
+$error-color-600: #bc143b;
+$error-color-700: #9d1439;
+$error-color-800: #861537;
+$error-color-900: #4b0618;
+
+
+// BASE COLOR
+
+$base-color-white:  #ffffff;
+$base-color-black:  #000000;
+
+
+// DARK MODE
+// original color: 900
+
+$dark-mode-50: #525252;
+$dark-mode-100: #464646;
+$dark-mode-200: #3b3b3b;
+$dark-mode-300: #2f2f2f;
+$dark-mode-400: #242424;
+$dark-mode-500: #151515;
+$dark-mode-600: #121212;
+$dark-mode-700: #111111;
+$dark-mode-800: #101010;
+$dark-mode-900: #0f0f0f;
+
+
+
+/*----------TYPOGRAPHY----------*/
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+$font-family-montserrat: 'Montserrat', sans-serif;
+
