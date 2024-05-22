@@ -1,0 +1,47 @@
+@use "../../../sass/variables.scss" as stl;
+
+.containerFT {
+    font-size: 12px;
+    font-weight: 500;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 4px 24px;
+    background-color: rgba(stl.$base-color-white, .5);
+    backdrop-filter: blur(20px);
+
+    @media screen and (max-width: 830px) {
+      display: none ;
+    }
+    .container-policies {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+
+      select {
+        background-color: transparent;
+        color: stl.$base-color-black;
+        border: none;
+        font-size: 12px;
+        font-weight: 500;
+        padding: 4px;
+        cursor: pointer;
+        option {
+            color: stl.$base-color-black;
+            background-color: stl.$base-color-white;
+        }
+
+        &:focus {
+          outline: none;
+        }
+      }
+
+      a {
+        color: stl.$base-color-black;
+        font-weight: 500;
+        text-decoration: none;
+        transition: all 0.3s;
+      }
+    }
+  }
