@@ -59,9 +59,9 @@
           }
         }
 
-        .statePage {
+       /* .statePage {
           color: stl.$base-color-black !important;
-        }
+        }*/
 
         &:hover {
           a {
@@ -667,4 +667,8 @@
 .control-popup_menu_visible{
   opacity: 1;
   pointer-events: all;
+}
+
+.active-links{
+  color: stl.$base-color-black !important;
 }

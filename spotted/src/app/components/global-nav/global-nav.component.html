@@ -1,7 +1,7 @@
 <div class="container-global_nav">
   <nav class="app_logo-nav">
     <ul class="ul-app_logo-pages">
-      <li>
+      <li role="button" [routerLink]="['home', this.user_id]">
         <div class="app_logo">
           <img
             src="../../../assets/img/logo/Logo Linear Gradient.svg"
@@ -13,28 +13,25 @@
       </li>
       <li>
         <a
-          (click)="statePage = 1"
           class="home-link"
           [routerLink]="['home', this.user_id]"
-          [class.statePage]="statePage === 1"
+          routerLinkActive="active-links"
           >Inicio</a
         >
       </li>
       <li>
         <a
-          (click)="statePage = 2"
           class="explore-link"
-          routerLink="/explore"
-          [class.statePage]="statePage === 2"
+          routerLink="explore"
+          routerLinkActive="active-links"
           >Explorar</a
         >
       </li>
       <li>
         <a
-          (click)="statePage = 3"
           class="my_events-link"
-          routerLink="/my_events"
-          [class.statePage]="statePage === 3"
+          routerLink="my_events"
+          routerLinkActive="active-links"
           >Mis eventos</a
         >
       </li>
