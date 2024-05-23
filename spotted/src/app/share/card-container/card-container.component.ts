@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { PlanModel } from '../../models/plan.model';
+import { PlanCardModel } from '../../models/plan.model';
 import { RouterLink } from '@angular/router';
 
 
@@ -12,7 +12,7 @@ import { RouterLink } from '@angular/router';
 })
 export class CardContainerComponent implements OnInit{
 
-  @Input() plan: PlanModel | null = null;
+  @Input() plan: PlanCardModel | null = null;
   @Input() idUsuario: any = null;
 
   isLiked: boolean = false;

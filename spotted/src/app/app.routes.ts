@@ -5,6 +5,7 @@ import { RegisterPageComponent } from './modules/register-page/pages/register-pa
 import { HomePageComponent } from './modules/home-page/pages/home-page/home-page.component';
 import { CreatePlanPageComponent } from './modules/create-plan-page/page/create-plan-page/create-plan-page.component';
 import { ProfilePageComponent } from './modules/profile-page/pages/profile-page/profile-page.component';
+import { AutorProfilePageComponent } from './modules/autor-profile-page/pages/autor-profile-page/autor-profile-page.component';
 
 export const routes: Routes = [
     { path: 'landing-page', component: LandingPageComponent },
@@ -13,6 +14,7 @@ export const routes: Routes = [
     { path: 'home/:idUsuario', component: HomePageComponent },
     { path: 'create-plan', component: CreatePlanPageComponent },
     { path: 'profile/:idUsuario', component: ProfilePageComponent },
+    { path: 'autor/:idUsuario', component: AutorProfilePageComponent }, 
 
     { path: '', redirectTo: 'landing-page', pathMatch: 'full' }
 ];

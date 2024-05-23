@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { HttpClientModule } from '@angular/common/http';
-import { PlanModel } from '../../../../models/plan.model';
+import { PlanCardModel } from '../../../../models/plan.model';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { catchError } from 'rxjs';
 
@@ -22,7 +22,7 @@ export class HomePageComponent implements OnInit {
   planContainer = 'plan-container';
   foryouOrFollowing : boolean = true;
 
-  planes: PlanModel[] = [];
+  planes: PlanCardModel[] = [];
 
   imageAutorDefault =
     'https://static.vecteezy.com/system/resources/previews/005/005/788/large_2x/user-icon-in-trendy-flat-style-isolated-on-grey-background-user-symbol-for-your-web-site-design-logo-app-ui-illustration-eps10-free-vector.jpg';
@@ -64,7 +64,7 @@ export class HomePageComponent implements OnInit {
 
               this.planes.forEach((plan) => {
                 plan.ImagenLogoAutor = this.getImageAutorPath(plan);
-                plan.ImagenPortada = this.getImagePortadaPath(plan);
+                plan.RutaImagenPlan = this.getImagePortadaPath(plan);
               });
               
             } else {
@@ -216,7 +216,7 @@ export class HomePageComponent implements OnInit {
         ],
       },
     ];
-  getImageAutorPath(plan: PlanModel): string {
+  getImageAutorPath(plan: PlanCardModel): string {
     const AutorName = plan.NombreAutor;
 
     // quiero obtener el path del autor que contenga el nombre del autor
@@ -233,7 +233,7 @@ export class HomePageComponent implements OnInit {
     }
   }
 
-  getImagePortadaPath(plan: PlanModel): string {
+  getImagePortadaPath(plan: PlanCardModel): string {
     const AutorName = plan.NombreAutor;
     const EventTitle = plan.Titulo;
 
@@ -276,7 +276,7 @@ export class HomePageComponent implements OnInit {
         );
 
         if (matchedVersion) {
-          return plan.ImagenPortada = matchedVersion?.imagenPortada;
+          return plan.RutaImagenPlan = matchedVersion?.imagenPortada;
         } else {
           const indexRandom = Math.floor(
             Math.random() * matchedImageEvento.versiones.length
