@@ -2,41 +2,41 @@ import { Component, OnInit } from '@angular/core';
 import { catchError } from 'rxjs';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
-import { ProfileModel } from '../../../../models/profile.model';
 import { PlanCardModel } from '../../../../models/plan.model';
-
-import { UserService } from '../../../../api/services/user.service';
+import { AutorPlanModel } from '../../../../models/autor.model';
 
 @Component({
-  selector: 'app-profile-page',
+  selector: 'app-autor-profile-page',
   standalone: true,
   imports: [HttpClientModule],
-  templateUrl: './profile-page.component.html',
-  styleUrl: './profile-page.component.scss'
+  templateUrl: './autor-profile-page.component.html',
+  styleUrl: './autor-profile-page.component.scss'
 })
-export class ProfilePageComponent implements OnInit {
+export class AutorProfilePageComponent implements OnInit {
 
   profileContainer = 'profile-container';
   planContainer = 'plan-container';
 
   idUsuario?: number;
-  perfilUsuario: ProfileModel;
+  perfilUsuario: AutorPlanModel;
   planesUsuario: PlanCardModel[] = [];
 
-  constructor(private route: ActivatedRoute, private http: HttpClient, private userService: UserService) {
-    this.perfilUsuario = new ProfileModel();
+  constructor(private route: ActivatedRoute, private http: HttpClient) {
+    this.perfilUsuario = new AutorPlanModel();
   }
 
   ngOnInit(): void {
+    try {
+      this.idUsuario = parseInt(this.route.snapshot.paramMap.get('idUsuario')!);
+    } catch (error) {
+      console.log(error);
+    }
 
-    this.idUsuario = this.userService.getIdUsuario();
-    console.log(this.idUsuario);
-    
     if (this.idUsuario != null) {
       console.log(this.idUsuario)
       const body = { IdUsuario: this.idUsuario }
       try {
-        this.http.post('http://localhost:3000/perfilUsuario', body).pipe(catchError(error => {
+        this.http.post('http://localhost:3000/perfilAutor', body).pipe(catchError(error => {
           console.log('error is: ', error);
           return error;
         })).subscribe((res: any) => {
@@ -54,4 +54,5 @@ export class ProfilePageComponent implements OnInit {
       }
     }
   }
+
 }

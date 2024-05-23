@@ -42,4 +42,13 @@ export const routes: Routes = [
         (m) => m.PageNotFoundComponent
       ),
   },
+    { path: 'landing-page', component: LandingPageComponent },
+    { path: 'login', component: LoginPageComponent},
+    { path: 'register', component: RegisterPageComponent},
+    { path: 'home/:idUsuario', component: HomePageComponent },
+    { path: 'create-plan', component: CreatePlanPageComponent },
+    { path: 'profile/:idUsuario', component: ProfilePageComponent },
+    { path: 'autor/:idUsuario', component: AutorProfilePageComponent }, 
+
+    { path: '', redirectTo: 'landing-page', pathMatch: 'full' }
 ];
