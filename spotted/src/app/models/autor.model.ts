@@ -1,4 +1,4 @@
-export class ProfileModel {
+export class AutorPlanModel {
     'IdUsuario': number
     'NombreUsuario': string
     'Nombre': string
@@ -13,8 +13,14 @@ export class ProfileModel {
     'Verificado'?: boolean
     'Seguidores'?: number
     'Valoracion'?: number
+    'PlanesCreados'?: number
 }
 
-export class ProfileIdUsuario {
-    'IdUsuario': number;
+export class AutorPlanCardModel {
+    'IdUsuario': number
+    'NombreUsuario': string
+    'LocalidadAutor': string
+    'Seguidores': number
+    'RatingAutor': number
+    'IsFollowing': number
 }
