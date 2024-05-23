@@ -109,12 +109,12 @@
       <li role="button" [routerLink]="['profile']">
         <div role="button">
           <img
-            src="https://scontent-bcn1-1.xx.fbcdn.net/v/t39.30808-6/352821287_3304685189792355_2898452865604277350_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=5f2048&_nc_ohc=mZu7JYFxGEsQ7kNvgFoeyyo&_nc_ht=scontent-bcn1-1.xx&oh=00_AYCTKP4eQ1UwlM6_cmmzfc9aEc0bhkpVjUAmeP7TZP54oQ&oe=6648525A"
+            src="{{perfilUsuario.Imagen}}"
             alt="user_logo"
           />
         </div>
         <div class="container-user_name-icon_down_arrow">
-          <h4>Razzmatazz</h4>
+          <h4>{{perfilUsuario.NombreUsuario}}</h4>
           <img
             src="../../../assets/icons/regular/caret-down.svg"
             alt="arrow_down"
@@ -129,12 +129,12 @@
             [routerLink]="['profile']"
           >
             <img
-              src="https://scontent-bcn1-1.xx.fbcdn.net/v/t39.30808-6/352821287_3304685189792355_2898452865604277350_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=5f2048&_nc_ohc=mZu7JYFxGEsQ7kNvgFoeyyo&_nc_ht=scontent-bcn1-1.xx&oh=00_AYCTKP4eQ1UwlM6_cmmzfc9aEc0bhkpVjUAmeP7TZP54oQ&oe=6648525A"
+              src="{{perfilUsuario.Imagen}}"
               alt="user_logo"
             />
             <div class="name_user-email_user">
-              <h4>Razzmatazz</h4>
-              <p [innerHTML]="'razzmatazz@gmail.com'"></p>
+              <h4>{{perfilUsuario.NombreUsuario}}</h4>
+              <p>{{perfilUsuario.Email}}</p>
             </div>
           </div>
           <div class="container-options_users-option_sign_out">
@@ -181,12 +181,12 @@
           [routerLink]="['profile']"
         >
           <img
-            src="https://scontent-bcn1-1.xx.fbcdn.net/v/t39.30808-6/352821287_3304685189792355_2898452865604277350_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=5f2048&_nc_ohc=mZu7JYFxGEsQ7kNvgFoeyyo&_nc_ht=scontent-bcn1-1.xx&oh=00_AYCTKP4eQ1UwlM6_cmmzfc9aEc0bhkpVjUAmeP7TZP54oQ&oe=6648525A"
+            src="{{perfilUsuario.Imagen}}"
             alt="user_logo"
           />
           <div class="contianer-user_info--menu">
-            <h4>Razzmatazz</h4>
-            <p [innerHTML]="'razzmatazz@gmail.com'"></p>
+            <h4>{{perfilUsuario.NombreUsuario}}</h4>
+            <p>{{perfilUsuario.Email}}</p>
           </div>
         </div>
         <div class="nav_pages--menu">

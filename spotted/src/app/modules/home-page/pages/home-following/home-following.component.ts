@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { PlanModel } from '../../../../models/plan.model';
+import { PlanCardModel } from '../../../../models/plan.model';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 import { catchError } from 'rxjs';
@@ -14,7 +14,7 @@ import { UserService } from '../../../../api/services/user.service';
 })
 export class HomeFollowingComponent {
   idUsuario?: number;
-  planes: PlanModel[] = [];
+  planes: PlanCardModel[] = [];
 
   constructor(private http: HttpClient, private route: ActivatedRoute,
     private userService: UserService

@@ -1,6 +1,8 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { catchError } from 'rxjs';
 import { ActivatedRoute, Router, RouterLink, RouterLinkActive } from '@angular/router';
-import { UserService } from '../../api/services/user.service';
+import { ProfileModel } from '../../models/profile.model';
+import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'app-global-nav',
   standalone: true,
@@ -8,16 +10,19 @@ import { UserService } from '../../api/services/user.service';
   templateUrl: './global-nav.component.html',
   styleUrl: './global-nav.component.scss'
 })
-export class GlobalNavComponent {
+export class GlobalNavComponent implements OnInit{
   statePage: number = 0;
   stateNotif: boolean = false;
   stateMessage: boolean = false;
   @Input() user_id!: number;
   vision_menu: boolean = false;
   actualYear: number = new Date().getFullYear();
+  perfilUsuario: ProfileModel;
 
   constructor(
-    private router: Router) {
+    private router: Router,
+    private http: HttpClient,) {
+      this.perfilUsuario = new ProfileModel();
     }
     
   onCheckboxChange(event: Event): void {
@@ -29,6 +34,27 @@ export class GlobalNavComponent {
     }
   }
   ngOnInit() {
+
+    if (this.user_id != null) {
+      const body = { IdUsuario: this.user_id }
+      try {
+        this.http.post('http://localhost:3000/getInfoUsuarioLogged', body).pipe(catchError(error => {
+          console.log('error is: ', error);
+          return error;
+        })).subscribe((res: any) => {
+          if (res) {
+            //console.log(res.results[0]);
+            this.perfilUsuario = res.results[0];
+            console.log("perfil", this.perfilUsuario);
+          } else {
+            console.log('couldnt post plan')
+          }
+        })
+      } catch (error) {
+        return console.log('sdfd', error);
+      }
+    }
+
     if (this.router.url.includes('home')){
       this.statePage = 1;
     }else if (this.router.url.includes('explore')){

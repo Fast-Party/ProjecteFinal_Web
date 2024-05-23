@@ -10,11 +10,16 @@ export const HOME_ROUTES: Routes = [
       { path: 'for-you', 
         loadComponent: () => import('../../modules/home-page/pages/home-for-you/home-for-you.component').then(m => m.HomeForYouComponent),
       },
-      {path: 'for-you/profile/idAutor',
-        loadComponent: () => import('../../modules/profile-page/pages/profile-page/profile-page.component').then(m => m.ProfilePageComponent),
+      {
+        path: 'following',
+        loadComponent: () => import('../../modules/home-page/pages/home-following/home-following.component').then(m => m.HomeFollowingComponent),
       },
-      { path: '', redirectTo: 'for-you',pathMatch: 'full',}
+      {path: '', redirectTo: 'for-you',pathMatch: 'full'}
     ],
+  },
+  {
+    path: 'for-you/autor/:idAutor',
+    loadComponent:  () => import('../../modules/autor-profile-page/pages/autor-profile-page/autor-profile-page.component').then(m => m.AutorProfilePageComponent),
   },
   
 ];

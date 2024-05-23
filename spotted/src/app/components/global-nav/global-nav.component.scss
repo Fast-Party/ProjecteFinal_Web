@@ -265,6 +265,7 @@
             height: 32px;
             transition: 0.3s ease-in-out;
             border-radius: 50%;
+            object-fit: cover;
           }
         }
 
@@ -332,6 +333,7 @@
               width: 56px;
               height: 56px;
               border-radius: 50%;
+              object-fit: cover;
             }
             .name_user-email_user {
               display: flex;
@@ -481,6 +483,7 @@
             width: 54px;
             height: 54px;
             border-radius: 50%;
+            object-fit: cover;
           }
           .contianer-user_info--menu {
             display: flex;

@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
 import { LandingPageComponent } from './modules/landing-page/pages/landing-page/landing-page.component';
-
+import { AutorProfilePageComponent } from './modules/autor-profile-page/pages/autor-profile-page/autor-profile-page.component';
 export const routes: Routes = [
   {
     path: 'landing-page',
@@ -43,12 +43,6 @@ export const routes: Routes = [
       ),
   },
     { path: 'landing-page', component: LandingPageComponent },
-    { path: 'login', component: LoginPageComponent},
-    { path: 'register', component: RegisterPageComponent},
-    { path: 'home/:idUsuario', component: HomePageComponent },
-    { path: 'create-plan', component: CreatePlanPageComponent },
-    { path: 'profile/:idUsuario', component: ProfilePageComponent },
-    { path: 'autor/:idUsuario', component: AutorProfilePageComponent }, 
 
     { path: '', redirectTo: 'landing-page', pathMatch: 'full' }
 ];
