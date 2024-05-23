@@ -49,7 +49,7 @@ export class LoginPageComponent {
           if (res.length > 0) {
             this.userService.setIdUsuario(res[0].IdUsuario);
             //this.router.navigateByUrl('/_/home/' + res[0].IdUsuario + '/for-you');
-            this.router.navigateByUrl(res[0].IdUsuario + '/home/for-you');
+            this.router.navigateByUrl(res[0].IdUsuario + '/home');
           } else {
             console.log('Datos incorrectos');
           }

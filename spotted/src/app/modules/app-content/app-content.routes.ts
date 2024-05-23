@@ -8,7 +8,6 @@ export const APP_CONTENT_ROUTES: Routes = [
                 loadChildren: () => import('../home-page/home.routes').then(m => m.HOME_ROUTES)},
             { path: 'profile', 
                 loadChildren: () => import('../profile-page/profile.routes').then(m => m.PROFILE_ROUTES)},
-           // { path: 'home/:idUsuario/profile/:idUsuario:', component: ProfilePageComponent },
         ]
      },
     
