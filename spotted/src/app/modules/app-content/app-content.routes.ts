@@ -1,5 +1,4 @@
 import { Routes } from '@angular/router';
-import { ProfilePageComponent } from '../profile-page/pages/profile-page/profile-page.component';
 import { AppContentComponent } from './app-content.component';
 export const APP_CONTENT_ROUTES: Routes = [
 

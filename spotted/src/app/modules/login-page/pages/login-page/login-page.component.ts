@@ -4,7 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { Router, RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { catchError } from 'rxjs';
-
+import { UserService } from '../../../../api/services/user.service';
 @Component({
   selector: 'app-login-page',
   standalone: true,
@@ -18,7 +18,11 @@ export class LoginPageComponent {
   showPassword: boolean = false;
   applyAnimationEye: boolean = false;
 
-  constructor(private http: HttpClient, private router: Router) {
+  constructor(
+    private http: HttpClient, 
+    private router: Router,
+    private userService: UserService
+  ) {
     this.loginObj = new Login();
     this.prvPss = 'test';
   }
@@ -43,9 +47,9 @@ export class LoginPageComponent {
         )
         .subscribe((res: any) => {
           if (res.length > 0) {
-            console.log(res[0].IdUsuario);
-            //this.router.navigateByUrl('/home/' + res[0].IdUsuario);
-            this.router.navigateByUrl('/_/home/' + res[0].IdUsuario);
+            this.userService.setIdUsuario(res[0].IdUsuario);
+            //this.router.navigateByUrl('/_/home/' + res[0].IdUsuario + '/for-you');
+            this.router.navigateByUrl(res[0].IdUsuario + '/home/for-you');
           } else {
             console.log('Datos incorrectos');
           }

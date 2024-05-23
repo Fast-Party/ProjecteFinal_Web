@@ -22,7 +22,7 @@ export class PlanModel {
     'LocalidadAutor': string
     'Seguidores': number
 
-    'ImagenPortada': string
+    'RutaImagenPlan': string
     'ImagenLogoAutor': string
 
 }

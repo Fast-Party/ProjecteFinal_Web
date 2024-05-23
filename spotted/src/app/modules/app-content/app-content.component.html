@@ -1,10 +1,9 @@
 <div class="app-content">
   <header>
-    <app-global-nav></app-global-nav>
+    <app-global-nav [user_id]="user_id"></app-global-nav>
   </header>
   <main>
     <router-outlet></router-outlet>
-   <!--<app-home-page></app-home-page>-->
   </main>
   <footer>
     <app-global-footer></app-global-footer>

@@ -3,14 +3,13 @@ import { HomePageComponent } from '../home-page/pages/home-page/home-page.compon
 import { ProfilePageComponent } from '../profile-page/pages/profile-page/profile-page.component';
 
 export const HOME_ROUTES: Routes = [
-  {
-    path: ':idUsuario',
+  {path: '',
     title: 'Inicio',
     component: HomePageComponent,
     children: [
-      { path: 'profile/:idUsuario:', component: ProfilePageComponent },
+      { path: 'for-you', 
+        loadComponent: () => import('../../modules/home-page/pages/home-for-you/home-for-you.component').then(m => m.HomeForYouComponent),
+       }
     ],
   },
-  //{ path: '', component: HomePageComponent },
-  //{ path: '', redirectTo: 'home', pathMatch: 'full'}
 ];

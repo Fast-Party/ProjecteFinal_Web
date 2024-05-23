@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
-import { Router, RouterLink, RouterLinkActive } from '@angular/router';
+import { Component, Input } from '@angular/core';
+import { ActivatedRoute, Router, RouterLink, RouterLinkActive } from '@angular/router';
+import { UserService } from '../../api/services/user.service';
 @Component({
   selector: 'app-global-nav',
   standalone: true,
@@ -11,11 +12,14 @@ export class GlobalNavComponent {
   statePage: number = 0;
   stateNotif: boolean = false;
   stateMessage: boolean = false;
-  user_id: string = '';
+  @Input() user_id!: number;
   vision_menu: boolean = false;
   actualYear: number = new Date().getFullYear();
-  constructor(private router: Router) { }
 
+  constructor(
+    private router: Router) {
+    }
+    
   onCheckboxChange(event: Event): void {
     const checkbox = event.target as HTMLInputElement;
     if (checkbox.checked) {
@@ -24,10 +28,7 @@ export class GlobalNavComponent {
       this.vision_menu = false;
     }
   }
-
   ngOnInit() {
-    this.user_id = this.router.url.charAt(this.router.url.length - 1);
-    
     if (this.router.url.includes('home')){
       this.statePage = 1;
     }else if (this.router.url.includes('explore')){
