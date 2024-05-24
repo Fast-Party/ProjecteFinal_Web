@@ -87,13 +87,13 @@ export class LandingPageComponent implements OnInit, AfterViewInit {
     this.imgs = this.imgsArray[index];
   }
 
-  wrdStrgArray = ['aventuras', 'amigos', 'hobbies'];
+  wrdStrgArray = ['fiestas', 'comunidades', 'novedades'];
   wrd = this.wrdStrgArray[0];
 
   prgStrgArray = [
-    'Nuestra aplicación de organización de planes facilita la coordinación de eventos con una interfaz intuitiva y herramientas de comunicación fluida. Además, nuestra comunidad activa permite descubrir nuevas experiencias y conectar con personas afines para planificar juntos.',
-    'Con Spotted, puedes encontrar a tus amigos y familiares en un solo lugar, manteniendo un historial de eventos compartidos y creando recuerdos inolvidables. Nuestra aplicación te permite compartir fotos, videos y comentarios para revivir esos momentos especiales.',
-    'Spotted es la plataforma ideal para organizar tus hobbies y actividades favoritas. Puedes unirte a grupos de interés, descubrir eventos cercanos y planificar salidas con personas que comparten tus pasiones. ¡Con Spotted, nunca más te perderás una oportunidad de disfrutar de tus hobbies!',
+    '¿No conoces como es Barcelona de noche? Deja que te lo enseñemos. En Fast Party podrás encontrar diferentes planes para todos los gustos, ya que nos basamos en los intereses de cada usuario para las recomendaciones. A través del mapa podrás encontrar los planes más cercanos a ti.',
+    'Fast Party no es solamente fiesta, sino también comunidad. Podrás conocer a gente nueva con tus mismos gustos e intereses, chatear a través de la web o app y saber cuáles de tus amigos acuden a las diferentes fiestas.',
+    '¿Conoces el término FOMO? “Fear of missing out” o “Miedo a perderse algo” FOMO es lo que sienten las personas que no conocen las novedades gracias a Fast Party. Acude a las fiestas más buscadas de la ciudad y entérate el primero para no quedare sin tu entrada.',
   ];
 
   prg = this.prgStrgArray[0];
