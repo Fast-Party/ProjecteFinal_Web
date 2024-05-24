@@ -10,6 +10,8 @@ export const APP_CONTENT_ROUTES: Routes = [
                 loadChildren: () => import('../profile-page/profile.routes').then(m => m.PROFILE_ROUTES)},
             { path: 'plan/:idPlan',
                 loadComponent: () => import('../plan-page/pages/plan-page.component').then(m => m.PlanPageComponent)},
+            { path: 'my-events',
+                loadComponent: () => import('../my-events-page/pages/my-events-page.component').then(m => m.MyEventsPageComponent)},
         ]
      },
     

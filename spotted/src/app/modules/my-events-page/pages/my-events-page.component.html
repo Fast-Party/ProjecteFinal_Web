@@ -1,1 +1,8 @@
-<p>my-events-page works!</p>
+<div class="container-list_events">
+    @for (plan of planes; track plan) {
+    <app-card-container
+      [plan]="plan"
+      [idUsuario]="idUsuario"
+    ></app-card-container>
+    }
+  </div>
