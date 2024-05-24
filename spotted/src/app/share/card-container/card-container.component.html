@@ -50,7 +50,7 @@
           </div>
           <button
             class="popup_following_btn"
-            (click)="isFollowing = !isFollowing"
+            (click)="toggleFollow()"
             [class.popup_following_btn-disable]="!buttonFollowingEnable"
             [disabled]="!buttonFollowingEnable"
           >

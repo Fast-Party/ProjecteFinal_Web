@@ -26,16 +26,11 @@ export class HomeFollowingComponent {
   }
 
   async fetchPlanes() {
-    try {
-      this.idUsuario = parseInt(this.route.snapshot.paramMap.get('idUsuario')!);
-    } catch (error) {
-      console.log(error);
-    }
     if (this.idUsuario != null) {
       const body = { IdUsuario: this.idUsuario };
       try {
         this.http
-          .post('http://localhost:3000/getPlanes', body)
+          .post('http://localhost:3000/getPlanesAutoresSeguidos', body)
           .pipe(
             catchError((error) => {
               console.log('error is: ', error);
@@ -60,4 +55,5 @@ export class HomeFollowingComponent {
       }
     }
   }
+  
 }
