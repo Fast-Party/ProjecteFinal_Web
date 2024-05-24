@@ -90,4 +90,40 @@
         }
       }
     }
+
+    .btn-see_map{
+      position: fixed;
+      bottom: 73px;
+      right: 40px;
+      display: inline-flex;
+      padding: 12px 20px;
+      justify-content: center;
+      align-items: center;
+      gap: 4px;
+      cursor: pointer;
+
+      border: none;
+      border-radius: 8px;
+      background: linear-gradient(
+        15deg,
+        rgba(stl.$primary-color-500, 0.7),
+        rgba(stl.$secondary-color-600, 0.7)
+      )
+      no-repeat;
+      backdrop-filter: blur(40px);
+
+      img{
+        width: 24px;
+        height: 24px;
+        filter: invert(1);
+      }
+
+      p{
+        font-size: 16px;
+        font-weight: 600;
+        color: stl.$base-color-white;
+      }
+
+      animation: fade-in-bottom 0.7s cubic-bezier(0.39, 0.575, 0.565, 1) 0.3s both;
+    }
   }
