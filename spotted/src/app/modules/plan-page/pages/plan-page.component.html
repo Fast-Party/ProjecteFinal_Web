@@ -12,5 +12,12 @@
         <p>{{plan.Valoracion}}</p>
     </div>
     <br><br>
+    @if (plan.IdEstado == null ) {
     <button (click)="handleJoinButton()">Join</button>
+    } @else if (plan.IdEstado == 1) {
+    <button (click)="handleCancelAndLeaveButton()">Cancel</button>
+    } @else if (plan.IdEstado == 2) {
+    <button (click)="handleCancelAndLeaveButton()">Leave</button>
+    }
+
 </div>

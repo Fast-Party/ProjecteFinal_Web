@@ -59,4 +59,6 @@ export class PlanScreenModel {
     'RutaImagenPlan': string
     'ImagenLogoAutor': string
 
+    'IdEstado'?: number
+
 }

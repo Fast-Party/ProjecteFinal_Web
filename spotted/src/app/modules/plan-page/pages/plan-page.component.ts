@@ -33,7 +33,7 @@ export class PlanPageComponent implements OnInit {
 
     if (this.idPlan != null) {
       console.log(this.idPlan)
-      const body = { IdPlan: this.idPlan }
+      const body = { IdPlan: this.idPlan, IdUsuario: this.idUsuario }
       try {
         this.http.post('http://localhost:3000/getPlanById', body).pipe(catchError(error => {
           console.log('error is: ', error);
@@ -58,6 +58,28 @@ export class PlanPageComponent implements OnInit {
       console.log(body)
       try {
         this.http.post('http://localhost:3000/unirseAPlan', body).pipe(catchError(error => {
+          console.log('error is: ', error);
+          return error;
+        })).subscribe((res: any) => {
+          if (res) {
+            this.plan = res.results;
+            console.log("plan", this.plan);
+          } else {
+            console.log('couldnt get plan')
+          }
+        })
+      } catch (error) {
+        return console.log('sdfd', error);
+      }
+    }
+  }
+
+  handleCancelAndLeaveButton(): void {
+    if (this.idPlan != null) {
+      const body = { IdUsuario : this.idUsuario, IdPlan: this.idPlan, Privado: false}
+      console.log(body)
+      try {
+        this.http.post('http://localhost:3000/denegarUnionAPlan', body).pipe(catchError(error => {
           console.log('error is: ', error);
           return error;
         })).subscribe((res: any) => {
