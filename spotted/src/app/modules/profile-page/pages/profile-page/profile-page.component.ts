@@ -5,6 +5,8 @@ import { ActivatedRoute } from '@angular/router';
 import { ProfileModel } from '../../../../models/profile.model';
 import { PlanCardModel } from '../../../../models/plan.model';
 
+import { UserService } from '../../../../api/services/user.service';
+
 @Component({
   selector: 'app-profile-page',
   standalone: true,
@@ -21,17 +23,15 @@ export class ProfilePageComponent implements OnInit {
   perfilUsuario: ProfileModel;
   planesUsuario: PlanCardModel[] = [];
 
-  constructor(private route: ActivatedRoute, private http: HttpClient) {
+  constructor(private route: ActivatedRoute, private http: HttpClient, private userService: UserService) {
     this.perfilUsuario = new ProfileModel();
   }
 
   ngOnInit(): void {
-    try {
-      this.idUsuario = parseInt(this.route.snapshot.paramMap.get('idUsuario')!);
-    } catch (error) {
-      console.log(error);
-    }
 
+    this.idUsuario = this.userService.getIdUsuario();
+    console.log(this.idUsuario);
+    
     if (this.idUsuario != null) {
       console.log(this.idUsuario)
       const body = { IdUsuario: this.idUsuario }

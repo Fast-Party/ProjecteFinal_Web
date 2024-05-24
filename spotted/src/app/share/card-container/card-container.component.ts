@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { PlanCardModel } from '../../models/plan.model';
 import { RouterLink } from '@angular/router';
 
@@ -14,7 +14,9 @@ export class CardContainerComponent implements OnInit{
 
   @Input() plan: PlanCardModel | null = null;
   @Input() idUsuario: any = null;
+  @Output() planUpdated = new EventEmitter<PlanCardModel>();
 
+  
   isLiked: boolean = false;
   isFollowing: boolean = false;
   buttonFollowingEnable: boolean = true;
@@ -32,7 +34,6 @@ export class CardContainerComponent implements OnInit{
   }
    
   ngOnInit(): void {
-
     this.originalDate = this.plan?.Fecha;
     const date = new Date(this.originalDate);
      this.diaSemana = new Intl.DateTimeFormat("es-ES", { weekday: "short" }).format(date);
@@ -65,4 +66,60 @@ export class CardContainerComponent implements OnInit{
       return numero.toString();
     }
    }
+
+   async toFollowAutor(){
+      if(this.idUsuario != null && this.plan?.IdAutor != null){
+        const body = {IdSeguidor: this.idUsuario, IdSeguido: this.plan!.IdAutor};
+        try {
+          fetch('http://localhost:3000/seguirUsuario', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(body)
+          }).then(response => {
+            if(response.ok){
+              this.isFollowing = true;
+              this.plan!.Seguidores = (this.plan!.Seguidores || 0) + 1; 
+            }else{
+              this.isFollowing = false;
+            }
+          });
+        } catch (error) {
+          console.log('Error: ', error);
+        }
+      }
+   }
+
+   async toUnfollowAutor(){
+    if(this.idUsuario != null && this.plan?.IdAutor != null){
+      const body = {IdSeguidor: this.idUsuario, IdSeguido: this.plan!.IdAutor};
+      try {
+        fetch('http://localhost:3000/dejarDeSeguirUsuario', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(body)
+        }).then(response => {
+          if(response.ok){
+            this.isFollowing = false;
+            this.plan!.Seguidores = (this.plan!.Seguidores || 1) - 1;
+          }else{
+            this.isFollowing = true;
+          }
+        });
+      } catch (error) {
+        console.log('Error: ', error);
+      }
+    }
+   }
+
+   toggleFollow() {
+    if (this.isFollowing) {
+      this.toUnfollowAutor();
+    } else {
+      this.toFollowAutor();
+    }
+  }
 }
