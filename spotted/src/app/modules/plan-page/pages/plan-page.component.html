@@ -1,1 +1,16 @@
-<p>plan-page works!</p>
+<div>
+    <div [class]="planContainer">
+        <h2>{{plan.Titulo}}</h2>
+        <p>{{plan.RutaImagenPlan}}</p>
+        <p>{{plan.IdAutor}}</p>
+        <p>{{plan.Fecha}}</p>
+        <p>{{plan.Localizacion}}</p>
+        <p>{{plan.Descripcion}}</p>
+        <p>{{plan.EdadMinima}}</p>
+        <p>{{plan.EdadMaxima}}</p>
+        <p>{{plan.AforoMaximo}}</p>
+        <p>{{plan.Valoracion}}</p>
+    </div>
+    <br><br>
+    <button (click)="handleJoinButton()">Join</button>
+</div>
