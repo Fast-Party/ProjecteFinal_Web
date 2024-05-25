@@ -167,7 +167,7 @@ ul {
   }
   to {
     @if $orientation == "vertical" {
-      transform: translateY(0);
+      transform: translateY(0) !important;
     } @else if $orientation == "horizontal" {
       transform: translateX(0);
     }
