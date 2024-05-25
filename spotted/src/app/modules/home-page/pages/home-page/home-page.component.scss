@@ -82,7 +82,6 @@
         }
 
         p {
-          //display: none;
           font-size: 16px;
           font-weight: 400;
           color: stl.$base-color-black;
@@ -92,8 +91,9 @@
     }
 
     .btn-see_map{
+      opacity: 0;
       position: fixed;
-      bottom: 73px;
+      bottom: 56px;
       right: 40px;
       display: inline-flex;
       padding: 12px 20px;
@@ -103,7 +103,7 @@
       cursor: pointer;
 
       border: none;
-      border-radius: 8px;
+      border-radius: 50px;
       background: linear-gradient(
         15deg,
         rgba(stl.$primary-color-500, 0.7),
@@ -113,17 +113,27 @@
       backdrop-filter: blur(40px);
 
       img{
-        width: 24px;
-        height: 24px;
+        width: 18px;
+        height: 18px;
         filter: invert(1);
       }
 
       p{
-        font-size: 16px;
+        font-size: 14px;
         font-weight: 600;
         color: stl.$base-color-white;
       }
 
-      animation: fade-in-bottom 0.7s cubic-bezier(0.39, 0.575, 0.565, 1) 0.3s both;
+      animation: fade-in-bottom 0.7s cubic-bezier(0.39, 0.575, 0.565, 1) 0.3s forwards;
+      transition: .3s ease-in-out;
+      &:hover{
+        scale: 1.05;
+      }
+
+      @media screen and (max-width: 768px) {
+        //quiero centrar el boton en el centro de la pantalla
+        right: 50%;
+        transform: translateX(50%);
+      }
     }
   }
