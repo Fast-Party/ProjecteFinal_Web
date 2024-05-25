@@ -1,30 +1,27 @@
 import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { catchError } from 'rxjs';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 import { PlanCardModel } from '../../../../models/plan.model';
 import { AutorPlanModel } from '../../../../models/autor.model';
-import { UserService } from '../../../../api/services/user.service';
 @Component({
   selector: 'app-autor-profile-page',
   standalone: true,
-  imports: [HttpClientModule],
+  imports: [HttpClientModule,CommonModule],
   templateUrl: './autor-profile-page.component.html',
   styleUrl: './autor-profile-page.component.scss'
 })
 export class AutorProfilePageComponent implements OnInit {
 
-  profileContainer = 'profile-container';
-  planContainer = 'plan-container';
+  isFollowing: boolean = false;
 
   idAutor?: number;
-  perfilUsuario: AutorPlanModel;
-  planesUsuario: PlanCardModel[] = [];
+  perfilAutor: AutorPlanModel;
+  planesAutor: PlanCardModel[] = [];
 
-  constructor(private route: ActivatedRoute, private http: HttpClient,
-    private userService: UserService
-  ) {
-    this.perfilUsuario = new AutorPlanModel();
+  constructor(private route: ActivatedRoute, private http: HttpClient) {
+    this.perfilAutor = new AutorPlanModel();
   }
 
   ngOnInit(): void {
@@ -41,10 +38,10 @@ export class AutorProfilePageComponent implements OnInit {
           return error;
         })).subscribe((res: any) => {
           if (res) {
-            this.perfilUsuario = res.perfil[0];
-            console.log("perfil", this.perfilUsuario);
-            this.planesUsuario = res.planes;
-            console.log(this.planesUsuario);
+            this.perfilAutor = res.perfil[0];
+            console.log("perfil", this.perfilAutor);
+            this.planesAutor = res.planes;
+            console.log(this.planesAutor);
           } else {
             console.log('couldnt post plan')
           }

@@ -1,3 +1,210 @@
+@use "../../../../../sass/variables.scss" as stl;
+
+.autor_profile-page {
+  display: flex;
+  height: 83vh;
+  width: auto;
+  margin-inline: 24px;
+
+  //background-color: red;
+
+  .container-autor_information {
+    display: flex;
+
+    //Width relativo
+    width: 400px;
+
+    padding: 0px 24px;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    flex-shrink: 0;
+    align-self: stretch;
+
+    .autor_info-autor_stats-btn_follow-separator {
+      display: flex;
+      padding: 0px 12px;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      align-self: stretch;
+      gap: 40px;
+
+      .autor_info-autor_stats-btn_follow {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 32px;
+        align-self: stretch;
+
+        .autor_logo-autor_info {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 12px;
+          align-self: stretch;
+
+          img {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            object-position: center;
+          }
+
+          .autor_name-autor_direction {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            align-self: stretch;
+
+            h2 {
+              display: -webkit-box;
+              -webkit-box-orient: vertical;
+              -webkit-line-clamp: 2;
+              align-self: stretch;
+
+              font-size: 24px;
+              font-style: normal;
+              font-weight: 700;
+              text-align: center;
+              text-overflow: ellipsis;
+              overflow: hidden;
+            }
+
+            p {
+              display: -webkit-box;
+              -webkit-box-orient: vertical;
+              -webkit-line-clamp: 2;
+              align-self: stretch;
+
+              font-size: 14px;
+              font-style: normal;
+              font-weight: 400;
+              line-height: 24px;
+              text-align: center;
+              color: rgba(stl.$base-color-black, 0.8);
+            }
+          }
+        }
+
+        .autor_stats {
+          display: flex;
+          padding: 0px 24px;
+          justify-content: center;
+          align-items: center;
+          gap: 16px;
+          align-self: stretch;
+
+          .num_stat {
+            font-size: 20px;
+            font-weight: 700;
+            color: stl.$base-color-black;
+            text-align: center;
+            align-self: stretch;
+          }
+
+          .label_stat {
+            font-size: 14px;
+            font-weight: 400;
+            color: rgba(stl.$base-color-black, 0.5);
+            text-align: center;
+            align-self: stretch;
+            text-transform: lowercase;
+          }
+
+          .autor_stats--info_container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            flex: 1 0 0;
+          }
+
+          .separator_vertical {
+            width: 1px;
+            height: 100%;
+            background-color: rgba(stl.$base-color-black, 0.1);
+          }
+        }
+
+        .btn_follow {
+          width: 100%;
+          display: flex;
+          padding: 8px 12px;
+          justify-content: center;
+          align-items: center;
+          background: linear-gradient(
+              15deg,
+              stl.$primary-color-500,
+              stl.$secondary-color-600,
+              stl.$primary-color-500
+            )
+            no-repeat;
+          background-position: left center;
+          background-size: 300%;
+          color: stl.$base-color-white;
+          gap: 10px;
+          align-self: stretch;
+          cursor: pointer;
+          border-radius: 6px;
+          border: none;
+          transition: 0.3s ease-in-out;
+          &:hover {
+            background-size: 320%;
+            background-position: right center;
+          }
+        }
+      }
+
+      .separator {
+        width: 100%;
+        height: 1px;
+        background-color: rgba(stl.$base-color-black, 0.1);
+      }
+    }
+
+    .container-autor_description {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 16px;
+      flex: 1 0 0;
+      align-self: stretch;
+
+      h6 {
+        font-size: 12px;
+
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+        text-transform: uppercase;
+        color: rgba(stl.$base-color-black, 0.5);
+      }
+
+      .description-container{
+        overflow-y: auto; 
+        overflow-x: hidden; 
+        flex: 1 0 0;
+        p {
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 22px;
+            color: rgba(stl.$base-color-black, 0.8);
+          }
+
+        scrollbar-width: thin;
+        scrollbar-color: rgba(stl.$base-color-black, 0.1) rgba(stl.$base-color-black, 0.05);
+      }
+
+
+    }
+  }
+}
+
+/*
 .profile-container {
     display: flex;
     flex-direction: column;
@@ -16,4 +223,4 @@
     width: 25vw;
     height: 33vh;
     background-color: lightskyblue;
-}
+}*/
