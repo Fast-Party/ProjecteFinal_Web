@@ -1,15 +1,19 @@
 <div class="container-card">
   <div class="img_cover-local_name-icons">
-    <img
-      class="img_cover"
-      src="{{ plan?.RutaImagenPlan}}"
-      alt="Img Cover"
-    />
-    <div class="local_info-icons">
-      <div class="local_img-local_name" [routerLink]="['/',idUsuario ,'autor', plan?.IdAutor]">
+    <img class="img_cover" src="{{ plan?.RutaImagenPlan }}" alt="Img Cover" />
+    <div class="local_info-icons" [class.autorNotVisible]="!autorInfoVisible">
+      @if (autorInfoVisible) {
+      <div
+        class="local_img-local_name"
+        [routerLink]="['/', idUsuario, 'autor', plan?.IdAutor]"
+      >
         <img
           class="local_img"
-          src="{{plan?.ImagenLogoAutor ? plan?.ImagenLogoAutor : 'https://static.vecteezy.com/system/resources/previews/005/005/788/large_2x/user-icon-in-trendy-flat-style-isolated-on-grey-background-user-symbol-for-your-web-site-design-logo-app-ui-illustration-eps10-free-vector.jpg'}}"
+          src="{{
+            plan?.ImagenLogoAutor
+              ? plan?.ImagenLogoAutor
+              : 'https://static.vecteezy.com/system/resources/previews/005/005/788/large_2x/user-icon-in-trendy-flat-style-isolated-on-grey-background-user-symbol-for-your-web-site-design-logo-app-ui-illustration-eps10-free-vector.jpg'
+          }}"
           alt="Local Img"
         />
         <p class="local_name">{{ plan?.NombreAutor }}</p>
@@ -19,12 +23,17 @@
           <div class="local_img_popup-local_name_popup-local_ubi">
             <img
               class="local_img_popup"
-              src="{{plan?.ImagenLogoAutor}}"
+              src="{{ plan?.ImagenLogoAutor }}"
               alt="Local Img"
-              [routerLink]="['/',idUsuario ,'autor', plan?.IdAutor]"
+              [routerLink]="['/', idUsuario, 'autor', plan?.IdAutor]"
             />
             <div class="local_name_popup-local-ubi">
-              <p class="local_name_popup" [routerLink]="['/',idUsuario ,'autor', plan?.IdAutor]">{{ plan?.NombreAutor }}</p>
+              <p
+                class="local_name_popup"
+                [routerLink]="['/', idUsuario, 'autor', plan?.IdAutor]"
+              >
+                {{ plan?.NombreAutor }}
+              </p>
               <div class="container_local_ubi">
                 <img
                   src="../../../assets/icons/fill/map-pin-fill.svg"
@@ -45,7 +54,9 @@
                 src="../../../assets/icons/fill/star-fill.svg"
                 alt="Star fill Rating"
               />
-              <p class="local_stats_rating_number">{{ (plan?.RatingAutor ?? 0) | number: '1.1-1' }}</p>
+              <p class="local_stats_rating_number">
+                {{ plan?.RatingAutor ?? 0 | number : "1.1-1" }}
+              </p>
             </div>
           </div>
           <button
@@ -58,6 +69,7 @@
           </button>
         </div>
       </div>
+      }
       <div class="characteristics_event_icons">
         <div class="icon_circle">
           <img
@@ -96,8 +108,13 @@
         {{ plan?.Titulo }}
       </p>
       <p class="event_date">
-        {{ diaSemana }}. <span>{{ refactorNumberDate(dia) }}</span> {{ mes }} {{ year }} -
-        <span>{{ refactorNumberDate(hora) }}:{{ refactorNumberDate(minutos) }}</span>
+        {{ diaSemana }}. <span>{{ refactorNumberDate(dia) }}</span> {{ mes }}
+        {{ year }} -
+        <span
+          >{{ refactorNumberDate(hora) }}:{{
+            refactorNumberDate(minutos)
+          }}</span
+        >
       </p>
     </div>
     <label class="container-icon_like">

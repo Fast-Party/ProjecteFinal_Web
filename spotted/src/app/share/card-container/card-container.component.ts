@@ -14,6 +14,7 @@ export class CardContainerComponent implements OnInit{
 
   @Input() plan: PlanCardModel | null = null;
   @Input() idUsuario: any = null;
+  @Input() autorInfoVisible: boolean = true;
   @Output() planUpdated = new EventEmitter<PlanCardModel>();
 
   

@@ -45,7 +45,6 @@ export class GlobalNavComponent implements OnInit{
           if (res) {
             //console.log(res.results[0]);
             this.perfilUsuario = res.results[0];
-            console.log("perfil", this.perfilUsuario);
           } else {
             console.log('couldnt post plan')
           }

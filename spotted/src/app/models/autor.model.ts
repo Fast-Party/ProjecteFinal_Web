@@ -15,6 +15,7 @@ export class AutorPlanModel {
     'Valoracion'?: number
     'Direccion'?: string
     'PlanesCreados'?: number
+    'ImagenesLocal'?: any
 }
 
 export class AutorPlanCardModel {
