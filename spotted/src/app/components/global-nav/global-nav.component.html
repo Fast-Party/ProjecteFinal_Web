@@ -190,10 +190,10 @@
           </div>
         </div>
         <div class="nav_pages--menu">
-          <ul>
-            <li><a [routerLink]="['home']">Inicio</a></li>
+          <ul (click)="vision_menu = false">
+            <li><a routerLink="home">Inicio</a></li>
             <li><a routerLink="explore">Explorar</a></li>
-            <li><a routerLink="my_events">Mis eventos</a></li>
+            <li><a routerLink="my-events">Mis eventos</a></li>
           </ul>
         </div>
       </div>

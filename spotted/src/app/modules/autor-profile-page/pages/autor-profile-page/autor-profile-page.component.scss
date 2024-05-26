@@ -2,7 +2,6 @@
 
 .autor_profile-page {
   display: flex;
-  //width: auto;
   margin-inline: 24px;
   align-self: stretch;
 
@@ -10,10 +9,7 @@
     align-items: center;
     flex-direction: column;
     gap: 40px;
-    
   }
-
-  //background-color: red;
 
   .subtitle {
     font-size: 12px;
@@ -29,8 +25,6 @@
     position: sticky;
     top: 80px;
     height: 100%;
-
-    //Width relativo
     width: 400px;
 
     @media screen and (max-width: 860px) {
@@ -43,7 +37,7 @@
       padding: 0 !important;
     }
 
-    @media screen and (max-width: 630px){
+    @media screen and (max-width: 630px) {
       width: 100% !important;
       padding: 0 !important;
     }
@@ -54,6 +48,8 @@
     gap: 24px;
     flex-shrink: 0;
     align-self: stretch;
+
+    animation: fade-in-top 0.7s ease-in-out forwards;
 
     .autor_info-autor_stats-btn_follow-separator {
       display: flex;
@@ -68,7 +64,7 @@
         align-self: center;
       }
 
-      @media screen and (max-width: 400px){
+      @media screen and (max-width: 400px) {
         align-self: stretch;
       }
 
@@ -193,6 +189,7 @@
           border-radius: 6px;
           border: none;
           transition: 0.3s ease-in-out;
+          animation: fade-in-bottom 0.7s cubic-bezier(0.39, 0.575, 0.565, 1) .3s both;
           &:hover {
             background-size: 320%;
             background-position: right center;
@@ -216,37 +213,36 @@
       align-self: stretch;
 
       .description-container {
-        max-height: 25vh; 
-        overflow-y: auto; 
-        flex: 1 0 auto; 
+        max-height: 25vh;
+        overflow-y: auto;
+        flex: 1 0 auto;
 
-  p {
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 22px;
-    color: rgba(stl.$base-color-black, 0.8);
-  }
+        p {
+          font-size: 14px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: 22px;
+          color: rgba(stl.$base-color-black, 0.8);
+        }
 
-  // Estilos para scrollbar
-  scrollbar-width: thin;
-  scrollbar-color: rgba(stl.$base-color-black, 0.1) rgba(stl.$base-color-black, 0.05);
+        scrollbar-width: thin;
+        scrollbar-color: rgba(stl.$base-color-black, 0.1)
+          rgba(stl.$base-color-black, 0.05);
 
-  // Estilos específicos para navegadores WebKit (Chrome, Safari)
-  &::-webkit-scrollbar {
-    width: 8px;
-  }
+        &::-webkit-scrollbar {
+          width: 8px;
+        }
 
-  &::-webkit-scrollbar-track {
-    background: rgba(stl.$base-color-black, 0.05);
-  }
+        &::-webkit-scrollbar-track {
+          background: rgba(stl.$base-color-black, 0.05);
+        }
 
-  &::-webkit-scrollbar-thumb {
-    background-color: rgba(stl.$base-color-black, 0.1);
-    border-radius: 10px;
-    border: 2px solid rgba(stl.$base-color-black, 0.05);
-  }
-}
+        &::-webkit-scrollbar-thumb {
+          background-color: rgba(stl.$base-color-black, 0.1);
+          border-radius: 10px;
+          border: 2px solid rgba(stl.$base-color-black, 0.05);
+        }
+      }
     }
   }
 
@@ -281,7 +277,7 @@
         .container--images {
           display: flex;
           flex-wrap: wrap;
-          gap: 12px;          
+          gap: 12px;
           //background-color: yellow;
           img {
             flex: 1 0 230px;
@@ -301,7 +297,7 @@
             font-style: normal;
             font-weight: 600;
             line-height: 310px;
-            color: rgba(stl.$base-color-black, 0.5);
+            color: rgba(stl.$base-color-black, 0.33);
             text-align: center;
 
             animation: appear 0.7s ease-in-out forwards;
@@ -314,7 +310,8 @@
         justify-content: center;
         align-items: center;
         cursor: pointer;
-
+        animation: fade-in-top 0.7s cubic-bezier(0.39, 0.575, 0.565, 1) 0.3s
+          both;
         p {
           font-size: 14px;
           font-style: normal;
@@ -339,7 +336,8 @@
         position: relative;
         left: 0;
         transform: translateX(0);
-
+        animation: fade-in-bottom 0.7s cubic-bezier(0.39, 0.575, 0.565, 1) 0.3s
+          both;
         div[role="button"] {
           a {
             font-size: 14px !important;
@@ -349,13 +347,9 @@
 
       .events__comments {
         flex: 1 0 0;
-        //align-self: stretch;
         display: flex;
         flex-direction: column;
         width: 100%;
-
-        //min-height: 373px;
-   
       }
     }
   }
