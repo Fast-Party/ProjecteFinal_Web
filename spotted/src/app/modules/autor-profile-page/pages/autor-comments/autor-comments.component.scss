@@ -1,0 +1,104 @@
+@use '../../../../../sass/variables.scss' as stl;
+
+.container--autor_comments{
+    flex: 1 0 0;
+    height: auto;
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    padding-inline: 16px;
+
+    @media screen and (max-width: 860px){
+        padding-inline: 0;
+    }
+
+    gap: 24px;
+    .container--list_comments{
+        height: 320px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        h1{
+            font-size: 24px;
+            font-weight: 600;
+            color: rgba(stl.$base-color-black, 0.2);
+            animation: appear 0.7s ease-in-out forwards;
+        }
+    }
+    .input-container{
+        position: relative;
+        width: 100%;
+        opacity: 0;
+        animation: scale-in-hor-center .5s ease-in-out .1s forwards;
+        .content-input {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          position: absolute;
+          right: 12px;
+          cursor: pointer;
+          user-select: none;
+          height: 100%;
+          top: 0;
+          .icon {
+            width: 16px;
+            height: 16px;
+            filter: invert(0.5);
+            transition: 0.3s ease-in-out;
+            opacity: 0;
+            &:hover {
+              filter: invert(0);
+            }
+            animation: appear .5s ease-in-out .5s forwards;
+          }
+
+          .input-icon {
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+          }
+        }
+
+        input[type="text"]{
+          font-size: 14px;
+          width: 100%;
+          border: none;
+          border-bottom: 1px solid rgba(stl.$base-color-black, 0.5);
+          color: stl.$base-color-black;
+          padding: 5px 0;
+          padding-right: 32px;
+          background-color: transparent;
+          outline: none;
+
+          &::placeholder {
+            color: rgba(stl.$base-color-black, 0.5);
+          }
+        }
+
+        .underline {
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          height: 1px;
+          width: 100%;
+          background-color: stl.$base-color-black;
+          transform: scaleX(0);
+          transition: all 0.3s ease;
+        }
+
+        input[type="text"]:focus ~ .underline,
+        input[type="text"]:valid ~ .underline {
+          transform: scaleX(1);
+        }
+
+        input[type="text"]:focus ~ .underline{
+          background-color: stl.$base-color-black;
+        }
+
+        input[type="text"]:valid ~ .content-input{
+            .icon{
+                filter: invert(0);
+            }
+          }
+      }
+}

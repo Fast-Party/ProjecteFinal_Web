@@ -42,7 +42,5 @@ export const routes: Routes = [
         (m) => m.PageNotFoundComponent
       ),
   },
-    { path: 'landing-page', component: LandingPageComponent },
-
     { path: '', redirectTo: 'landing-page', pathMatch: 'full' }
 ];

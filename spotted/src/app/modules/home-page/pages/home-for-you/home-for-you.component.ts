@@ -26,6 +26,7 @@ export class HomeForYouComponent {
   ngOnInit() {
     this.idUsuario = this.userService.getIdUsuario(); 
     this.fetchPlanes();
+    console.log(this.planes);
   }
 
   async fetchPlanes() {

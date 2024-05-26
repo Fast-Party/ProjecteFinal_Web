@@ -1,22 +1,77 @@
-<div>
-    <div [class]="profileContainer">
-        <h2>{{perfilUsuario.NombreUsuario}}</h2>
-        <p>{{perfilUsuario.Seguidores}}</p>
-        <p>{{perfilUsuario.FechaNacimiento}}</p>
-        <p>{{perfilUsuario.Descripcion}}</p>
-        <p>{{perfilUsuario.Valoracion}}</p>
-        <p>{{perfilUsuario.PlanesCreados}}</p>
+<div class="autor_profile-page">
+  <div class="container-autor_information">
+    <div class="autor_info-autor_stats-btn_follow-separator">
+      <div class="autor_info-autor_stats-btn_follow">
+        <div class="autor_logo-autor_info">
+          <img src="{{ perfilAutor.Imagen }}" alt="logo autor" />
+          <div class="autor_name-autor_direction">
+            <h2>{{ perfilAutor.NombreUsuario }}</h2>
+            <p>{{ perfilAutor.Direccion }}</p>
+          </div>
+        </div>
+        <div class="autor_stats">
+          <div class="autor_stats--info_container">
+            <p class="num_stat">{{ perfilAutor.Seguidores }}</p>
+            <p class="label_stat">Seguidores</p>
+          </div>
+          <div class="separator_vertical"></div>
+          <div class="autor_stats--info_container">
+            <p class="num_stat">
+              {{ perfilAutor.Valoracion ?? 0 | number : "1.1-1" }}
+            </p>
+            <p class="label_stat">Valoración</p>
+          </div>
+          <div class="separator_vertical"></div>
+          <div class="autor_stats--info_container">
+            <p class="num_stat">{{ perfilAutor.PlanesCreados }}</p>
+            <p class="label_stat">Eventos</p>
+          </div>
+        </div>
+        <button class="btn_follow" (click)="toggleFollow()">
+          @if (!isFollowing) { Seguir }@else { Siguiendo }
+        </button>
+      </div>
+      <div class="separator"></div>
     </div>
-</div>
-
-<div>
-    @for (plan of planesUsuario; track plan) {
-    <div [class]="planContainer">
-        <h2>{{plan.Titulo}}</h2>
-        <p>{{plan.Descripcion}}</p>
-        <p>{{plan.IdAutor}}</p>
-        <p>{{plan.Fecha}}</p>
-        <p>{{plan.Localizacion}}</p>
+    <div class="container-autor_description">
+      <h6 class="subtitle">Descripción</h6>
+      <div class="description-container">
+        <p>{{ perfilAutor.Descripcion }}</p>
+      </div>
     </div>
-    }
+  </div>
+  <div class="container--autor_images-autor_events__comments">
+    <div class="container--autor_images">
+      <div class="container--title-images">
+        <h6 class="subtitle">Imágenes</h6>
+        <div class="container--images">
+          @if (imagenesLocal.length > 0) {
+          <img src="{{ imagenesLocal[0].Ruta }}" alt="img local autor" />
+          <img src="{{ imagenesLocal[1].Ruta }}" alt="img local autor" />
+          <img src="{{ imagenesLocal[2].Ruta }}" alt="img local autor" />
+          }@else {
+          <p>No hay imágenes</p>
+          }
+        </div>
+      </div>
+      @if (imagenesLocal.length > 0) {
+      <div class="text-see_more" role="button">
+        <p>Ver más</p>
+      </div>
+      }
+    </div>
+    <div class="container--events__comments-tag_menu">
+      <div class="container-tag_menu">
+        <div role="button">
+          <a routerLink="events" routerLinkActive="tag-select">Eventos</a>
+        </div>
+        <div role="button">
+          <a routerLink="comments" routerLinkActive="tag-select">Comentarios</a>
+        </div>
+      </div>
+      <div class="events__comments">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
 </div>

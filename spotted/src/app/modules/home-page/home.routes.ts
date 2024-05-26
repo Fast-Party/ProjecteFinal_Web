@@ -16,9 +16,9 @@ export const HOME_ROUTES: Routes = [
       {path: '', redirectTo: 'for-you',pathMatch: 'full'}
     ],
   },
-  {
+  /*{
     path: 'for-you/autor/:idAutor',
     loadComponent:  () => import('../../modules/autor-profile-page/pages/autor-profile-page/autor-profile-page.component').then(m => m.AutorProfilePageComponent),
-  },
+  },*/
   
 ];

@@ -13,7 +13,9 @@ export class AutorPlanModel {
     'Verificado'?: boolean
     'Seguidores'?: number
     'Valoracion'?: number
+    'Direccion'?: string
     'PlanesCreados'?: number
+    'ImagenesLocal'?: any
 }
 
 export class AutorPlanCardModel {

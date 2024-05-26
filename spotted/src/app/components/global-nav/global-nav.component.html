@@ -1,7 +1,7 @@
 <div class="container-global_nav">
   <nav class="app_logo-nav">
     <ul class="ul-app_logo-pages">
-      <li role="button" [routerLink]="['home']">
+      <li role="button" routerLink="home">
         <div class="app_logo">
           <img
             src="../../../assets/img/logo/Logo Linear Gradient.svg"
@@ -14,7 +14,7 @@
       <li>
         <a
           class="home-link"
-          [routerLink]="['home']"
+          routerLink="home"
           [class.active-links]="statePage == 1"
           >Inicio</a
         >
@@ -106,7 +106,7 @@
     </nav>
 
     <ul class="menu">
-      <li role="button" [routerLink]="['profile']">
+      <li role="button" routerLink="profile">
         <div role="button">
           <img
             src="{{perfilUsuario.Imagen}}"
@@ -126,7 +126,7 @@
           <div
             class="smart-info_user"
             role="button"
-            [routerLink]="['profile']"
+            routerLink="profile"
           >
             <img
               src="{{perfilUsuario.Imagen}}"
@@ -174,7 +174,7 @@
   ></div>
   <div class="popup_menu" [class.popup_menu_visible]="vision_menu">
     <div class="content-menu">
-      <div class="user_info-nav_pages--menu">
+      <div class="user_info-nav_pages--menu" (click)="vision_menu = false">
         <div
           class="user_info-user_logo--menu"
           role="button"
@@ -190,24 +190,24 @@
           </div>
         </div>
         <div class="nav_pages--menu">
-          <ul>
-            <li><a [routerLink]="['home']">Inicio</a></li>
+          <ul (click)="vision_menu = false">
+            <li><a routerLink="home">Inicio</a></li>
             <li><a routerLink="explore">Explorar</a></li>
-            <li><a routerLink="my_events">Mis eventos</a></li>
+            <li><a routerLink="my-events">Mis eventos</a></li>
           </ul>
         </div>
       </div>
       <hr />
       <div class="user_setup--menu">
-        <ul>
-          <li role="button" [routerLink]="['profile']">
+        <ul (click)="vision_menu = false">
+          <li role="button" routerLink="profile">
             <img
               src="../../../assets/icons/regular/user.svg"
               alt="user_profile"
             />
             <p>Ver perfil</p>
           </li>
-          <li role="button" routerLink="/settings">
+          <li role="button" routerLink="settings">
             <img
               src="../../../assets/icons/regular/gear.svg"
               alt="user_settings"

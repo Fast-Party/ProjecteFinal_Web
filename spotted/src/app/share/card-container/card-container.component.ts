@@ -1,12 +1,12 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { PlanCardModel } from '../../models/plan.model';
 import { RouterLink } from '@angular/router';
-
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-card-container',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLink,CommonModule],
   templateUrl: './card-container.component.html',
   styleUrl: './card-container.component.scss'
 })
@@ -14,6 +14,7 @@ export class CardContainerComponent implements OnInit{
 
   @Input() plan: PlanCardModel | null = null;
   @Input() idUsuario: any = null;
+  @Input() autorInfoVisible: boolean = true;
   @Output() planUpdated = new EventEmitter<PlanCardModel>();
 
   

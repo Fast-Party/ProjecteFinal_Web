@@ -13,47 +13,10 @@
 
       animation: fade-in-top 0.7s cubic-bezier(0.39, 0.575, 0.565, 1) 0.3s both;
 
-      .container_tag_menu {
-        position: absolute;
-        display: inline-flex;
-
-        justify-content: center;
-        align-items: center;
-        height: 40px;
-        border-radius: 50px;
-        background-color: rgba(stl.$base-color-black, 0.05);
-        left: 50%;
-        transform: translateX(-50%);
-
+      .container-tag_menu {
         @media screen and (max-width: 768px) {
           left: 0 !important;
           transform: translateX(0) !important;
-        }
-
-        div[role="button"] {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          width: 100%;
-          height: 100%;
-          cursor: pointer;
-          padding-inline: 20px;
-
-          a {
-            text-decoration: none;
-            height: 100%;
-            width: 100%;
-            display: flex;
-            align-items: center;
-            font-size: 16px;
-            font-weight: 600;
-            color: rgba(stl.$base-color-black, 0.5);
-            transition: 0.3s ease-in-out;
-          }
-
-          .tag-select {
-            color: stl.$base-color-black;
-          }
         }
       }
 
