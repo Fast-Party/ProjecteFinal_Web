@@ -1,7 +1,7 @@
 <div class="container-card">
-  <div class="img_cover-local_name-icons">
-    <img class="img_cover" src="{{ plan?.RutaImagenPlan }}" alt="Img Cover" />
-    <div class="local_info-icons" [class.autorNotVisible]="!autorInfoVisible">
+  <div class="img_cover-local_name-icons" >
+    <img class="img_cover" src="{{ plan?.RutaImagenPlan }}" alt="Img Cover"  />
+    <div class="local_info-icons" [class.autorNotVisible]="!autorInfoVisible" >
       @if (autorInfoVisible) {
       <div
         class="local_img-local_name"
@@ -39,7 +39,7 @@
                   src="../../../assets/icons/fill/map-pin-fill.svg"
                   alt="Map Pin"
                 />
-                <p class="local_ubi">{{ plan?.LocalidadAutor }} ,España</p>
+                <a class="local_ubi"  [href]="'https://www.google.com/maps/search/?api=1&query=' + plan?.LocalidadAutor" target="_blank" >{{ plan?.LocalidadAutor }} ,España</a>
               </div>
             </div>
           </div>
@@ -70,6 +70,7 @@
         </div>
       </div>
       }
+      <div class="card_control" [routerLink]="['/', idUsuario, 'event', plan?.IdPlan]"></div>
       <div class="characteristics_event_icons">
         <div class="icon_circle">
           <img
@@ -103,7 +104,7 @@
     </div>
   </div>
   <div class="event_info-icon_like">
-    <div class="event_info">
+    <div class="event_info" [routerLink]="['/', idUsuario, 'event', plan?.IdPlan]">
       <p class="event_title">
         {{ plan?.Titulo }}
       </p>

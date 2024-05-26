@@ -13,6 +13,7 @@
       </li>
       <li>
         <a
+          (click)="statePage = 1"
           class="home-link"
           routerLink="home"
           [class.active-links]="statePage == 1"
@@ -21,6 +22,7 @@
       </li>
       <li>
         <a
+          (click)="statePage = 2"
           class="explore-link"
           routerLink="explore"
           [class.active-links]="statePage == 2"
@@ -29,6 +31,7 @@
       </li>
       <li>
         <a
+          (click)="statePage = 3"
           class="my_events-link"
           routerLink="my-events"
           [class.active-links]="statePage == 3"
@@ -108,13 +111,10 @@
     <ul class="menu">
       <li role="button" routerLink="profile">
         <div role="button">
-          <img
-            src="{{perfilUsuario.Imagen}}"
-            alt="user_logo"
-          />
+          <img src="{{ perfilUsuario.Imagen }}" alt="user_logo" />
         </div>
         <div class="container-user_name-icon_down_arrow">
-          <h4>{{perfilUsuario.NombreUsuario}}</h4>
+          <h4>{{ perfilUsuario.NombreUsuario }}</h4>
           <img
             src="../../../assets/icons/regular/caret-down.svg"
             alt="arrow_down"
@@ -123,18 +123,11 @@
       </li>
       <div class="container-submenu">
         <ul class="submenu">
-          <div
-            class="smart-info_user"
-            role="button"
-            routerLink="profile"
-          >
-            <img
-              src="{{perfilUsuario.Imagen}}"
-              alt="user_logo"
-            />
+          <div class="smart-info_user" role="button" routerLink="profile">
+            <img src="{{ perfilUsuario.Imagen }}" alt="user_logo" />
             <div class="name_user-email_user">
-              <h4>{{perfilUsuario.NombreUsuario}}</h4>
-              <p>{{perfilUsuario.Email}}</p>
+              <h4>{{ perfilUsuario.NombreUsuario }}</h4>
+              <p>{{ perfilUsuario.Email }}</p>
             </div>
           </div>
           <div class="container-options_users-option_sign_out">
@@ -180,20 +173,17 @@
           role="button"
           [routerLink]="['profile']"
         >
-          <img
-            src="{{perfilUsuario.Imagen}}"
-            alt="user_logo"
-          />
+          <img src="{{ perfilUsuario.Imagen }}" alt="user_logo" />
           <div class="contianer-user_info--menu">
-            <h4>{{perfilUsuario.NombreUsuario}}</h4>
-            <p>{{perfilUsuario.Email}}</p>
+            <h4>{{ perfilUsuario.NombreUsuario }}</h4>
+            <p>{{ perfilUsuario.Email }}</p>
           </div>
         </div>
         <div class="nav_pages--menu">
           <ul (click)="vision_menu = false">
-            <li><a routerLink="home">Inicio</a></li>
-            <li><a routerLink="explore">Explorar</a></li>
-            <li><a routerLink="my-events">Mis eventos</a></li>
+            <li routerLink="home"><a>Inicio</a></li>
+            <li routerLink="explore"><a>Explorar</a></li>
+            <li routerLink="my-events"><a>Mis eventos</a></li>
           </ul>
         </div>
       </div>
