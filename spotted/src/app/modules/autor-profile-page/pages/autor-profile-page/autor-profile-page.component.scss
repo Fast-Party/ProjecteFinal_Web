@@ -258,6 +258,8 @@
     flex: 1 0 0;
     width: 100%;
 
+    animation: appear 0.7s ease-in-out forwards;
+
     .container--autor_images {
       display: flex;
       flex-direction: column;
@@ -331,6 +333,8 @@
       gap: 32px;
       align-self: stretch;
 
+      min-height: 445px;
+
       .container-tag_menu {
         position: relative;
         left: 0;
@@ -345,9 +349,13 @@
 
       .events__comments {
         flex: 1 0 0;
-        align-self: stretch;
+        //align-self: stretch;
         display: flex;
         flex-direction: column;
+        width: 100%;
+
+        //min-height: 373px;
+   
       }
     }
   }
