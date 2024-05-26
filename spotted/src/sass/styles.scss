@@ -52,7 +52,8 @@ ul {
   background-color: rgba(stl.$base-color-black, 0.05);
   left: 50%;
   transform: translateX(-50%);
-
+  transition: .3s ease-in-out;
+  
   div[role="button"] {
     display: flex;
     align-items: center;

@@ -5,7 +5,9 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { ActivatedRoute, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { PlanCardModel } from '../../../../models/plan.model';
 import { AutorPlanModel } from '../../../../models/autor.model';
+
 import { AutorService } from '../../../../api/services/autor.service';
+import { UserService } from '../../../../api/services/user.service';
 @Component({
   selector: 'app-autor-profile-page',
   standalone: true,
@@ -16,17 +18,18 @@ import { AutorService } from '../../../../api/services/autor.service';
 export class AutorProfilePageComponent implements OnInit {
 
   isFollowing: boolean = false;
-
+  idUsuario!: number;
   idAutor!: number;
   perfilAutor: AutorPlanModel;
   planesAutor: PlanCardModel[] = [];
   imagenesLocal: any[] = [];
 
-  constructor(private route: ActivatedRoute, private http: HttpClient, private autorService: AutorService) {
+  constructor(private route: ActivatedRoute, private http: HttpClient, private autorService: AutorService, private userService: UserService) {
     this.perfilAutor = new AutorPlanModel();
   }
 
   ngOnInit(): void {
+    this.idUsuario = this.userService.getIdUsuario();
     this.route.params.subscribe(params => {
       this.idAutor = params['idAutor'];
       this.autorService.setIdAutor(this.idAutor);
@@ -53,5 +56,61 @@ export class AutorProfilePageComponent implements OnInit {
       }
     }
   }
+
+  async toFollowAutor(){
+    if(this.idUsuario != null && this.idAutor != null){
+      const body = {IdSeguidor: this.idUsuario, IdSeguido: this.idAutor};
+      try {
+        fetch('http://localhost:3000/seguirUsuario', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(body)
+        }).then(response => {
+          if(response.ok){
+            this.isFollowing = true;
+            this.perfilAutor.Seguidores = (this.perfilAutor.Seguidores || 0) + 1; 
+          }else{
+            this.isFollowing = false;
+          }
+        });
+      } catch (error) {
+        console.log('Error: ', error);
+      }
+    }
+ }
+
+ async toUnfollowAutor(){
+  if(this.idUsuario != null && this.idAutor != null){
+    const body = {IdSeguidor: this.idUsuario, IdSeguido: this.idAutor};
+    try {
+      fetch('http://localhost:3000/dejarDeSeguirUsuario', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(body)
+      }).then(response => {
+        if(response.ok){
+          this.isFollowing = false;
+          this.perfilAutor.Seguidores = (this.perfilAutor.Seguidores || 1) - 1;
+        }else{
+          this.isFollowing = true;
+        }
+      });
+    } catch (error) {
+      console.log('Error: ', error);
+    }
+  }
+ }
+
+ toggleFollow() {
+  if (this.isFollowing) {
+    this.toUnfollowAutor();
+  } else {
+    this.toFollowAutor();
+  }
+}
 
 }
