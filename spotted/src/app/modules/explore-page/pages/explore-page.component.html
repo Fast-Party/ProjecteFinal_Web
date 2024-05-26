@@ -1,1 +1,29 @@
-<p>explore-page works!</p>
+<div class="union-tag_menu-list_events">
+  <div class="tag_menu-filters">
+    <div class="container-tag_menu">
+      <div role="button">
+        <a routerLink="discover" routerLinkActive="tag-select">Descubrir</a>
+      </div>
+      <div role="button">
+        <a routerLink="trending" routerLinkActive="tag-select">Tendencias</a>
+      </div>
+    </div>
+    <div class="container-filters" role="button">
+      <img
+        src="../../../../../assets/icons/light/funnel-simple-light.svg"
+        alt="filter"
+      />
+      <p>Filtros</p>
+    </div>
+  </div>
+  <main>
+    <router-outlet></router-outlet>
+  </main>
+  <button class="btn-see_map">
+    <img
+      src="../../../../../assets/icons/fill/map-pin-fill.svg"
+      alt="ver mapa"
+    />
+    <p>Ver mapa</p>
+  </button>
+</div>
