@@ -6,7 +6,7 @@
           <img src="{{ perfilAutor.Imagen }}" alt="logo autor" />
           <div class="autor_name-autor_direction">
             <h2>{{ perfilAutor.NombreUsuario }}</h2>
-            <p>{{ perfilAutor.Direccion }}</p>
+            <a  [href]="'https://www.google.com/maps/search/?api=1&query=' + perfilAutor.Direccion" target="_blank" >{{ perfilAutor.Direccion }}</a>
           </div>
         </div>
         <div class="autor_stats">
