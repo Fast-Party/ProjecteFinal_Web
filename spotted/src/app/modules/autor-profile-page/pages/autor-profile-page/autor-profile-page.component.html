@@ -46,9 +46,9 @@
         <h6 class="subtitle">Imágenes</h6>
         <div class="container--images">
           @if (imagenesLocal.length > 0) {
-          <img src="{{ imagenesLocal[0].Ruta }}" alt="img local autor" />
-          <img src="{{ imagenesLocal[1].Ruta }}" alt="img local autor" />
-          <img src="{{ imagenesLocal[2].Ruta }}" alt="img local autor" />
+            @for (item of imagenesLocal | slice:0:3; track $index) {
+              <img src="{{ item.Ruta }}" alt="img evento"/>
+          }
           }@else {
           <p>No hay imágenes</p>
           }

@@ -1,3 +1,92 @@
+<div class="event-page">
+  <div class="container--event_img_cover-btn_join-icons">
+    <div class="container--event_info-event_images">
+      <img src="{{ eventoImagenPortada }}" alt="" />
+      <button class="btn_join">
+        @if (plan.IdEstado == null ) { Unirse } @else if (plan.IdEstado == 1) {
+        Cancelar } @else if (plan.IdEstado == 2) { Dejar }
+      </button>
+    </div>
+    <div class="container--icons">
+      <div class="icon_circle">
+        <img
+          class="characteristics-icon"
+          src="../../../../assets/icons/regular/music-note.svg"
+          alt="icon"
+        />
+      </div>
+      <div class="icon_circle">
+        <img
+          class="characteristics-icon"
+          src="../../../../assets/icons/regular/car.svg"
+          alt="icon"
+        />
+      </div>
+      <div class="icon_circle">
+        <img
+          class="characteristics-icon"
+          src="../../../../assets/icons/regular/martini.svg"
+          alt="icon"
+        />
+      </div>
+      <div class="icon_circle">
+        <img
+          class="characteristics-icon"
+          src="../../../../assets/icons/regular/t-shirt.svg"
+          alt="icon"
+        />
+      </div>
+    </div>
+  </div>
+  <div class="container--event_info-event_images">
+    <div class="container--autor-event_title-event_features">
+      <div class="container--local_img-local_name" [routerLink]="['/', idUsuario, 'autor', plan.IdAutor]">
+        <img src="{{ plan.ImagenLogoAutor }}" alt="imagen logo autor" />
+        <p>{{ plan.NombreAutor }}</p>
+      </div>
+      <div class="container--event_title-event_features">
+        <h2>{{ plan.Titulo }}</h2>
+        <div class="container--event_features">
+          <div class="event_feature__min_age"></div>
+          <div class="event_feaure__type_music"></div>
+          <div class="event_feaure__clothing"></div>
+        </div>
+      </div>
+    </div>
+    <div class="container--event_description">
+      <h6 class="subtitle">Descripción</h6>
+      <p>{{ plan.Descripcion }}</p>
+    </div>
+    <div class="container--event_ubi">
+        <h6 class="subtitle">Ubicación</h6>
+        <p>{{ plan.Localizacion}}</p>
+    </div>
+    <div class="container--event_date_time">
+        <h6 class="subtitle">Fecha y hora</h6>
+        <!-- aqui va la fecha completa-->
+        <!-- aqui va la hora -->
+    </div>
+    <div class="container--event_images">
+        <h6 class="subtitle">Imágenes</h6>
+        <div class="cont-images">
+            @if (imagenesEvento.length > 1) {
+                @for (item of imagenesEvento | slice:0:3; track $index) {
+                    <img src="{{ item.Ruta }}" alt="img evento"/>
+                }
+            }@else {
+                <p>No hay imágenes</p>
+            }
+        </div>
+    </div>
+    @if (imagenesEvento.length > 1) {
+        <div class="text-see_more" role="button">
+          <p>Ver más</p>
+        </div>
+        }
+  </div>
+</div>
+
+<!--
 <div>
     <div [class]="planContainer">
         <h2>{{plan.Titulo}}</h2>
@@ -20,4 +109,4 @@
     <button (click)="handleCancelAndLeaveButton()">Leave</button>
     }
 
-</div>
+</div>-->

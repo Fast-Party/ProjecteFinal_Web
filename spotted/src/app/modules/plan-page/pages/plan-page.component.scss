@@ -1,3 +1,137 @@
+@use "../../../../sass/variables.scss" as stl;
+
+.event-page {
+  margin-inline: 24px;
+  display: inline-flex;
+  align-items: flex-start;
+  align-self: stretch;
+  gap: 52px;
+
+  .container--event_img_cover-btn_join-icons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+
+    .container--event_info-event_images {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      img {
+        width: 450px;
+        height: 600px;
+        border-radius: 20px;
+        object-fit: cover;
+      }
+
+      .btn_join {
+        transform: translateY(-42px);
+        width: calc(100% - 30%);
+        display: flex;
+        padding: 8px 12px;
+        justify-content: center;
+        align-items: center;
+        background: linear-gradient(
+            15deg,
+            stl.$primary-color-500,
+            stl.$secondary-color-600,
+            stl.$primary-color-500
+          )
+          no-repeat;
+        background-position: left center;
+        background-size: 300%;
+        color: stl.$base-color-white;
+        cursor: pointer;
+        border-radius: 6px;
+        border: none;
+        transition: 0.3s ease-in-out;
+        animation: fade-in-bottom 0.7s cubic-bezier(0.39, 0.575, 0.565, 1) 0.3s
+          both;
+        &:hover {
+          background-size: 320%;
+          background-position: right center;
+        }
+      }
+    }
+
+    .container--icons {
+      width: 100%;
+      display: flex;
+      gap: 18px;
+      justify-content: center;
+      //background-color: red;
+      .icon_circle {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: rgba(0, 0, 0, 0.05);
+        backdrop-filter: blur(40px);
+        cursor: pointer;
+        //opacity: 0;
+
+        .characteristics-icon {
+          width: 28px;
+          height: 28px;
+          filter: invert(0);
+          //opacity: 0;
+        }
+      }
+    }
+  }
+
+  .container--event_info-event_images {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+
+    .container--autor-event_title-event_features {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 16px;
+      align-self: stretch;
+
+      .container--local_img-local_name {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 8px;
+        cursor: pointer;
+
+        img {
+          width: 32px;
+          height: 32px;
+          border-radius: 50%;
+          object-fit: cover;
+        }
+        p {
+          font-size: 16px;
+          font-weight: 400;
+          color: stl.$base-color-black;
+        }
+      }
+    }
+    .container--event_title-event_features {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 12px;
+      align-self: stretch;
+      h2{
+        font-size: 40px;
+        font-weight: 700;
+        color: stl.$base-color-black;
+      }
+    }
+  }
+}
+
+/*
 .plan-container {
     display: flex;
     flex-direction: column;
@@ -6,4 +140,4 @@
     width: 25vw;
     height: auto;
     background-color: lightskyblue;
-}
+}*/

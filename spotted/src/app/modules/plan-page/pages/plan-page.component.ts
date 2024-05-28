@@ -1,14 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { catchError } from 'rxjs';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { PlanScreenModel } from '../../../models/plan.model';
 import { UserService } from '../../../api/services/user.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-plan-page',
   standalone: true,
-  imports: [HttpClientModule],
+  imports: [HttpClientModule, CommonModule, RouterLink],
   templateUrl: './plan-page.component.html',
   styleUrl: './plan-page.component.scss'
 })
@@ -18,6 +19,8 @@ export class PlanPageComponent implements OnInit {
   idPlan?: number;
   plan: PlanScreenModel;
   idUsuario?: number;
+  imagenesEvento: any[] = [];
+  eventoImagenPortada?: string;
 
   constructor(private route: ActivatedRoute, private http: HttpClient, private userService: UserService) {
     this.plan = new PlanScreenModel();
@@ -32,7 +35,6 @@ export class PlanPageComponent implements OnInit {
     }
 
     if (this.idPlan != null) {
-      console.log(this.idPlan)
       const body = { IdPlan: this.idPlan, IdUsuario: this.idUsuario }
       try {
         this.http.post('http://localhost:3000/getPlanById', body).pipe(catchError(error => {
@@ -42,6 +44,11 @@ export class PlanPageComponent implements OnInit {
           if (res) {
             this.plan = res.results[0];
             console.log("plan", this.plan);
+            if(this.plan.Imagenes){
+              this.imagenesEvento = JSON.parse(this.plan.Imagenes);
+            }
+            this.eventoImagenPortada = this.imagenesEvento.find((imagen: any) => imagen.Orden === 1)?.Ruta;
+
           } else {
             console.log('couldnt get plan')
           }
@@ -93,6 +100,14 @@ export class PlanPageComponent implements OnInit {
       } catch (error) {
         return console.log('sdfd', error);
       }
+    }
+  }
+
+  toggleJoin(): void {
+    if(this.plan.IdEstado == null){
+      this.handleJoinButton();
+    } else {
+      this.handleCancelAndLeaveButton();
     }
   }
 

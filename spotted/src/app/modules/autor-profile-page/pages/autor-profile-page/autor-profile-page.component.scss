@@ -10,16 +10,6 @@
     flex-direction: column;
     gap: 40px;
   }
-
-  .subtitle {
-    font-size: 12px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: normal;
-    text-transform: uppercase;
-    color: rgba(stl.$base-color-black, 0.5);
-  }
-
   .container-autor_information {
     display: flex;
     position: sticky;
@@ -88,6 +78,7 @@
             height: 140px;
             border-radius: 50%;
             object-position: center;
+            object-fit: cover;
           }
 
           .autor_name-autor_direction {
@@ -308,22 +299,6 @@
 
             animation: appear 0.7s ease-in-out forwards;
           }
-        }
-      }
-      .text-see_more {
-        display: flex;
-        padding: 0px 10px;
-        justify-content: center;
-        align-items: center;
-        cursor: pointer;
-        animation: fade-in-top 0.7s cubic-bezier(0.39, 0.575, 0.565, 1) 0.3s
-          both;
-        p {
-          font-size: 14px;
-          font-style: normal;
-          font-weight: 600;
-          line-height: 22px;
-          color: rgba(stl.$base-color-black, 0.8);
         }
       }
     }
