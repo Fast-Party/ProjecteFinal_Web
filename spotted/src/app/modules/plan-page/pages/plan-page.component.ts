@@ -11,23 +11,34 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [HttpClientModule, CommonModule, RouterLink],
   templateUrl: './plan-page.component.html',
-  styleUrl: './plan-page.component.scss'
+  styleUrl: './plan-page.component.scss',
 })
 export class PlanPageComponent implements OnInit {
-  planContainer = 'plan-container';
-
   idPlan?: number;
   plan: PlanScreenModel;
   idUsuario?: number;
   imagenesEvento: any[] = [];
   eventoImagenPortada?: string;
 
-  constructor(private route: ActivatedRoute, private http: HttpClient, private userService: UserService) {
+  //FECHA
+  originalDate: any;
+  diaSemana: string = '';
+  dia: number = 0;
+  mes: string = '';
+  year: number = 0;
+  hora: number = 0;
+  minutos: number = 0;
+
+  constructor(
+    private route: ActivatedRoute,
+    private http: HttpClient,
+    private userService: UserService
+  ) {
     this.plan = new PlanScreenModel();
   }
 
   ngOnInit(): void {
-    this.idUsuario = this.userService.getIdUsuario(); 
+    this.idUsuario = this.userService.getIdUsuario();
     try {
       this.idPlan = parseInt(this.route.snapshot.paramMap.get('idPlan')!);
     } catch (error) {
@@ -35,46 +46,83 @@ export class PlanPageComponent implements OnInit {
     }
 
     if (this.idPlan != null) {
-      const body = { IdPlan: this.idPlan, IdUsuario: this.idUsuario }
+      const body = { IdPlan: this.idPlan, IdUsuario: this.idUsuario };
       try {
-        this.http.post('http://localhost:3000/getPlanById', body).pipe(catchError(error => {
-          console.log('error is: ', error);
-          return error;
-        })).subscribe((res: any) => {
-          if (res) {
-            this.plan = res.results[0];
-            console.log("plan", this.plan);
-            if(this.plan.Imagenes){
-              this.imagenesEvento = JSON.parse(this.plan.Imagenes);
-            }
-            this.eventoImagenPortada = this.imagenesEvento.find((imagen: any) => imagen.Orden === 1)?.Ruta;
+        this.http
+          .post('http://localhost:3000/getPlanById', body)
+          .pipe(
+            catchError((error) => {
+              console.log('error is: ', error);
+              return error;
+            })
+          )
+          .subscribe((res: any) => {
+            if (res) {
+              this.plan = res.results[0];
+              console.log('plan', this.plan);
+              if (this.plan.Imagenes) {
+                this.imagenesEvento = JSON.parse(this.plan.Imagenes);
+              }
+              this.eventoImagenPortada = this.imagenesEvento.find(
+                (imagen: any) => imagen.Orden === 1
+              )?.Ruta;
 
-          } else {
-            console.log('couldnt get plan')
-          }
-        })
+              this.originalDate = this.plan?.Fecha;
+              console.log(this.plan?.Fecha);
+              const date = new Date(this.originalDate);
+              this.diaSemana = new Intl.DateTimeFormat('es-ES', {
+                weekday: 'long',
+              }).format(date);
+              this.dia = date.getDate();
+              this.mes = new Intl.DateTimeFormat('es-ES', {
+                month: 'long',
+              }).format(date);
+              this.year = date.getFullYear();
+              this.hora = date.getHours();
+              this.minutos = date.getMinutes();
+            } else {
+              console.log('couldnt get plan');
+            }
+          });
       } catch (error) {
         return console.log('sdfd', error);
       }
     }
   }
 
+  refactorNumberDate(numero: number): string {
+    if (numero < 10) {
+      return '0' + numero;
+    } else {
+      return numero.toString();
+    }
+  }
+
   handleJoinButton(): void {
     if (this.idPlan != null) {
-      const body = { IdUsuario : this.idUsuario, IdPlan: this.idPlan, Privado: false}
-      console.log(body)
+      const body = {
+        IdUsuario: this.idUsuario,
+        IdPlan: this.idPlan,
+        Privado: false,
+      };
+      console.log(body);
       try {
-        this.http.post('http://localhost:3000/unirseAPlan', body).pipe(catchError(error => {
-          console.log('error is: ', error);
-          return error;
-        })).subscribe((res: any) => {
-          if (res) {
-            this.plan = res.results;
-            console.log("plan", this.plan);
-          } else {
-            console.log('couldnt get plan')
-          }
-        })
+        this.http
+          .post('http://localhost:3000/unirseAPlan', body)
+          .pipe(
+            catchError((error) => {
+              console.log('error is: ', error);
+              return error;
+            })
+          )
+          .subscribe((res: any) => {
+            if (res) {
+              this.plan = res.results;
+              console.log('plan', this.plan);
+            } else {
+              console.log('couldnt get plan');
+            }
+          });
       } catch (error) {
         return console.log('sdfd', error);
       }
@@ -83,20 +131,29 @@ export class PlanPageComponent implements OnInit {
 
   handleCancelAndLeaveButton(): void {
     if (this.idPlan != null) {
-      const body = { IdUsuario : this.idUsuario, IdPlan: this.idPlan, Privado: false}
-      console.log(body)
+      const body = {
+        IdUsuario: this.idUsuario,
+        IdPlan: this.idPlan,
+        Privado: false,
+      };
+      console.log(body);
       try {
-        this.http.post('http://localhost:3000/denegarUnionAPlan', body).pipe(catchError(error => {
-          console.log('error is: ', error);
-          return error;
-        })).subscribe((res: any) => {
-          if (res) {
-            this.plan = res.results;
-            console.log("plan", this.plan);
-          } else {
-            console.log('couldnt get plan')
-          }
-        })
+        this.http
+          .post('http://localhost:3000/denegarUnionAPlan', body)
+          .pipe(
+            catchError((error) => {
+              console.log('error is: ', error);
+              return error;
+            })
+          )
+          .subscribe((res: any) => {
+            if (res) {
+              this.plan = res.results;
+              console.log('plan', this.plan);
+            } else {
+              console.log('couldnt get plan');
+            }
+          });
       } catch (error) {
         return console.log('sdfd', error);
       }
@@ -104,11 +161,10 @@ export class PlanPageComponent implements OnInit {
   }
 
   toggleJoin(): void {
-    if(this.plan.IdEstado == null){
+    if (this.plan.IdEstado == null) {
       this.handleJoinButton();
     } else {
       this.handleCancelAndLeaveButton();
     }
   }
-
 }
