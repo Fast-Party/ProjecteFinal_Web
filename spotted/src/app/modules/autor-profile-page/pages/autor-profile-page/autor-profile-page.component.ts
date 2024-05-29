@@ -29,6 +29,7 @@ export class AutorProfilePageComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    window.scrollTo(0, 0);
     this.idUsuario = this.userService.getIdUsuario();
     this.route.params.subscribe(params => {
       this.idAutor = params['idAutor'];

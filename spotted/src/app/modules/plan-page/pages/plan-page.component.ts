@@ -38,6 +38,8 @@ export class PlanPageComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    window.scrollTo(0, 0);
+
     this.idUsuario = this.userService.getIdUsuario();
     try {
       this.idPlan = parseInt(this.route.snapshot.paramMap.get('idPlan')!);
