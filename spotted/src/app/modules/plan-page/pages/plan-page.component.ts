@@ -167,4 +167,8 @@ export class PlanPageComponent implements OnInit {
       this.handleCancelAndLeaveButton();
     }
   }
+
+  goBack(): void {
+    window.history.back();
+  }
 }

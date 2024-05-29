@@ -1,6 +1,13 @@
 <div class="event-page">
   <div class="container--event_img_cover-btn_join-icons">
     <div class="container--autor-event_image_cover">
+      <div class="container--go_back" role="button" (click)="goBack()">
+        <img
+          src="../../../../assets/icons/bold/caret-left-bold.svg"
+          alt="go back"
+        />
+        <p>Atrás</p>
+      </div>
       <div
         class="container--local_img-local_name"
         [routerLink]="['/', idUsuario, 'autor', plan.IdAutor]"
@@ -23,6 +30,7 @@
           src="../../../../assets/icons/regular/music-note.svg"
           alt="icon"
         />
+        <div class="tooltip">Hay musica</div>
       </div>
       <div class="icon_circle">
         <img
@@ -30,6 +38,7 @@
           src="../../../../assets/icons/regular/car.svg"
           alt="icon"
         />
+        <div class="tooltip">Hay parking</div>
       </div>
       <div class="icon_circle">
         <img
@@ -37,6 +46,7 @@
           src="../../../../assets/icons/regular/martini.svg"
           alt="icon"
         />
+        <div class="tooltip">Incluye primera consumición</div>
       </div>
       <div class="icon_circle">
         <img
@@ -44,6 +54,7 @@
           src="../../../../assets/icons/regular/t-shirt.svg"
           alt="icon"
         />
+        <div class="tooltip">Hay etiqueta</div>
       </div>
     </div>
   </div>
@@ -100,6 +111,12 @@
       </div>
       }
     </div>
+  </div>
+  <div class="container--float-btn">
+    <button class="btn_join" (click)="toggleJoin()">
+      @if (plan.IdEstado == null ) { Unirse } @else if (plan.IdEstado == 1)
+      { Cancelar } @else if (plan.IdEstado == 2) { Dejar }
+    </button>
   </div>
 </div>
 
