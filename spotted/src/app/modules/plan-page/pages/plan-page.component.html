@@ -131,7 +131,7 @@
     <button
       class="btn_join"
       (click)="toggleJoin()"
-      [class.design_btn_join]="!userJoined"
+      [class.design_btn_join]="userJoined"
     >
       @if (!userJoined) { Unirse } @else { Dejar }
     </button>
