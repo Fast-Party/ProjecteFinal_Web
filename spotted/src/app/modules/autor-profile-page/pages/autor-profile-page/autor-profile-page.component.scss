@@ -192,6 +192,12 @@
             background-position: right center;
           }
         }
+        .design_btn_follow{
+          background: transparent !important;
+          color: stl.$base-color-black !important;
+          font-weight: 600 !important;
+          border: 1px solid stl.$base-color-black !important;
+        }
       }
 
       .separator {
@@ -219,7 +225,7 @@
           font-style: normal;
           font-weight: 400;
           line-height: 22px;
-          color: rgba(stl.$base-color-black, 0.8);
+          color: stl.$base-color-black
         }
 
         scrollbar-width: thin;

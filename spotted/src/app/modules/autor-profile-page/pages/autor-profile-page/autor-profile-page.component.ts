@@ -29,13 +29,14 @@ export class AutorProfilePageComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    window.scrollTo(0, 0);
     this.idUsuario = this.userService.getIdUsuario();
     this.route.params.subscribe(params => {
       this.idAutor = params['idAutor'];
       this.autorService.setIdAutor(this.idAutor);
     });
     if (this.idAutor != null) {
-      const body = { IdUsuario: this.idAutor }
+      const body = { IdAutor: this.idAutor, IdUsuario : this.idUsuario}
       try {
         this.http.post('http://localhost:3000/perfilAutor', body).pipe(catchError(error => {
           console.log('error is: ', error);
@@ -47,6 +48,13 @@ export class AutorProfilePageComponent implements OnInit {
               this.imagenesLocal = JSON.parse(this.perfilAutor.ImagenesLocal);
             }
             this.planesAutor = res.planes;
+            
+            if(this.perfilAutor?.IsFollowing){
+              this.isFollowing = true;
+            }else{
+              this.isFollowing = false;
+            }
+            
           } else {
             console.log('couldnt post plan')
           }

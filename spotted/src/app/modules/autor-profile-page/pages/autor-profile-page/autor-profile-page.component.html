@@ -27,8 +27,8 @@
             <p class="label_stat">Eventos</p>
           </div>
         </div>
-        <button class="btn_follow" (click)="toggleFollow()">
-          @if (!isFollowing) { Seguir }@else { Siguiendo }
+        <button class="btn_follow" (click)="toggleFollow()" [class.design_btn_follow]="isFollowing">
+          @if (!isFollowing) { Seguir } @else { Siguiendo }
         </button>
       </div>
       <div class="separator"></div>

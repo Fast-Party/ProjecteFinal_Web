@@ -43,7 +43,6 @@ export class CardContainerComponent implements OnInit{
      this.year = date.getFullYear();
      this.hora = date.getHours();
      this.minutos = date.getMinutes();
-
      
      if(this.plan?.IsFollowing){
        this.isFollowing = true;

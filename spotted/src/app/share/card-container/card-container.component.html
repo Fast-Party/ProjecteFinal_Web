@@ -62,8 +62,7 @@
           <button
             class="popup_following_btn"
             (click)="toggleFollow()"
-            [class.popup_following_btn-disable]="!buttonFollowingEnable"
-            [disabled]="!buttonFollowingEnable"
+            [class.design_btn_follow]="isFollowing"
           >
             @if (!isFollowing) { Seguir }@else { Siguiendo }
           </button>
