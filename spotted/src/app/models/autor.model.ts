@@ -16,6 +16,7 @@ export class AutorPlanModel {
     'Direccion'?: string
     'PlanesCreados'?: number
     'ImagenesLocal'?: any
+    'IsFollowing': number
 }
 
 export class AutorPlanCardModel {

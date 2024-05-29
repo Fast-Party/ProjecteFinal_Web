@@ -17,9 +17,8 @@
       </div>
       <div class="event_img_cover-btn_join">
         <img src="{{ eventoImagenPortada }}" alt="" />
-        <button class="btn_join" (click)="toggleJoin()">
-          @if (plan.IdEstado == null ) { Unirse } @else if (plan.IdEstado == 1)
-          { Cancelar } @else if (plan.IdEstado == 2) { Dejar }
+        <button class="btn_join" (click)="toggleJoin()" [class.design_btn_join]="userJoined">
+          @if (!userJoined) { Unirse } @else { Dejar }
         </button>
       </div>
     </div>
@@ -63,15 +62,24 @@
       <h2>{{ plan.Titulo }}</h2>
       <div class="container--event_features">
         <div class="event_feature__min_age">
-          <img src="../../../../assets/icons/bold/plus-bold.svg" alt="min age">
+          <img
+            src="../../../../assets/icons/bold/plus-bold.svg"
+            alt="min age"
+          />
           <p>18</p>
         </div>
         <div class="event_feaure__type_music">
-          <img src="../../../../assets/icons/fill/music-notes-fill.svg" alt="music">
+          <img
+            src="../../../../assets/icons/fill/music-notes-fill.svg"
+            alt="music"
+          />
           <p>Reggaeton</p>
         </div>
         <div class="event_feaure__clothing">
-          <img src="../../../../assets/icons/fill/t-shirt-fill.svg" alt="music">
+          <img
+            src="../../../../assets/icons/fill/t-shirt-fill.svg"
+            alt="music"
+          />
           <p>Casual</p>
         </div>
       </div>
@@ -82,13 +90,20 @@
     </div>
     <div class="container--event_ubi">
       <h6 class="subtitle">Ubicación</h6>
-      <a  [href]="'https://www.google.com/maps/search/?api=1&query=' + plan.Localizacion" target="_blank" >{{ plan.Localizacion }}</a>
+      <a
+        [href]="
+          'https://www.google.com/maps/search/?api=1&query=' + plan.Localizacion
+        "
+        target="_blank"
+        >{{ plan.Localizacion }}</a
+      >
     </div>
     <div class="container--event_date_time">
       <h6 class="subtitle">Fecha y hora</h6>
       <div class="date_hour">
         <p>
-          {{ diaSemana }} {{ refactorNumberDate(dia) }} de {{ mes }} del {{ year }}
+          {{ diaSemana }} {{ refactorNumberDate(dia) }} de {{ mes }} del
+          {{ year }}
         </p>
         <p>{{ refactorNumberDate(hora) }}:{{ refactorNumberDate(minutos) }}</p>
       </div>
@@ -113,10 +128,12 @@
     </div>
   </div>
   <div class="container--float-btn">
-    <button class="btn_join" (click)="toggleJoin()">
-      @if (plan.IdEstado == null ) { Unirse } @else if (plan.IdEstado == 1)
-      { Cancelar } @else if (plan.IdEstado == 2) { Dejar }
+    <button
+      class="btn_join"
+      (click)="toggleJoin()"
+      [class.design_btn_join]="!userJoined"
+    >
+      @if (!userJoined) { Unirse } @else { Dejar }
     </button>
   </div>
 </div>
-

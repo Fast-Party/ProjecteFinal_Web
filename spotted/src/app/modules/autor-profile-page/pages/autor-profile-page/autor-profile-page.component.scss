@@ -192,6 +192,12 @@
             background-position: right center;
           }
         }
+        .design_btn_follow{
+          background: transparent !important;
+          color: stl.$base-color-black !important;
+          font-weight: 600 !important;
+          border: 1px solid stl.$base-color-black !important;
+        }
       }
 
       .separator {

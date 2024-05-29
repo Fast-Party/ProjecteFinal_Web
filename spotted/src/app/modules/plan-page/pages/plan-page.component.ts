@@ -19,6 +19,7 @@ export class PlanPageComponent implements OnInit {
   idUsuario?: number;
   imagenesEvento: any[] = [];
   eventoImagenPortada?: string;
+  userJoined!: boolean;
 
   //FECHA
   originalDate: any;
@@ -39,6 +40,7 @@ export class PlanPageComponent implements OnInit {
 
   ngOnInit(): void {
     window.scrollTo(0, 0);
+    
 
     this.idUsuario = this.userService.getIdUsuario();
     try {
@@ -70,7 +72,6 @@ export class PlanPageComponent implements OnInit {
               )?.Ruta;
 
               this.originalDate = this.plan?.Fecha;
-              console.log(this.plan?.Fecha);
               const date = new Date(this.originalDate);
               this.diaSemana = new Intl.DateTimeFormat('es-ES', {
                 weekday: 'long',
@@ -82,6 +83,14 @@ export class PlanPageComponent implements OnInit {
               this.year = date.getFullYear();
               this.hora = date.getHours();
               this.minutos = date.getMinutes();
+
+              if(this.plan.IdEstado == null){
+                console.log('no hay estado');
+                this.userJoined = false;
+              }else{
+                console.log('hay estado');
+                this.userJoined = true;
+              }
             } else {
               console.log('couldnt get plan');
             }
@@ -119,8 +128,12 @@ export class PlanPageComponent implements OnInit {
           )
           .subscribe((res: any) => {
             if (res) {
-              this.plan = res.results;
-              console.log('plan', this.plan);
+              if (res.message != null) {
+                console.log('hay mensaje entrar');
+              }else{
+                console.log('no hay mensaje');
+              }
+
             } else {
               console.log('couldnt get plan');
             }
@@ -136,7 +149,6 @@ export class PlanPageComponent implements OnInit {
       const body = {
         IdUsuario: this.idUsuario,
         IdPlan: this.idPlan,
-        Privado: false,
       };
       console.log(body);
       try {
@@ -150,8 +162,11 @@ export class PlanPageComponent implements OnInit {
           )
           .subscribe((res: any) => {
             if (res) {
-              this.plan = res.results;
-              console.log('plan', this.plan);
+              if (res.message != null) {
+                console.log('hay mensaje salir');
+              }else{
+                console.log('no hay mensaje');
+              }
             } else {
               console.log('couldnt get plan');
             }
@@ -168,9 +183,11 @@ export class PlanPageComponent implements OnInit {
     } else {
       this.handleCancelAndLeaveButton();
     }
+    this.userJoined = !this.userJoined;
   }
 
   goBack(): void {
+    
     window.history.back();
   }
 }

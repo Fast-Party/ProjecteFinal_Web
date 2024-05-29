@@ -16,7 +16,7 @@
    margin-inline: 24px;
    width: calc(100% - 48px);
    padding-bottom: 40px;
-   gap: 16px;
+   gap: 0px !important;
 
   }
 
@@ -139,8 +139,6 @@
           border-radius: 20px;
           object-fit: cover;
 
-          
-
           @media screen and (max-width: 988px) {
             width: calc(100vw - 48px);
             height: 410px;
@@ -163,6 +161,7 @@
             display: none;
           }
         }
+
       }
     }
     .container--icons {
@@ -170,22 +169,41 @@
       display: flex;
       gap: 18px;
       justify-content: center;
-
+      
       @media screen and (max-width: 450px) {
-        display: none;
+        transform: translateY(-2.5em);
+        .icon_circle {
+          width: 32px !important;
+          height: 32px !important;
+          background: rgba(stl.$base-color-white, 0.05);
+          .characteristics-icon {
+            width: 20px !important;
+            height: 20px  !important;
+            filter: invert(1) !important;
+          }
+
+        
+          .tooltip{
+            top: 40px !important;
+            font-size: 10px !important;
+          }
+        }
       }
 
       .icon_circle {
+        position: relative;
         width: 40px;
         height: 40px;
         border-radius: 50%;
         display: flex;
         justify-content: center;
         align-items: center;
-        background: rgba(0, 0, 0, 0.05);
+        background: rgba(stl.$base-color-black, 0.05);
         backdrop-filter: blur(40px);
         cursor: pointer;
         transition: 0.3s ease-in-out;
+        animation: fade-in-bottom-icons 0.7s cubic-bezier(0.39, 0.575, 0.565, 1) 0.3s
+        both;
 
         .tooltip{
           display: none;
@@ -199,7 +217,7 @@
           color: stl.$base-color-white;
           font-size: 12px;
           font-weight: 500;
-          z-index: 20;
+          z-index: 70;
           opacity: 0;
           max-width: 250px; 
           white-space: nowrap; 
@@ -225,8 +243,6 @@
           }
         }
       }
-      animation: fade-in-bottom 0.7s cubic-bezier(0.39, 0.575, 0.565, 1) 0.3s
-        both;
     }
   }
 
@@ -249,7 +265,6 @@
         font-size: 40px;
         font-weight: 700;
         color: stl.$base-color-black;
-
         @media screen and (max-width: 600px) {
           font-size: 32px;
         }
@@ -407,4 +422,23 @@
       
     }
   }
+}
+
+@keyframes fade-in-bottom-icons {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    backdrop-filter: blur(40px);
+  }
+}
+
+.design_btn_join{
+  background: stl.$base-color-white !important;
+  color: stl.$base-color-black !important;
+  font-weight: 600 !important;
+  border: 1px solid stl.$base-color-black !important;
 }
