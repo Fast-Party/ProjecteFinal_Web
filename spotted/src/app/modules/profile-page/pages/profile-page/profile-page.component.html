@@ -1,7 +1,7 @@
 <div class="user_profile--page">
   <div class="container--user_logo-btn_edit">
     <img class="img_user_profile" src="{{ perfilUsuario.Imagen }}" alt="Img User Profile" />
-    <button class="btn_edit_profile" (click)="isEditing = !isEditing" [disabled]="isEditing">
+    <button class="btn_edit_profile" (click)="enableInputs()" [disabled]="isEditing">
       <img
         src="../../../../../assets/icons/fill/note-pencil-fill.svg"
         alt="icon edit"
@@ -9,38 +9,37 @@
       <p>Editar</p>
     </button>
   </div>
-  <form action="#" class="form--user_profile">
+  <form [formGroup]="UpdateForm" class="form--user_profile">
     <div class="union--inputs-input_birthday">
       <div class="container--inputs">
         <div class="container--left_inputs">
-
           <div class="input-container">
-            <input type="text" id="input" formControlName="Nombre" [disabled]="!isEditing" value="{{nombreUsuarioOnly}}"/>
+            <input type="text" id="input" formControlName="Nombre" [disabled]="!isEditing" />
             <label for="input" class="label">Nombre</label>
             <div class="underline"></div>
           </div>
 
           <div class="input-container">
-            <input type="text" id="input" formControlName="Apellidos" [disabled]="!isEditing" value="{{apellidosUsuarioOnly}}" />
+            <input type="text" id="input" formControlName="Apellidos" [disabled]="!isEditing"  />
             <label for="input" class="label">Apellidos</label>
             <div class="underline"></div>
           </div>
 
           <div class="input-container">
-            <input type="text" id="input" formControlName="NombreUsuario" [disabled]="!isEditing" value="{{perfilUsuario.NombreUsuario}}"/>
+            <input type="text" id="input" formControlName="NombreUsuario" [disabled]="!isEditing"/>
             <label for="input" class="label">Nombre de usuario</label>
             <div class="underline"></div>
           </div>
         </div>
         <div class="container--right_inputs">
             <div class="input-container">
-                <input type="text" id="input" formControlName="Email"  [disabled]="!isEditing" value="{{perfilUsuario.Email}}"/>
+                <input type="text" id="input" formControlName="Email"  [disabled]="!isEditing" />
                 <label for="input" class="label">Correo electrónico</label>
                 <div class="underline"></div>
               </div>
     
               <div class="input-container">
-                <input type="text" id="input" formControlName="Telefono" [disabled]="!isEditing" value="{{perfilUsuario.Telefono}}" />
+                <input type="text" id="input" formControlName="Telefono" [disabled]="!isEditing"  />
                 <label for="input" class="label">Teléfono</label>
                 <div class="underline"></div>
               </div>
@@ -62,7 +61,6 @@
                       id="input"
                       formControlName="FechaNacimientoDia"
                       [disabled]="!isEditing"
-                      [value]="dia"
                     >
                       <option class="select-option" label="Día" value >Día</option>
                       @for (day of daysArray; track day) {
@@ -79,7 +77,6 @@
                       id="input"
                       formControlName="FechaNacimientoMes"
                       [disabled]="!isEditing"
-                      [value]="mes + 1 "
                     >
                       <option class="select-option" label="Mes" value>Mes</option>
                       <option class="select-option" label="Enero" value="1">
@@ -128,7 +125,6 @@
                       id="input"
                       formControlName="FechaNacimientoAno"
                       [disabled]="!isEditing"
-                      [value]="year"
                     >
                       <option class="select-option" label="Año" value>Año</option>
                       @for (year of yearsArray; track year) {
@@ -149,13 +145,13 @@
     </div>
     @if (isEditing) {
     <div class="container--buttons_control_form">
-      <button class="btn_cancel" (click)="isEditing = false">Cancelar</button>
-      <button class="btn_submit">Guardar</button>
+      <button class="btn_cancel" (click)="disableInputs()">Cancelar</button>
+      <button class="btn_submit" type="button" (click)="onUpdateUser()">Guardar</button>
     </div>
     
     <div class="container--float-btns_control">
-      <button class="btn_cancel" (click)="isEditing = false">Cancelar</button>
-      <button class="btn_submit">Guardar</button>
+      <button class="btn_cancel" (click)="disableInputs()">Cancelar</button>
+      <button class="btn_submit" type="button" (click)="onUpdateUser()">Guardar</button>
     </div>
   }
   </form>

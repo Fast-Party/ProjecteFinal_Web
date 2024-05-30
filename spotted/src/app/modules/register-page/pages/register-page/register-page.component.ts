@@ -76,7 +76,6 @@ export class RegisterPageComponent {
       Validators.required,
     ]),
    });
-   
   }
 
   comparePasswords() {

@@ -9,8 +9,6 @@
 
   @media screen and (max-width: 1050px) {
     width: calc(100% - 48px);
-    //background-color: red;
-
     .form--user_profile {
       width: 100%;
       .union--inputs-input_birthday {
@@ -109,86 +107,81 @@
           gap: 44px;
         }
 
-        .container--right_inputs{
-                .container-input-date-label {
-        display: flex;
-        flex-direction: column;
-        position: relative;
+        .container--right_inputs {
+          .container-input-date-label {
+            display: flex;
+            flex-direction: column;
+            position: relative;
 
-        @media screen and (max-width: 1050px) {
-          width: 100%;
-          .container-input-date {
-            width: 100% !important;
-            align-self: stretch;
-            select {
+            @media screen and (max-width: 1050px) {
               width: 100%;
+              .container-input-date {
+                width: 100% !important;
+                align-self: stretch;
+                select {
+                  width: 100%;
+                }
+              }
+            }
+            .label-date {
+              position: absolute;
+              top: -20px;
+              font-size: 14px;
+              color: rgba(stl.$base-color-black, 0.5);
+              opacity: 0;
+              transition: all 0.3s ease-in-out;
+              animation: fade-in-top 0.5s ease-in-out 0.5s forwards;
+            }
+
+            .container-input-date {
+              display: flex;
+              width: 500px;
+              gap: 24px;
+              select:disabled ~ .underline {
+                opacity: 0;
+              }
+              select {
+                font-size: 16px;
+                width: 100%;
+                border: none;
+                height: 30px;
+                font-weight: 500;
+                border-bottom: 1px solid rgba(stl.$base-color-black, 0.5);
+                color: black;
+                padding: 5px 0;
+                background-color: transparent;
+                outline: none;
+                animation: text-input-appear 0.3s ease-in-out forwards;
+
+                &::-webkit-scrollbar {
+                  width: 2px;
+                }
+                &::-webkit-scrollbar-track {
+                  background: stl.$dark-mode-900;
+                  border-radius: 25px;
+                }
+                &::-webkit-scrollbar-thumb {
+                  background: stl.$primary-color-500;
+                  border-radius: 25px;
+                }
+
+                option {
+                  background-color: stl.$dark-mode-900;
+                  border-radius: 12px;
+                  color: stl.$base-color-white;
+                }
+
+                &:focus ~ .underline,
+                &:valid ~ .underline {
+                  transform: scaleX(1);
+                }
+
+                &:focus ~ .underline {
+                  background-color: stl.$primary-color-400;
+                }
+              }
             }
           }
-        }
-        .label-date {
-          position: absolute;
-          top: -20px;
-          font-size: 14px;
-          color: rgba(stl.$base-color-black, 0.5);
-          opacity: 0;
-          transition: all 0.3s ease-in-out;
-          animation: fade-in-top 0.5s ease-in-out 0.5s forwards;
-        }
-
-        .container-input-date {
-          display: flex;
-          width: 500px;
-          gap: 24px;
-          select:disabled ~ .underline {
-            opacity: 0;
-          }
-          select {
-            font-size: 16px;
-            width: 100%;
-            border: none;
-            height: 30px;
-            font-weight: 500;
-            border-bottom: 1px solid rgba(stl.$base-color-black, 0.5);
-            color: black;
-            padding: 5px 0;
-            background-color: transparent;
-            outline: none;
-
-            animation: text-input-appear-date 0.3s ease-in-out forwards;
-
-            &:valid {
-              animation: text-input-appear-date-valid 0.3s ease-in-out forwards;
-            }
-
-            &::-webkit-scrollbar {
-              width: 2px;
-            }
-            &::-webkit-scrollbar-track {
-              background: stl.$dark-mode-900;
-              border-radius: 25px;
-            }
-            &::-webkit-scrollbar-thumb {
-              background: stl.$primary-color-500;
-              border-radius: 25px;
-            }
-
-            option {
-              background-color: stl.$dark-mode-900;
-              border-radius: 12px;
-              color: stl.$base-color-white;
-            }
-
-            &:focus ~ .underline,
-            &:valid ~ .underline {
-              transform: scaleX(1);
-            }
-
-            &:focus ~ .underline {
-              background-color: stl.$primary-color-400;
-            }
-          }
-        }
-      }
         }
       }
     }
@@ -357,7 +350,7 @@
     width: 100%;
     border: none;
     border-bottom: 1px solid rgba(stl.$base-color-black, 0.5);
-    color: stl.$base-color-black;
+    color: transparent;
     padding: 5px 0;
     padding-right: 32px;
     background-color: transparent;
@@ -416,5 +409,14 @@
   to {
     opacity: 1;
     gap: 32px;
+  }
+}
+
+@keyframes text-input-appear {
+  from {
+    color: transparent;
+  }
+  to {
+    color: stl.$base-color-black;
   }
 }
