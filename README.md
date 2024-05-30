@@ -13,4 +13,7 @@ L'últim pas és clonar el repositori online al dispositiu i obrir-lo sobre l'ID
 Amb la comanda "npm start" podràs executar l'aplicació. 
 Recorda executar "npm install" per instal·lar tots els paquest i serveis que necessita l'aplicació per funcionar. 
 
+Usuari per Testing: carlos03
+Contrasenya: carlos123
+
 Copyright: Reconocimiento - No Comercial - Sin Obra Derivada (by-nc-nd)
