@@ -4,7 +4,34 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 40px;
+  margin-inline: 24px;
+  gap: 60px;
+
+  @media screen and (max-width: 1050px) {
+    width: calc(100% - 48px);
+    //background-color: red;
+
+    .form--user_profile {
+      width: 100%;
+      .union--inputs-input_birthday {
+        width: 100%;
+        .container--inputs {
+          width: 100%;
+          .container--left_inputs,
+          .container--right_inputs {
+            width: 100%;
+            .input-container {
+              width: 100%;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @media screen and (max-width: 450px) {
+    padding-bottom: 60px;
+  }
 
   .container--user_logo-btn_edit {
     display: flex;
@@ -12,14 +39,16 @@
     align-items: center;
     gap: 20px;
 
-    img {
+    .img_user_profile {
       width: 140px;
       height: 140px;
       border-radius: 50%;
       object-fit: cover;
+      animation: fade-in-top 0.5s ease-in-out forwards;
     }
 
     .btn_edit_profile {
+      pointer-events: all;
       display: flex;
       padding: 8px 12px;
       justify-content: center;
@@ -29,9 +58,12 @@
       border: none;
       cursor: pointer;
 
-      border-radius: 8px;
+      border-radius: 6px;
       background-color: rgba(stl.$base-color-black, 0.05);
+      transition: 0.3s ease-in-out;
 
+      opacity: 0;
+      animation: fade-in-bottom 0.5s ease-in-out 0.2s forwards;
       img {
         width: 16px;
         height: 16px;
@@ -41,17 +73,23 @@
         font-weight: 500;
         color: stl.$base-color-black;
       }
+
+      &:disabled {
+        pointer-events: none;
+        opacity: 0.33 !important;
+      }
     }
   }
   .form--user_profile {
     display: flex;
     flex-direction: column;
-
+    align-items: center;
+    gap: 40px;
     .union--inputs-input_birthday {
       display: flex;
       flex-direction: column;
       align-items: flex-start;
-      gap: 24px;
+      gap: 44px;
 
       .container--inputs {
         display: flex;
@@ -59,11 +97,228 @@
         align-items: flex-start;
         gap: 24px;
 
-        .container--left_inputs , .container--right_inputs {
+        @media screen and (max-width: 700px) {
+          flex-direction: column;
+          gap: 44px;
+        }
+        .container--left_inputs,
+        .container--right_inputs {
           display: flex;
           flex-direction: column;
           align-items: center;
+          gap: 44px;
+        }
+
+        .container--right_inputs{
+                .container-input-date-label {
+        display: flex;
+        flex-direction: column;
+        position: relative;
+
+        @media screen and (max-width: 1050px) {
+          width: 100%;
+          .container-input-date {
+            width: 100% !important;
+            align-self: stretch;
+            select {
+              width: 100%;
+            }
+          }
+        }
+        .label-date {
+          position: absolute;
+          top: -20px;
+          font-size: 14px;
+          color: rgba(stl.$base-color-black, 0.5);
+          opacity: 0;
+          transition: all 0.3s ease-in-out;
+          animation: fade-in-top 0.5s ease-in-out 0.5s forwards;
+        }
+
+        .container-input-date {
+          display: flex;
+          width: 500px;
           gap: 24px;
+          select:disabled ~ .underline {
+            opacity: 0;
+          }
+          select {
+            font-size: 16px;
+            width: 100%;
+            border: none;
+            height: 30px;
+            font-weight: 500;
+            border-bottom: 1px solid rgba(stl.$base-color-black, 0.5);
+            color: black;
+            padding: 5px 0;
+            background-color: transparent;
+            outline: none;
+
+            animation: text-input-appear-date 0.3s ease-in-out forwards;
+
+            &:valid {
+              animation: text-input-appear-date-valid 0.3s ease-in-out forwards;
+            }
+
+            &::-webkit-scrollbar {
+              width: 2px;
+            }
+            &::-webkit-scrollbar-track {
+              background: stl.$dark-mode-900;
+              border-radius: 25px;
+            }
+            &::-webkit-scrollbar-thumb {
+              background: stl.$primary-color-500;
+              border-radius: 25px;
+            }
+
+            option {
+              background-color: stl.$dark-mode-900;
+              border-radius: 12px;
+              color: stl.$base-color-white;
+            }
+
+            &:focus ~ .underline,
+            &:valid ~ .underline {
+              transform: scaleX(1);
+            }
+
+            &:focus ~ .underline {
+              background-color: stl.$primary-color-400;
+            }
+          }
+        }
+      }
+        }
+      }
+    }
+    .container--buttons_control_form {
+      display: flex;
+      align-items: flex-start;
+      opacity: 0;
+      gap: 32px;
+      animation: buttons_control_animation 0.5s ease-in-out forwards;
+
+      @media screen and (max-width: 450px) {
+        display: none;
+        pointer-events: none;
+      }
+      .btn_cancel,
+      .btn_submit {
+        width: 200px;
+      }
+
+      .btn_cancel {
+        padding: 8px 12px;
+        border: none;
+        cursor: pointer;
+        border-radius: 6px;
+        background-color: rgba(stl.$base-color-black, 0.05);
+        color: stl.$base-color-black;
+        font-size: 14px;
+        font-weight: 500;
+        transition: 0.3s ease-in-out;
+
+        &:hover {
+          background-color: rgba(stl.$base-color-black, 0.1);
+        }
+      }
+      .btn_submit {
+        display: flex;
+        padding: 8px 12px;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        align-self: stretch;
+        border-radius: 7px;
+        border: none;
+        cursor: pointer;
+        font-weight: 500;
+        color: stl.$base-color-white;
+        font-size: 14px;
+        transition: 0.3s ease-in-out;
+        background: linear-gradient(
+            15deg,
+            stl.$primary-color-500,
+            stl.$secondary-color-600,
+            stl.$primary-color-500
+          )
+          no-repeat;
+        background-position: left center;
+        background-size: 300%;
+
+        &:hover {
+          background-size: 320%;
+          background-position: right center;
+        }
+      }
+    }
+    .container--float-btns_control {
+      display: none;
+      pointer-events: none;
+      width: 100%;
+      background-color: rgba(stl.$base-color-white, 0.5);
+      position: fixed;
+      bottom: 0;
+      justify-content: end;
+      align-items: center;
+      backdrop-filter: blur(40px);
+      padding: 12px 24px;
+      animation: fade-in-bottom 0.7s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+      gap: 16px;
+
+      @media screen and (max-width: 450px) {
+        display: flex;
+        pointer-events: all;
+      }
+
+      .btn_cancel,
+      .btn_submit {
+        width: 100%;
+      }
+
+      .btn_cancel {
+        padding: 8px 12px;
+        border: none;
+        cursor: pointer;
+        border-radius: 6px;
+        background-color: rgba(stl.$base-color-black, 0.05);
+        color: stl.$base-color-black;
+        font-size: 14px;
+        font-weight: 500;
+        transition: 0.3s ease-in-out;
+
+        &:hover {
+          background-color: rgba(stl.$base-color-black, 0.1);
+        }
+      }
+      .btn_submit {
+        display: flex;
+        padding: 8px 12px;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        align-self: stretch;
+        border-radius: 7px;
+        border: none;
+        cursor: pointer;
+        font-weight: 500;
+        color: stl.$base-color-white;
+        font-size: 14px;
+        transition: 0.3s ease-in-out;
+        background: linear-gradient(
+            15deg,
+            stl.$primary-color-500,
+            stl.$secondary-color-600,
+            stl.$primary-color-500
+          )
+          no-repeat;
+        background-position: left center;
+        background-size: 300%;
+
+        &:hover {
+          background-size: 320%;
+          background-position: right center;
         }
       }
     }
@@ -71,119 +326,95 @@
 }
 
 .input-container {
-    position: relative;
-    width: 100%;
+  position: relative;
+  width: 500px;
+  opacity: 0;
+  animation: scale-in-hor-center 0.5s ease-in-out forwards;
+  transition: 0.3s ease-in-out;
+
+  .label {
+    position: absolute;
+    top: -20px;
+    font-size: 14px;
+    left: 0;
+    color: rgba(stl.$base-color-black, 0.5);
+    transition: all 0.3s ease;
+    pointer-events: none;
+    font-weight: 400;
     opacity: 0;
-    animation: scale-in-hor-center 0.5s ease-in-out 0.5s forwards;
-    transition: .3s ease-in-out;
-    .password-input {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      position: absolute;
-      right: 12px;
-      cursor: pointer;
-      user-select: none;
-      height: 100%;
-      top: 0;
-      .eye {
-        width: 16px;
-        height: 16px;
-        filter: invert(1);
-        transition: 0.3s ease-in-out;
-        opacity: 0;
-        animation: appear 0.5s ease-in-out 1s forwards;
-      }
-
-      .new-animations-eye {
-        animation-delay: 0s !important;
-      }
-
-      .input-eye {
-        background-color: transparent;
-        border: none;
-        cursor: pointer;
-      }
-    }
-
-    .label {
-      position: absolute;
-      top: 0;
-      left: 0;
-      color: rgba(stl.$base-color-black, 0.5);
-      transition: all 0.3s ease;
-      pointer-events: none;
-      font-weight: 400;
-      opacity: 0;
-      animation: fade-in-top 0.5s ease-in-out 1s forwards;
-    }
-
-    .remove-delay-input{
-      animation-delay: 0.5s !important;
-    }
-
-    input[type="text"],
-    input[type="password"],
-    input[type="email"],
-    input[type="date"],
-    input[type="tel"] {
-      font-size: 16px;
-      width: 100%;
-      border: none;
-      border-bottom: 1px solid rgba(stl.$base-color-black, 0.5);
-      color: transparent;
-      padding: 5px 0;
-      padding-right: 32px;
-      background-color: transparent;
-      outline: none;
-      animation: text-input-appear 0.3s ease-in-out 1s forwards;
-    }
-
-    .remove-delay-pwd{
-      animation-delay: 0s !important;
-      animation-duration: 0.1s !important;
-    }
-
-    ::-ms-reveal {
-      display: none;
-    }
-
-    input[type="text"]:focus ~ .label,
-    input[type="text"]:valid ~ .label,
-    input[type="password"]:focus ~ .label,
-    input[type="password"]:valid ~ .label,
-    input[type="email"]:focus ~ .label,
-    input[type="email"]:valid ~ .label,
-    input[type="tel"]:focus ~ .label,
-    input[type="tel"]:valid ~ .label {
-      top: -20px;
-      font-size: 14px;
-      color: rgba(stl.$base-color-black, 0.5);
-    }
-    .underline {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      height: 1px;
-      width: 100%;
-      background-color: stl.$base-color-black;
-      transform: scaleX(0);
-      transition: all 0.3s ease;
-    }
-    input[type="text"]:focus ~ .underline,
-    input[type="text"]:valid ~ .underline,
-    input[type="password"]:focus ~ .underline,
-    input[type="password"]:valid ~ .underline,
-    input[type="email"]:focus ~ .underline,
-    input[type="email"]:valid ~ .underline,
-    input[type="tel"]:focus ~ .underline,
-    input[type="tel"]:valid ~ .underline {
-      transform: scaleX(1);
-    }
-    input[type="text"]:focus ~ .underline,
-    input[type="password"]:focus ~ .underline,
-    input[type="email"]:focus ~ .underline,
-    input[type="tel"]:focus ~ .underline {
-      background-color: stl.$primary-color-400;
-    }
+    animation: fade-in-top 0.5s ease-in-out 0.5s forwards;
   }
+
+  .remove-delay-input {
+    animation-delay: 0.5s !important;
+  }
+
+  input[type="text"],
+  input[type="password"],
+  input[type="email"],
+  input[type="tel"] {
+    font-size: 16px;
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid rgba(stl.$base-color-black, 0.5);
+    color: stl.$base-color-black;
+    padding: 5px 0;
+    padding-right: 32px;
+    background-color: transparent;
+    outline: none;
+    animation: text-input-appear 0.3s ease-in-out 0.5s forwards;
+  }
+
+  input[type="text"],
+  input[type="password"],
+  input[type="email"],
+  input[type="tel"]:disabled {
+    border-bottom-color: rgba(stl.$base-color-black, 0.33);
+  }
+
+  .remove-delay-pwd {
+    animation-delay: 0s !important;
+    animation-duration: 0.1s !important;
+  }
+
+  ::-ms-reveal {
+    display: none;
+  }
+  .underline {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 1px;
+    width: 100%;
+    background-color: stl.$base-color-black;
+    transform: scaleX(0);
+    transition: all 0.3s ease;
+  }
+  input[type="text"]:focus ~ .underline,
+  input[type="text"]:valid ~ .underline,
+  input[type="password"]:focus ~ .underline,
+  input[type="password"]:valid ~ .underline,
+  input[type="email"]:focus ~ .underline,
+  input[type="email"]:valid ~ .underline,
+  input[type="tel"]:focus ~ .underline,
+  input[type="tel"]:valid ~ .underline {
+    transform: scaleX(1);
+  }
+  input[type="text"]:focus ~ .underline,
+  input[type="password"]:focus ~ .underline,
+  input[type="email"]:focus ~ .underline,
+  input[type="tel"]:focus ~ .underline {
+    background-color: stl.$primary-color-400;
+  }
+}
+
+@keyframes buttons_control_animation {
+  from {
+    opacity: 0;
+    gap: 64px;
+  }
+  to {
+    opacity: 1;
+    gap: 32px;
+  }
+}
