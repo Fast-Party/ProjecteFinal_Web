@@ -1,19 +1,189 @@
-.profile-container {
+@use "../../../../../sass/variables.scss" as stl;
+
+.user_profile--page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+
+  .container--user_logo-btn_edit {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    width: 25vw;
-    height: 33vh;
-    background-color: lightpink;
+    gap: 20px;
+
+    img {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .btn_edit_profile {
+      display: flex;
+      padding: 8px 12px;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      align-self: stretch;
+      border: none;
+      cursor: pointer;
+
+      border-radius: 8px;
+      background-color: rgba(stl.$base-color-black, 0.05);
+
+      img {
+        width: 16px;
+        height: 16px;
+      }
+      p {
+        font-size: 14px;
+        font-weight: 500;
+        color: stl.$base-color-black;
+      }
+    }
+  }
+  .form--user_profile {
+    display: flex;
+    flex-direction: column;
+
+    .union--inputs-input_birthday {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 24px;
+
+      .container--inputs {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 24px;
+
+        .container--left_inputs , .container--right_inputs {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 24px;
+        }
+      }
+    }
+  }
 }
 
-.plan-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 25vw;
-    height: 33vh;
-    background-color: lightskyblue;
-}
+.input-container {
+    position: relative;
+    width: 100%;
+    opacity: 0;
+    animation: scale-in-hor-center 0.5s ease-in-out 0.5s forwards;
+    transition: .3s ease-in-out;
+    .password-input {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      right: 12px;
+      cursor: pointer;
+      user-select: none;
+      height: 100%;
+      top: 0;
+      .eye {
+        width: 16px;
+        height: 16px;
+        filter: invert(1);
+        transition: 0.3s ease-in-out;
+        opacity: 0;
+        animation: appear 0.5s ease-in-out 1s forwards;
+      }
+
+      .new-animations-eye {
+        animation-delay: 0s !important;
+      }
+
+      .input-eye {
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+      }
+    }
+
+    .label {
+      position: absolute;
+      top: 0;
+      left: 0;
+      color: rgba(stl.$base-color-black, 0.5);
+      transition: all 0.3s ease;
+      pointer-events: none;
+      font-weight: 400;
+      opacity: 0;
+      animation: fade-in-top 0.5s ease-in-out 1s forwards;
+    }
+
+    .remove-delay-input{
+      animation-delay: 0.5s !important;
+    }
+
+    input[type="text"],
+    input[type="password"],
+    input[type="email"],
+    input[type="date"],
+    input[type="tel"] {
+      font-size: 16px;
+      width: 100%;
+      border: none;
+      border-bottom: 1px solid rgba(stl.$base-color-black, 0.5);
+      color: transparent;
+      padding: 5px 0;
+      padding-right: 32px;
+      background-color: transparent;
+      outline: none;
+      animation: text-input-appear 0.3s ease-in-out 1s forwards;
+    }
+
+    .remove-delay-pwd{
+      animation-delay: 0s !important;
+      animation-duration: 0.1s !important;
+    }
+
+    ::-ms-reveal {
+      display: none;
+    }
+
+    input[type="text"]:focus ~ .label,
+    input[type="text"]:valid ~ .label,
+    input[type="password"]:focus ~ .label,
+    input[type="password"]:valid ~ .label,
+    input[type="email"]:focus ~ .label,
+    input[type="email"]:valid ~ .label,
+    input[type="tel"]:focus ~ .label,
+    input[type="tel"]:valid ~ .label {
+      top: -20px;
+      font-size: 14px;
+      color: rgba(stl.$base-color-black, 0.5);
+    }
+    .underline {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      height: 1px;
+      width: 100%;
+      background-color: stl.$base-color-black;
+      transform: scaleX(0);
+      transition: all 0.3s ease;
+    }
+    input[type="text"]:focus ~ .underline,
+    input[type="text"]:valid ~ .underline,
+    input[type="password"]:focus ~ .underline,
+    input[type="password"]:valid ~ .underline,
+    input[type="email"]:focus ~ .underline,
+    input[type="email"]:valid ~ .underline,
+    input[type="tel"]:focus ~ .underline,
+    input[type="tel"]:valid ~ .underline {
+      transform: scaleX(1);
+    }
+    input[type="text"]:focus ~ .underline,
+    input[type="password"]:focus ~ .underline,
+    input[type="email"]:focus ~ .underline,
+    input[type="tel"]:focus ~ .underline {
+      background-color: stl.$primary-color-400;
+    }
+  }
