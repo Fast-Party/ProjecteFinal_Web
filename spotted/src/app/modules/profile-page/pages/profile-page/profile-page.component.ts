@@ -144,7 +144,7 @@ export class ProfilePageComponent implements OnInit, AfterViewInit {
     if (!this.isAgeValid) {
       return;
     } else {
-      console.log(this.perfilUsuario.FechaNacimiento);
+      this.perfilUsuario.FechaNacimiento!.setHours(+2);
       try {
         this.http
           .post('http://localhost:3000/updatePerfilUsuario', {
