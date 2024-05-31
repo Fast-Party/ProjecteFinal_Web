@@ -1,0 +1,18 @@
+@use "../../../../sass/variables.scss" as stl;
+
+.my_events--page {
+  margin-inline: 24px;
+}
+
+.message--without_having {
+  right: 50%;
+  top: 50%;
+  transform: translate(50%, -50%);
+  position: absolute;
+  font-size: 24px;
+  width: 100%;
+    text-align: center;
+  color: rgba(stl.$base-color-black, 0.33);
+
+  animation: appear 0.5s ease-in-out;
+}

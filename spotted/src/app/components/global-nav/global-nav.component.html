@@ -1,7 +1,7 @@
 <div class="container-global_nav">
   <nav class="app_logo-nav">
     <ul class="ul-app_logo-pages">
-      <li>
+      <li role="button" routerLink="home">
         <div class="app_logo">
           <img
             src="../../../assets/img/logo/Logo Linear Gradient.svg"
@@ -15,8 +15,8 @@
         <a
           (click)="statePage = 1"
           class="home-link"
-          routerLink="/home"
-          [class.statePage]="statePage === 1"
+          routerLink="home"
+          [class.active-links]="statePage == 1"
           >Inicio</a
         >
       </li>
@@ -24,8 +24,8 @@
         <a
           (click)="statePage = 2"
           class="explore-link"
-          routerLink="/explore"
-          [class.statePage]="statePage === 2"
+          routerLink="explore"
+          [class.active-links]="statePage == 2"
           >Explorar</a
         >
       </li>
@@ -33,8 +33,8 @@
         <a
           (click)="statePage = 3"
           class="my_events-link"
-          routerLink="/my_events"
-          [class.statePage]="statePage === 3"
+          routerLink="my-events"
+          [class.active-links]="statePage == 3"
           >Mis eventos</a
         >
       </li>
@@ -109,15 +109,12 @@
     </nav>
 
     <ul class="menu">
-      <li role="button" [routerLink]="['/profile', this.user_id]">
+      <li role="button" routerLink="profile">
         <div role="button">
-          <img
-            src="https://scontent-bcn1-1.xx.fbcdn.net/v/t39.30808-6/352821287_3304685189792355_2898452865604277350_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=5f2048&_nc_ohc=mZu7JYFxGEsQ7kNvgFoeyyo&_nc_ht=scontent-bcn1-1.xx&oh=00_AYCTKP4eQ1UwlM6_cmmzfc9aEc0bhkpVjUAmeP7TZP54oQ&oe=6648525A"
-            alt="user_logo"
-          />
+          <img src="{{ perfilUsuario.Imagen }}" alt="user_logo" />
         </div>
         <div class="container-user_name-icon_down_arrow">
-          <h4>Razzmatazz</h4>
+          <h4>{{ perfilUsuario.NombreUsuario }}</h4>
           <img
             src="../../../assets/icons/regular/caret-down.svg"
             alt="arrow_down"
@@ -126,23 +123,16 @@
       </li>
       <div class="container-submenu">
         <ul class="submenu">
-          <div
-            class="smart-info_user"
-            role="button"
-            [routerLink]="['/profile', this.user_id]"
-          >
-            <img
-              src="https://scontent-bcn1-1.xx.fbcdn.net/v/t39.30808-6/352821287_3304685189792355_2898452865604277350_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=5f2048&_nc_ohc=mZu7JYFxGEsQ7kNvgFoeyyo&_nc_ht=scontent-bcn1-1.xx&oh=00_AYCTKP4eQ1UwlM6_cmmzfc9aEc0bhkpVjUAmeP7TZP54oQ&oe=6648525A"
-              alt="user_logo"
-            />
+          <div class="smart-info_user" role="button" routerLink="profile">
+            <img src="{{ perfilUsuario.Imagen }}" alt="user_logo" />
             <div class="name_user-email_user">
-              <h4>Razzmatazz</h4>
-              <p [innerHTML]="'razzmatazz@gmail.com'"></p>
+              <h4>{{ perfilUsuario.NombreUsuario }}</h4>
+              <p>{{ perfilUsuario.Email }}</p>
             </div>
           </div>
           <div class="container-options_users-option_sign_out">
             <div class="options_user">
-              <li role="button" [routerLink]="['/profile', this.user_id]">
+              <li role="button" [routerLink]="['profile']">
                 <img
                   src="../../../assets/icons/regular/user.svg"
                   alt="user_profile"
@@ -177,40 +167,37 @@
   ></div>
   <div class="popup_menu" [class.popup_menu_visible]="vision_menu">
     <div class="content-menu">
-      <div class="user_info-nav_pages--menu">
+      <div class="user_info-nav_pages--menu" (click)="vision_menu = false">
         <div
           class="user_info-user_logo--menu"
           role="button"
-          [routerLink]="['/profile', this.user_id]"
+          [routerLink]="['profile']"
         >
-          <img
-            src="https://scontent-bcn1-1.xx.fbcdn.net/v/t39.30808-6/352821287_3304685189792355_2898452865604277350_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=5f2048&_nc_ohc=mZu7JYFxGEsQ7kNvgFoeyyo&_nc_ht=scontent-bcn1-1.xx&oh=00_AYCTKP4eQ1UwlM6_cmmzfc9aEc0bhkpVjUAmeP7TZP54oQ&oe=6648525A"
-            alt="user_logo"
-          />
+          <img src="{{ perfilUsuario.Imagen }}" alt="user_logo" />
           <div class="contianer-user_info--menu">
-            <h4>Razzmatazz</h4>
-            <p [innerHTML]="'razzmatazz@gmail.com'"></p>
+            <h4>{{ perfilUsuario.NombreUsuario }}</h4>
+            <p>{{ perfilUsuario.Email }}</p>
           </div>
         </div>
         <div class="nav_pages--menu">
-          <ul>
-            <li><a routerLink="/home">Inicio</a></li>
-            <li><a routerLink="/explore">Explorar</a></li>
-            <li><a routerLink="/my_events">Mis eventos</a></li>
+          <ul (click)="vision_menu = false">
+            <li routerLink="home"><a>Inicio</a></li>
+            <li routerLink="explore"><a>Explorar</a></li>
+            <li routerLink="my-events"><a>Mis eventos</a></li>
           </ul>
         </div>
       </div>
       <hr />
       <div class="user_setup--menu">
-        <ul>
-          <li role="button" [routerLink]="['/profile', this.user_id]">
+        <ul (click)="vision_menu = false">
+          <li role="button" routerLink="profile">
             <img
               src="../../../assets/icons/regular/user.svg"
               alt="user_profile"
             />
             <p>Ver perfil</p>
           </li>
-          <li role="button" routerLink="/settings">
+          <li role="button" routerLink="settings">
             <img
               src="../../../assets/icons/regular/gear.svg"
               alt="user_settings"

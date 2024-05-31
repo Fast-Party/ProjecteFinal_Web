@@ -59,9 +59,9 @@
           }
         }
 
-        .statePage {
+       /* .statePage {
           color: stl.$base-color-black !important;
-        }
+        }*/
 
         &:hover {
           a {
@@ -265,6 +265,7 @@
             height: 32px;
             transition: 0.3s ease-in-out;
             border-radius: 50%;
+            object-fit: cover;
           }
         }
 
@@ -332,6 +333,7 @@
               width: 56px;
               height: 56px;
               border-radius: 50%;
+              object-fit: cover;
             }
             .name_user-email_user {
               display: flex;
@@ -467,11 +469,11 @@
       width: 100%;
       display: flex;
       flex-direction: column;
-      gap: 40px;
+      gap: 32px;
       .user_info-nav_pages--menu {
         display: flex;
         flex-direction: column;
-        gap: 48px;
+        gap: 24px;
         cursor: pointer;
         .user_info-user_logo--menu {
           display: flex;
@@ -481,6 +483,7 @@
             width: 54px;
             height: 54px;
             border-radius: 50%;
+            object-fit: cover;
           }
           .contianer-user_info--menu {
             display: flex;
@@ -515,11 +518,15 @@
           ul {
             display: flex;
             flex-direction: column;
-            gap: 40px;
+            gap: 4px;
             align-items: start;
             li {
               padding-left: 8px;
+              height: 52px;
               transition: .3s ease-in-out;
+              display: flex;
+              align-items: center;
+              width: 100%;
               &:hover {
                  transform: translateX(4px);
               }
@@ -667,4 +674,8 @@
 .control-popup_menu_visible{
   opacity: 1;
   pointer-events: all;
+}
+
+.active-links{
+  color: stl.$base-color-black !important;
 }

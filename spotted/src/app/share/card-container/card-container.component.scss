@@ -15,6 +15,17 @@
     cursor: pointer;
     overflow: hidden;
     border-radius: 12px;
+
+    .card_control{
+      top: 0;
+      display: flex;
+      height: 265px;
+      width: 100%;
+      position: absolute;
+      border-radius: 12px;
+      z-index: 1;
+    }
+
     &:hover {
       .img_cover {
         transform: scale(1.1);
@@ -28,6 +39,11 @@
       object-position: center;
       transition: all 0.3s ease-in-out;
     }
+
+    .autorNotVisible{
+      justify-content: end !important;
+    }
+
     .local_info-icons {
       top: 0;
       position: absolute;
@@ -41,8 +57,10 @@
       flex-shrink: 0;
       transition: all 0.3s ease-in-out;
       border-radius: 12px;
+      z-index: 1;
       &:hover {
         .characteristics_event_icons {
+          z-index: 2;
           .icon_circle {
             animation: fade-in-bottom-icons 0.3s ease-in-out forwards;
             .characteristics-icon {
@@ -62,7 +80,7 @@
         background: rgba(0, 0, 0, 0.2);
         backdrop-filter: blur(40px);
         cursor: pointer;
-
+        z-index: 9;
         opacity: 0;
         animation: fade-in-top 0.5s ease-in-out 0.3s forwards;
 
@@ -93,7 +111,7 @@
         width: 93%;
         height: 82%;
         align-items: center;
-        z-index: 1;
+        z-index: 3;
         visibility: hidden;
         cursor: auto;
         &:hover {
@@ -146,7 +164,6 @@
             align-items: center;
             align-self: stretch;
             gap: 8px;
-
             .local_img_popup {
               width: 50px;
               height: 50px;
@@ -166,6 +183,15 @@
                 font-size: 16px;
                 font-weight: 600;
                 cursor: pointer;
+                
+                text-align: center;
+                align-self: stretch;
+
+                display: -webkit-box;
+                -webkit-box-orient: vertical;
+                -webkit-line-clamp: 1;
+                overflow: hidden;
+                text-overflow: ellipsis;
               }
               .container_local_ubi {
                 display: flex;
@@ -176,9 +202,9 @@
                 img {
                   width: 12px;
                   height: 12px;
-                  //filter: invert(0);
                   opacity: 0.5;
                   cursor: pointer;
+                  transition: .3s ease-in-out;
                 }
                 .local_ubi {
                   color: stl.$base-color-black;
@@ -191,6 +217,17 @@
                   overflow: hidden;
                   text-overflow: ellipsis;
                   cursor: pointer;
+                  text-decoration: none;
+                  transition: .3s ease-in-out;
+                }
+
+                &:hover {
+                  img {
+                    opacity: 1;
+                  }
+                  .local_ubi {
+                    opacity: 1;
+                  }
                 }
               }
             }
@@ -201,7 +238,6 @@
             padding: 0px 12px;
             align-items: center;
             gap: 12px;
-
             .local_stats_followers {
               display: flex;
               flex-direction: column;
@@ -273,11 +309,11 @@
               background-position: right center;
             }
           }
-
-          .popup_following_btn-disable {
-            opacity: 0;
-            cursor: auto;
-            pointer-events: none;
+          .design_btn_follow{
+            background: transparent !important;
+            color: stl.$base-color-black !important;
+            font-weight: 600 !important;
+            border: 1px solid stl.$base-color-black !important;
           }
         }
       }
@@ -320,6 +356,7 @@
       gap: 8px;
       align-self: stretch;
       width: 100%;
+      cursor: pointer;
       .event_title {
         display: -webkit-box;
         -webkit-box-orient: vertical;

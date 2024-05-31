@@ -1,15 +1,19 @@
 <div class="container-card">
-  <div class="img_cover-local_name-icons">
-    <img
-      class="img_cover"
-      src="{{ plan?.ImagenPortada}}"
-      alt="Img Cover"
-    />
-    <div class="local_info-icons">
-      <div class="local_img-local_name" [routerLink]="['/profile', plan?.IdAutor]">
+  <div class="img_cover-local_name-icons" >
+    <img class="img_cover" src="{{ plan?.RutaImagenPlan }}" alt="Img Cover"  />
+    <div class="local_info-icons" [class.autorNotVisible]="!autorInfoVisible" >
+      @if (autorInfoVisible) {
+      <div
+        class="local_img-local_name"
+        [routerLink]="['/', idUsuario, 'autor', plan?.IdAutor]"
+      >
         <img
           class="local_img"
-          src="{{plan?.ImagenLogoAutor}}"
+          src="{{
+            plan?.ImagenLogoAutor
+              ? plan?.ImagenLogoAutor
+              : 'https://static.vecteezy.com/system/resources/previews/005/005/788/large_2x/user-icon-in-trendy-flat-style-isolated-on-grey-background-user-symbol-for-your-web-site-design-logo-app-ui-illustration-eps10-free-vector.jpg'
+          }}"
           alt="Local Img"
         />
         <p class="local_name">{{ plan?.NombreAutor }}</p>
@@ -19,18 +23,23 @@
           <div class="local_img_popup-local_name_popup-local_ubi">
             <img
               class="local_img_popup"
-              src="{{plan?.ImagenLogoAutor}}"
+              src="{{ plan?.ImagenLogoAutor }}"
               alt="Local Img"
-              [routerLink]="['/profile', plan?.IdAutor]"
+              [routerLink]="['/', idUsuario, 'autor', plan?.IdAutor]"
             />
             <div class="local_name_popup-local-ubi">
-              <p class="local_name_popup" [routerLink]="['/profile', plan?.IdAutor]">{{ plan?.NombreAutor }}</p>
+              <p
+                class="local_name_popup"
+                [routerLink]="['/', idUsuario, 'autor', plan?.IdAutor]"
+              >
+                {{ plan?.NombreAutor }}
+              </p>
               <div class="container_local_ubi">
                 <img
                   src="../../../assets/icons/fill/map-pin-fill.svg"
                   alt="Map Pin"
                 />
-                <p class="local_ubi">{{ plan?.LocalidadAutor }} ,España</p>
+                <a class="local_ubi" [href]="'https://www.google.com/maps/search/?api=1&query=' + plan?.LocalidadAutor" target="_blank" >{{ plan?.Localizacion }} ,España</a>
               </div>
             </div>
           </div>
@@ -45,19 +54,22 @@
                 src="../../../assets/icons/fill/star-fill.svg"
                 alt="Star fill Rating"
               />
-              <p class="local_stats_rating_number">{{ plan?.RatingAutor }}</p>
+              <p class="local_stats_rating_number">
+                {{ plan?.RatingAutor ?? 0 | number : "1.1-1" }}
+              </p>
             </div>
           </div>
           <button
             class="popup_following_btn"
-            (click)="isFollowing = !isFollowing"
-            [class.popup_following_btn-disable]="!buttonFollowingEnable"
-            [disabled]="!buttonFollowingEnable"
+            (click)="toggleFollow()"
+            [class.design_btn_follow]="isFollowing"
           >
             @if (!isFollowing) { Seguir }@else { Siguiendo }
           </button>
         </div>
       </div>
+      }
+      <div class="card_control" [routerLink]="['/', idUsuario, 'event', plan?.IdPlan]"></div>
       <div class="characteristics_event_icons">
         <div class="icon_circle">
           <img
@@ -91,13 +103,18 @@
     </div>
   </div>
   <div class="event_info-icon_like">
-    <div class="event_info">
+    <div class="event_info" [routerLink]="['/', idUsuario, 'event', plan?.IdPlan]">
       <p class="event_title">
         {{ plan?.Titulo }}
       </p>
       <p class="event_date">
-        {{ diaSemana }}. <span>{{ refactorNumberDate(dia) }}</span> {{ mes }} {{ year }} -
-        <span>{{ refactorNumberDate(hora) }}:{{ refactorNumberDate(minutos) }}</span>
+        {{ diaSemana }}. <span>{{ refactorNumberDate(dia) }}</span> {{ mes }}
+        {{ year }} -
+        <span
+          >{{ refactorNumberDate(hora) }}:{{
+            refactorNumberDate(minutos)
+          }}</span
+        >
       </p>
     </div>
     <label class="container-icon_like">

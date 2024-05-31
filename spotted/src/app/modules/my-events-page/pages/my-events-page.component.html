@@ -1,0 +1,14 @@
+<div class="my_events--page">
+  @if (planes.length > 0) {
+  <div class="container-list_events">
+    @for (plan of planes; track plan) {
+    <app-card-container
+      [plan]="plan"
+      [idUsuario]="idUsuario"
+    ></app-card-container>
+    }
+  </div>
+  }@else { 
+  <h1 class="message--without_having">No tienes eventos</h1>
+  }
+</div>

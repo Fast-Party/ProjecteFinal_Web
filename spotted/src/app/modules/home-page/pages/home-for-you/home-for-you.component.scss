@@ -1,0 +1,12 @@
+.container-list_events--for_you {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    row-gap: 40px;
+    column-gap: 24px;
+    animation: appear 0.7s ease-in-out forwards;
+
+    @media screen and (max-width: 768px) {
+      grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+    }
+  }

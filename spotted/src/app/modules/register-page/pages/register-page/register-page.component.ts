@@ -76,7 +76,6 @@ export class RegisterPageComponent {
       Validators.required,
     ]),
    });
-   
   }
 
   comparePasswords() {
@@ -145,7 +144,7 @@ export class RegisterPageComponent {
         .subscribe((res: any) => {
           console.log(res['message']);
           if (res['message'] === 'User registered correctly.') {
-            this.router.navigateByUrl('/home');
+            this.router.navigateByUrl('/login');
           } else {
             console.log('error 401');
           }
