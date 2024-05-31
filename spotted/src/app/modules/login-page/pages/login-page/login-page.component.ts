@@ -5,6 +5,8 @@ import { Router, RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { catchError } from 'rxjs';
 import { UserService } from '../../../../api/services/user.service';
+import { PopupUserWithoutAccountService } from '../../../../api/services/popup-user-without-account.service';
+
 @Component({
   selector: 'app-login-page',
   standalone: true,
@@ -21,7 +23,8 @@ export class LoginPageComponent {
   constructor(
     private http: HttpClient, 
     private router: Router,
-    private userService: UserService
+    private userService: UserService,
+    private popupUserWithoutAccountService: PopupUserWithoutAccountService
   ) {
     this.loginObj = new Login();
     this.prvPss = 'test';
@@ -47,9 +50,12 @@ export class LoginPageComponent {
         )
         .subscribe((res: any) => {
           if (res.length > 0) {
+            if(this.userService.getIdUsuario() == 0){
+              this.popupUserWithoutAccountService.hidePopup();
+            }
             this.userService.setIdUsuario(res[0].IdUsuario);
-            //this.router.navigateByUrl('/_/home/' + res[0].IdUsuario + '/for-you');
             this.router.navigateByUrl(res[0].IdUsuario + '/home');
+            
           } else {
             console.log('Datos incorrectos');
           }

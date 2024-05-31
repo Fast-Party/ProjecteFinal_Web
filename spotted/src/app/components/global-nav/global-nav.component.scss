@@ -679,3 +679,8 @@
 .active-links{
   color: stl.$base-color-black !important;
 }
+
+.user_without_account{
+  pointer-events: none;
+  cursor: pointer;
+}

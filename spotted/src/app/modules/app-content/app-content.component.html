@@ -3,7 +3,8 @@
     <app-global-nav [user_id]="user_id"></app-global-nav>
   </header>
   <main>
-    <router-outlet></router-outlet>
+    <router-outlet></router-outlet> 
+    <app-popup-without-account [class.popupVisible]="isVisiblePopup"></app-popup-without-account>
   </main>
   <footer>
     <app-global-footer></app-global-footer>
