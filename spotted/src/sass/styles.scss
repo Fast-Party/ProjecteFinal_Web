@@ -507,3 +507,17 @@ ul {
     opacity: 1;
   }
 }
+
+@keyframes glass-container-appear {
+  0% {
+    opacity: 0;
+    width: 0px;
+  }
+  100% {
+    width: 732px;
+    opacity: 1;
+    @media screen and (max-width: 750px){
+      width: 100% !important;
+    }
+  }
+}
