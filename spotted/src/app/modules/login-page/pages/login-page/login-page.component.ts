@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { catchError } from 'rxjs';
 import { UserService } from '../../../../api/services/user.service';
 import { PopupUserWithoutAccountService } from '../../../../api/services/popup-user-without-account.service';
+import { Notyf } from 'notyf';
 
 @Component({
   selector: 'app-login-page',
@@ -19,6 +20,13 @@ export class LoginPageComponent {
   prvPss: string;
   showPassword: boolean = false;
   applyAnimationEye: boolean = false;
+  notyf = new Notyf({
+    duration: 3000,
+    position: {
+      x: 'right',
+      y: 'bottom',
+    },
+  });
 
   constructor(
     private http: HttpClient, 
@@ -58,6 +66,7 @@ export class LoginPageComponent {
             
           } else {
             console.log('Datos incorrectos');
+            this.notyf.error('Datos incorrectos');
           }
         });
     } catch (error) {
