@@ -110,7 +110,7 @@
             />
             }
             <label class="password-input">
-              <button (click)="togglePasswordVisibility()" class="input-eye">
+              <div (click)="togglePasswordVisibility()" class="input-eye" role="button">
                 @if (!showPassword) {
                 <img
                   class="eye"
@@ -128,7 +128,7 @@
                   [class.remove-delay-input]="applyDelay"
                 />
                 }
-              </button>
+              </div>
             </label>
             <label
               for="input"

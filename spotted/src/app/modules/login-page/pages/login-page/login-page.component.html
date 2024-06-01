@@ -1,34 +1,50 @@
 <div class="loginPage">
   <div class="container-form">
     <div class="container-logo">
-      <img src="../../../../../assets/img/logo/Logo Linear Gradient.svg" alt="logo" class="logo" />
+      <img
+        src="../../../../../assets/img/logo/Logo Linear Gradient.svg"
+        alt="logo"
+        class="logo"
+      />
       <h4>Fast Party</h4>
     </div>
     <div class="container-form-content">
       <h1>Iniciar sesión</h1>
-      <form class="login-form" action="#">
+      <form
+        class="login-form"
+        action="#"
+        [formGroup]="LoginForm"
+        (ngSubmit)="onLogin()"
+      >
         <div class="login-form-inputs-remember_forgetpwd">
           <div class="login-form-inputs">
-            <div class="input-container">
+            <div class="input-container"  [class.input-container-error]="LoginForm.get('NombreUsuario')?.touched && LoginForm.get('NombreUsuario')?.hasError('required')">
               <input
                 type="text"
                 id="input"
                 [(ngModel)]="loginObj.NombreUsuario"
-                [ngModelOptions]="{ standalone: true }"
+                formControlName="NombreUsuario"
                 required
               />
               <label for="input" class="label"
                 >Usuario o correo electrónico</label
               >
               <div class="underline"></div>
+              @if(LoginForm.get('NombreUsuario')?.touched &&
+              LoginForm.get('NombreUsuario')?.hasError('required')) {
+              <p class="error-message-input">
+                El campo no puede estar vacío
+              </p>
+              }
             </div>
-            <div class="input-container">
+            <div class="input-container" [class.input-container-error]="LoginForm.get('Contrasenya')?.touched &&
+              LoginForm.get('Contrasenya')?.hasError('required')" >
               @if (!showPassword) {
               <input
                 type="password"
                 id="input "
                 [(ngModel)]="loginObj.Contrasenya"
-                [ngModelOptions]="{ standalone: true }"
+                formControlName="Contrasenya"
                 required
               />
               }@else {
@@ -36,12 +52,16 @@
                 type="text"
                 id="input"
                 [(ngModel)]="loginObj.Contrasenya"
-                [ngModelOptions]="{ standalone: true }"
+                formControlName="Contrasenya"
                 required
               />
               }
               <label class="password-input">
-                <button (click)="togglePasswordVisibility()" class="input-eye">
+                <div
+                  (click)="togglePasswordVisibility()"
+                  class="input-eye"
+                  role="button"
+                >
                   @if (!showPassword) {
                   <img
                     class="eye"
@@ -57,10 +77,16 @@
                     alt=""
                   />
                   }
-                </button>
+                </div>
               </label>
               <label for="input" class="label">Contraseña</label>
               <div class="underline"></div>
+              @if(LoginForm.get('Contrasenya')?.touched &&
+              LoginForm.get('Contrasenya')?.hasError('required')) {
+              <p class="error-message-input">
+                El campo no puede estar vacío
+              </p>
+              }
             </div>
           </div>
           <div class="login-form-remember_forgetpwd">
@@ -78,7 +104,7 @@
             <a href="#">¿Has olvidado la contraseña?</a>
           </div>
         </div>
-        <button type="button" class="btn-login" (click)="onLogin()">
+        <button type="submit" [disabled]="LoginForm.invalid" class="btn-login">
           Entrar
         </button>
       </form>

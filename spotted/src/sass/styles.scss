@@ -26,6 +26,31 @@ ul {
   font-weight: 500;
   opacity: 0;
   animation: fade-in-top 0.5s ease-in-out forwards;
+
+  @media screen and (max-width: 450px) {
+    font-size: 11px;
+    
+  }
+}
+
+.input-container-error {
+  .label {
+    color: stl.$error-color-500 !important;
+    font-weight: 500 !important;
+  }
+
+  input[type="text"],
+  input[type="password"],
+  input[type="email"],
+  input[type="date"],
+  input[type="tel"] {
+    border-bottom: 1px solid stl.$error-color-500 !important;
+
+    &:focus ~ .underline,
+    &:valid ~ .underline {
+      background-color: stl.$error-color-500 !important;
+    }
+  }
 }
 
 .container-list_events{
