@@ -24,9 +24,16 @@ export class HomePageComponent {
 
   onClick() {
     if (this.userService.getIdUsuario() !== 0) {
-      this.router.navigateByUrl( this.userService.getIdUsuario() +'/home/following');
+      this.router.navigateByUrl(this.userService.getIdUsuario() +'/home/following');
+      document.querySelector('.a-tag-following')!.classList.add('tag-select');
     } else {
       this.popupUserWithoutAccountService.showPopup();
+    }
+  }
+
+  removeTagSelect() {
+    if(this.userService.getIdUsuario() !== 0) {
+      document.querySelector('.a-tag-following')!.classList.remove('tag-select');
     }
   }
 }
