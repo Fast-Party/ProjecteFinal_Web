@@ -5,7 +5,7 @@ import { ActivatedRoute, RouterLink } from '@angular/router';
 import { PlanScreenModel } from '../../../models/plan.model';
 import { UserService } from '../../../api/services/user.service';
 import { CommonModule } from '@angular/common';
-
+import { PopupUserWithoutAccountService } from '../../../api/services/popup-user-without-account.service';
 @Component({
   selector: 'app-plan-page',
   standalone: true,
@@ -33,14 +33,14 @@ export class PlanPageComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private http: HttpClient,
-    private userService: UserService
+    private userService: UserService,
+    private popupUserWithoutAccountService: PopupUserWithoutAccountService
   ) {
     this.plan = new PlanScreenModel();
   }
 
   ngOnInit(): void {
     window.scrollTo(0, 0);
-    
 
     this.idUsuario = this.userService.getIdUsuario();
     try {
@@ -84,10 +84,10 @@ export class PlanPageComponent implements OnInit {
               this.hora = date.getHours();
               this.minutos = date.getMinutes();
 
-              if(this.plan.IdEstado == null){
+              if (this.plan.IdEstado == null) {
                 console.log('no hay estado');
                 this.userJoined = false;
-              }else{
+              } else {
                 console.log('hay estado');
                 this.userJoined = true;
               }
@@ -130,10 +130,9 @@ export class PlanPageComponent implements OnInit {
             if (res) {
               if (res.message != null) {
                 console.log('hay mensaje entrar');
-              }else{
+              } else {
                 console.log('no hay mensaje');
               }
-
             } else {
               console.log('couldnt get plan');
             }
@@ -164,7 +163,7 @@ export class PlanPageComponent implements OnInit {
             if (res) {
               if (res.message != null) {
                 console.log('hay mensaje salir');
-              }else{
+              } else {
                 console.log('no hay mensaje');
               }
             } else {
@@ -178,16 +177,19 @@ export class PlanPageComponent implements OnInit {
   }
 
   toggleJoin(): void {
-    if (this.plan.IdEstado == null) {
-      this.handleJoinButton();
-    } else {
-      this.handleCancelAndLeaveButton();
+    if (this.idUsuario !== 0) {
+      if (this.plan.IdEstado == null) {
+        this.handleJoinButton();
+      } else {
+        this.handleCancelAndLeaveButton();
+      }
+      this.userJoined = !this.userJoined;
+    }else{
+      this.popupUserWithoutAccountService.showPopup();
     }
-    this.userJoined = !this.userJoined;
   }
 
   goBack(): void {
-    
     window.history.back();
   }
 }

@@ -31,9 +31,8 @@
       </li>
       <li>
         <a
-          (click)="statePage = 3"
+          (click)="onClick()"
           class="my_events-link"
-          routerLink="my-events"
           [class.active-links]="statePage == 3"
           >Mis eventos</a
         >
@@ -109,10 +108,11 @@
     </nav>
 
     <ul class="menu">
-      <li role="button" routerLink="profile">
+      <li role="button" routerLink="profile" [class.user_without_account]="user_id == 0">
         <div role="button">
           <img src="{{ perfilUsuario.Imagen }}" alt="user_logo" />
         </div>
+        @if (user_id != 0) {
         <div class="container-user_name-icon_down_arrow">
           <h4>{{ perfilUsuario.NombreUsuario }}</h4>
           <img
@@ -120,17 +120,21 @@
             alt="arrow_down"
           />
         </div>
+        }
       </li>
       <div class="container-submenu">
         <ul class="submenu">
-          <div class="smart-info_user" role="button" routerLink="profile">
+          <div class="smart-info_user" role="button" routerLink="profile" [class.user_without_account]="user_id == 0">
             <img src="{{ perfilUsuario.Imagen }}" alt="user_logo" />
+            @if (user_id != 0) {
             <div class="name_user-email_user">
               <h4>{{ perfilUsuario.NombreUsuario }}</h4>
               <p>{{ perfilUsuario.Email }}</p>
             </div>
+            }
           </div>
           <div class="container-options_users-option_sign_out">
+            @if(user_id != 0){
             <div class="options_user">
               <li role="button" [routerLink]="['profile']">
                 <img
@@ -150,11 +154,29 @@
             <hr />
             <li class="option-sign_out" role="button" routerLink="/login">
               <img
-                src="../../../assets/icons/regular/sign-out.svg"
+                src="../../../assets/icons/fill/sign-in-fill.svg"
                 alt="user_sign_out"
               />
               <p>Cerrar sesión</p>
             </li>
+            }@else{
+            <div class="options_user">
+              <li role="button" [routerLink]="['/login']">
+                <img
+                  src="../../../assets/icons/regular/sign-in.svg"
+                  alt="user_profile"
+                />
+                <p>Iniciar sesión</p>
+              </li>
+              <li role="button" routerLink="/register">
+                <img
+                  src="../../../assets/icons/fill/user-plus-fill.svg"
+                  alt="user_settings"
+                />
+                <p>Crear cuenta</p>
+              </li>
+            </div>
+            }
           </div>
         </ul>
       </div>
@@ -172,6 +194,7 @@
           class="user_info-user_logo--menu"
           role="button"
           [routerLink]="['profile']"
+          [class.user_without_account]="user_id == 0"
         >
           <img src="{{ perfilUsuario.Imagen }}" alt="user_logo" />
           <div class="contianer-user_info--menu">
@@ -183,13 +206,14 @@
           <ul (click)="vision_menu = false">
             <li routerLink="home"><a>Inicio</a></li>
             <li routerLink="explore"><a>Explorar</a></li>
-            <li routerLink="my-events"><a>Mis eventos</a></li>
+            <li (click)="onClick()"><a>Mis eventos</a></li>
           </ul>
         </div>
       </div>
       <hr />
       <div class="user_setup--menu">
         <ul (click)="vision_menu = false">
+          @if(user_id != 0){
           <li role="button" routerLink="profile">
             <img
               src="../../../assets/icons/regular/user.svg"
@@ -211,6 +235,22 @@
             />
             <p>Cerrar sesión</p>
           </li>
+          }@else{
+            <li role="button" [routerLink]="['/login']">
+              <img
+                src="../../../assets/icons/fill/sign-in-fill.svg"
+                alt="user_profile"
+              />
+              <p>Iniciar sesión</p>
+            </li>
+            <li role="button" routerLink="/register">
+              <img
+                src="../../../assets/icons/fill/user-plus-fill.svg"
+                alt="user_settings"
+              />
+              <p>Crear cuenta</p>
+            </li>
+          }
         </ul>
       </div>
       <div class="info-footer">

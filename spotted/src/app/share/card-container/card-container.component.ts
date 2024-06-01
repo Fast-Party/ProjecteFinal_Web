@@ -2,28 +2,27 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { PlanCardModel } from '../../models/plan.model';
 import { RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { PopupUserWithoutAccountService } from '../../api/services/popup-user-without-account.service';
 
 @Component({
   selector: 'app-card-container',
   standalone: true,
-  imports: [RouterLink,CommonModule],
+  imports: [RouterLink, CommonModule],
   templateUrl: './card-container.component.html',
-  styleUrl: './card-container.component.scss'
+  styleUrl: './card-container.component.scss',
 })
-export class CardContainerComponent implements OnInit{
-
+export class CardContainerComponent implements OnInit {
   @Input() plan: PlanCardModel | null = null;
   @Input() idUsuario: any = null;
   @Input() autorInfoVisible: boolean = true;
   @Output() planUpdated = new EventEmitter<PlanCardModel>();
 
-  
   isLiked: boolean = false;
   isFollowing: boolean = false;
   buttonFollowingEnable: boolean = true;
 
   //FECHA
-  originalDate: any ;
+  originalDate: any;
   diaSemana: string = '';
   dia: number = 0;
   mes: string = '';
@@ -31,81 +30,90 @@ export class CardContainerComponent implements OnInit{
   hora: number = 0;
   minutos: number = 0;
 
-  constructor() {
-  }
-   
+  constructor(
+    private popupUserWithoutAccountService: PopupUserWithoutAccountService
+  ) {}
+
   ngOnInit(): void {
     this.originalDate = this.plan?.Fecha;
     const date = new Date(this.originalDate);
-     this.diaSemana = new Intl.DateTimeFormat("es-ES", { weekday: "short" }).format(date);
-     this.dia = date.getDate();
-     this.mes = new Intl.DateTimeFormat("es-ES", { month: "long" }).format(date);
-     this.year = date.getFullYear();
-     this.hora = date.getHours();
-     this.minutos = date.getMinutes();
-     
-     if(this.plan?.IsFollowing){
-       this.isFollowing = true;
-     }else{
-       this.isFollowing = false;
-     }
+    this.diaSemana = new Intl.DateTimeFormat('es-ES', {
+      weekday: 'short',
+    }).format(date);
+    this.dia = date.getDate();
+    this.mes = new Intl.DateTimeFormat('es-ES', { month: 'long' }).format(date);
+    this.year = date.getFullYear();
+    this.hora = date.getHours();
+    this.minutos = date.getMinutes();
 
-     if(this.plan?.IdAutor === this.idUsuario){
-        this.buttonFollowingEnable = false;
-     }
+    if (this.plan?.IsFollowing) {
+      this.isFollowing = true;
+    } else {
+      this.isFollowing = false;
+    }
 
-     if(this.plan?.RatingAutor === null){
+    if (this.plan?.IdAutor === this.idUsuario) {
+      this.buttonFollowingEnable = false;
+    }
+
+    if (this.plan?.RatingAutor === null) {
       this.plan.RatingAutor = 0;
-     }
+    }
   }
 
-  refactorNumberDate(numero: number): string{
-    if(numero < 10){
+  refactorNumberDate(numero: number): string {
+    if (numero < 10) {
       return '0' + numero;
-    }else{
+    } else {
       return numero.toString();
     }
-   }
+  }
 
-   async toFollowAutor(){
-      if(this.idUsuario != null && this.plan?.IdAutor != null){
-        const body = {IdSeguidor: this.idUsuario, IdSeguido: this.plan!.IdAutor};
-        try {
-          fetch('http://localhost:3000/seguirUsuario', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(body)
-          }).then(response => {
-            if(response.ok){
-              this.isFollowing = true;
-              this.plan!.Seguidores = (this.plan!.Seguidores || 0) + 1; 
-            }else{
-              this.isFollowing = false;
-            }
-          });
-        } catch (error) {
-          console.log('Error: ', error);
-        }
+  async toFollowAutor() {
+    if (this.idUsuario != null && this.plan?.IdAutor != null) {
+      const body = {
+        IdSeguidor: this.idUsuario,
+        IdSeguido: this.plan!.IdAutor,
+      };
+      try {
+        fetch('http://localhost:3000/seguirUsuario', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(body),
+        }).then((response) => {
+          if (response.ok) {
+            this.isFollowing = true;
+            this.plan!.Seguidores = (this.plan!.Seguidores || 0) + 1;
+          } else {
+            this.isFollowing = false;
+          }
+        });
+      } catch (error) {
+        console.log('Error: ', error);
       }
-   }
+    }
+  }
 
-   async toUnfollowAutor(){
-    if(this.idUsuario != null && this.plan?.IdAutor != null){
-      const body = {IdSeguidor: this.idUsuario, IdSeguido: this.plan!.IdAutor};
+  async toUnfollowAutor() {
+    if (this.idUsuario != null && this.plan?.IdAutor != null) {
+      const body = {
+        IdSeguidor: this.idUsuario,
+        IdSeguido: this.plan!.IdAutor,
+      };
       try {
         fetch('http://localhost:3000/dejarDeSeguirUsuario', {
           method: 'POST',
           headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
           },
-          body: JSON.stringify(body)
-        }).then(response => {
-          if(response.ok){
+          body: JSON.stringify(body),
+        }).then((response) => {
+          if (response.ok) {
             this.isFollowing = false;
             this.plan!.Seguidores = (this.plan!.Seguidores || 1) - 1;
-          }else{
+          } else {
             this.isFollowing = true;
           }
         });
@@ -113,13 +121,25 @@ export class CardContainerComponent implements OnInit{
         console.log('Error: ', error);
       }
     }
-   }
+  }
 
-   toggleFollow() {
-    if (this.isFollowing) {
-      this.toUnfollowAutor();
+  toggleFollow() {
+    if (this.idUsuario !== 0) {
+      if (this.isFollowing) {
+        this.toUnfollowAutor();
+      } else {
+        this.toFollowAutor();
+      }
+    }else{
+      this.popupUserWithoutAccountService.showPopup();
+    }
+  }
+
+  onLike() {
+    if (this.idUsuario !== 0) {
+      this.isLiked = !this.isLiked
     } else {
-      this.toFollowAutor();
+      this.popupUserWithoutAccountService.showPopup();
     }
   }
 }
