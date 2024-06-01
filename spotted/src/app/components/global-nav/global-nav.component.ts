@@ -68,15 +68,16 @@ export class GlobalNavComponent implements OnInit {
           return console.log('sdfd', error);
         }
       }
-
-      if (this.router.url.includes('home')) {
-        this.statePage = 1;
-      } else if (this.router.url.includes('explore')) {
-        this.statePage = 2;
-      } else if (this.router.url.includes('my-events')) {
-        this.statePage = 3;
-      }
     }
+
+    if (this.router.url.includes('for-you') || this.router.url.includes('following')) {
+      this.statePage = 1;
+    } else if (this.router.url.includes('discover') || this.router.url.includes('trending')) {
+      this.statePage = 2;
+    } else if (this.router.url.includes('my-events')) {
+      this.statePage = 3;
+    }
+
   }
 
   onClick() {
