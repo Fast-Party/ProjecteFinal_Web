@@ -85,10 +85,8 @@ export class PlanPageComponent implements OnInit {
               this.minutos = date.getMinutes();
 
               if (this.plan.IdEstado == null) {
-                console.log('no hay estado');
                 this.userJoined = false;
               } else {
-                console.log('hay estado');
                 this.userJoined = true;
               }
             } else {
