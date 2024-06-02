@@ -6,14 +6,14 @@ import { PopupUserWithoutAccountService } from '../../api/services/popup-user-wi
 
 @Component({
   selector: 'app-card-container',
-  standalone: true,
+  standalone: true, 
   imports: [RouterLink, CommonModule],
   templateUrl: './card-container.component.html',
   styleUrl: './card-container.component.scss',
 })
 export class CardContainerComponent implements OnInit {
   @Input() plan: PlanCardModel | null = null;
-  @Input() idUsuario: any = null;
+  @Input() idUsuario: any;
   @Input() autorInfoVisible: boolean = true;
   @Output() planUpdated = new EventEmitter<PlanCardModel>();
 
@@ -35,6 +35,7 @@ export class CardContainerComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    console.log('ID Usuario: '+this.idUsuario);
     this.originalDate = this.plan?.Fecha;
     const date = new Date(this.originalDate);
     this.diaSemana = new Intl.DateTimeFormat('es-ES', {
