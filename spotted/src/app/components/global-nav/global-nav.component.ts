@@ -1,7 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { catchError } from 'rxjs';
 import {
-  ActivatedRoute,
   Router,
   RouterLink,
   RouterLinkActive,
@@ -9,7 +8,6 @@ import {
 import { ProfileModel } from '../../models/profile.model';
 import { HttpClient } from '@angular/common/http';
 import { PopupUserWithoutAccountService } from '../../api/services/popup-user-without-account.service';
-
 
 @Component({
   selector: 'app-global-nav',
@@ -26,8 +24,6 @@ export class GlobalNavComponent implements OnInit {
   vision_menu: boolean = false;
   actualYear: number = new Date().getFullYear();
   perfilUsuario: ProfileModel;
-
-
 
   constructor(private router: Router, private http: HttpClient, private popupUserWithoutAccountService: PopupUserWithoutAccountService) {
     this.perfilUsuario = new ProfileModel();
@@ -77,7 +73,6 @@ export class GlobalNavComponent implements OnInit {
     } else if (this.router.url.includes('my-events')) {
       this.statePage = 3;
     }
-
   }
 
   onClick() {

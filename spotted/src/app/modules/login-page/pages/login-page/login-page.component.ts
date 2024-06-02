@@ -2,32 +2,53 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { HttpClientModule } from '@angular/common/http';
 import { Router, RouterLink } from '@angular/router';
-import { FormsModule } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { catchError } from 'rxjs';
 import { UserService } from '../../../../api/services/user.service';
 import { PopupUserWithoutAccountService } from '../../../../api/services/popup-user-without-account.service';
+import { Notyf } from 'notyf';
 
 @Component({
   selector: 'app-login-page',
   standalone: true,
-  imports: [FormsModule, HttpClientModule, RouterLink],
+  imports: [FormsModule, HttpClientModule, RouterLink, ReactiveFormsModule],
   templateUrl: './login-page.component.html',
   styleUrl: './login-page.component.scss',
 })
 export class LoginPageComponent {
+  LoginForm!: FormGroup;
   loginObj: Login;
   prvPss: string;
   showPassword: boolean = false;
   applyAnimationEye: boolean = false;
+  notyf = new Notyf({
+    duration: 3000,
+    position: {
+      x: 'right',
+      y: 'bottom',
+    },
+  });
 
   constructor(
     private http: HttpClient, 
     private router: Router,
+    private fb : FormBuilder,
     private userService: UserService,
     private popupUserWithoutAccountService: PopupUserWithoutAccountService
   ) {
     this.loginObj = new Login();
     this.prvPss = 'test';
+  }
+
+  ngOnInit(): void {
+    this.LoginForm = this.fb.group({
+      NombreUsuario: new FormControl('', [
+        Validators.required,
+      ]),
+      Contrasenya: new FormControl('', [
+        Validators.required,
+      ]),
+    });
   }
 
   togglePasswordVisibility() {
@@ -58,6 +79,7 @@ export class LoginPageComponent {
             
           } else {
             console.log('Datos incorrectos');
+            this.notyf.error('Datos incorrectos');
           }
         });
     } catch (error) {

@@ -2,7 +2,14 @@ import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { HttpClientModule } from '@angular/common/http';
 import { Router, RouterLink } from '@angular/router';
-import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  FormsModule,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { catchError } from 'rxjs';
 
 @Component({
@@ -21,73 +28,69 @@ export class RegisterPageComponent {
   nextForm: boolean = false;
 
   daysArray: number[] = Array.from({ length: 31 }, (_, i) => i + 1);
-  yearsArray: number[] = Array.from({ length: 85 }, (_, i) => new Date().getFullYear() - 16 - i);
+  yearsArray: number[] = Array.from(
+    { length: 85 },
+    (_, i) => new Date().getFullYear() - 16 - i
+  );
   isAgeValid: boolean = true;
 
   repetirContrasenya: string = '';
   samePassword: boolean = false;
+  usernameFree: boolean = true;
+  emailFree: boolean = true;
 
   constructor(
-    private http: HttpClient, 
+    private http: HttpClient,
     private router: Router,
-    private fb : FormBuilder
-  
+    private fb: FormBuilder
   ) {
     this.registerObj = new Register();
   }
 
   ngOnInit(): void {
-   this.RegisterForm = this.fb.group({
-    NombreUsuario: new FormControl('', [
-      Validators.required,
-      Validators.maxLength(30),
-    ]),
-    Email: new FormControl('', [
-      Validators.required,
-      Validators.email,
-    ]),
-    Contrasenya: new FormControl('', [
-      Validators.required,
-      Validators.minLength(8),
-      Validators.pattern('^(?=(?:.*[a-zA-Z]))(?=(?:.*[0-9]))|(?=(?:.*[a-zA-Z]))(?=(?:.*[^a-zA-Z0-9]))|(?=(?:.*[0-9]))(?=(?:.*[^a-zA-Z0-9])).{8,}$')
-    ]),
-    RepetirContrasenya: new FormControl('', [
-      Validators.required,
-    ]),
-    Nombre: new FormControl('', [
-      Validators.required,
-      Validators.maxLength(150),
-    ]),
-    Apellidos: new FormControl('', [
-      Validators.required,
-      Validators.maxLength(250),
-    ]),
-    Telefono: new FormControl('', [
-      Validators.required,
-      Validators.pattern('^[0-9]{9}$')
-    ]),
-    FechaNacimientoDia: new FormControl('', [
-      Validators.required,
-    ]),
-    FechaNacimientoMes: new FormControl('', [
-      Validators.required,
-    ]),
-    FechaNacimientoAno: new FormControl('', [
-      Validators.required,
-    ]),
-   });
+    this.RegisterForm = this.fb.group({
+      NombreUsuario: new FormControl('', [
+        Validators.required,
+        Validators.maxLength(30),
+      ]),
+      Email: new FormControl('', [Validators.required, Validators.email]),
+      Contrasenya: new FormControl('', [
+        Validators.required,
+        Validators.minLength(8),
+        Validators.pattern(
+          '^(?=(?:.*[a-zA-Z]))(?=(?:.*[0-9]))|(?=(?:.*[a-zA-Z]))(?=(?:.*[^a-zA-Z0-9]))|(?=(?:.*[0-9]))(?=(?:.*[^a-zA-Z0-9])).{8,}$'
+        ),
+      ]),
+      RepetirContrasenya: new FormControl('', [Validators.required]),
+      Nombre: new FormControl('', [
+        Validators.required,
+        Validators.maxLength(150),
+      ]),
+      Apellidos: new FormControl('', [
+        Validators.required,
+        Validators.maxLength(250),
+      ]),
+      Telefono: new FormControl('', [
+        Validators.required,
+        Validators.pattern('^[0-9]{9}$'),
+      ]),
+      FechaNacimientoDia: new FormControl('', [Validators.required]),
+      FechaNacimientoMes: new FormControl('', [Validators.required]),
+      FechaNacimientoAno: new FormControl('', [Validators.required]),
+    });
   }
 
   comparePasswords() {
-    this.samePassword = this.repetirContrasenya === this.registerObj.Contrasenya;
-  }  
+    this.samePassword =
+      this.repetirContrasenya === this.registerObj.Contrasenya;
+  }
 
-  chekingBornDate() : boolean{
+  chekingBornDate(): boolean {
     const bornDate = new Date(
       this.RegisterForm.get('FechaNacimientoAno')?.value,
-      (this.RegisterForm.get('FechaNacimientoMes')?.value - 1),
+      this.RegisterForm.get('FechaNacimientoMes')?.value - 1,
       this.RegisterForm.get('FechaNacimientoDia')?.value
-    ); 
+    );
 
     // Obtenemos la fecha actual
     const today = new Date();
@@ -108,9 +111,7 @@ export class RegisterPageComponent {
 
     this.registerObj.FechaNacimiento = bornDate;
     return true;
-
   }
-
 
   togglePasswordVisibility() {
     this.showPassword = !this.showPassword;
@@ -121,7 +122,16 @@ export class RegisterPageComponent {
     this.applyAnimationEye = false;
     this.applyDelay = true;
     if (!this.nextForm) {
-      this.nextForm = !this.nextForm;
+      if (
+        this.registerObj.NombreUsuario.length > 0 &&
+        this.registerObj.Email.length > 0 &&
+        this.registerObj.Contrasenya.length > 0 &&
+        this.repetirContrasenya.length > 0
+      ) {
+        if (this.emailFree && this.usernameFree) {
+          this.nextForm = !this.nextForm;
+        }
+      }
     } else {
       this.isAgeValid = this.chekingBornDate();
       this.onregister();
@@ -151,6 +161,74 @@ export class RegisterPageComponent {
         });
     } catch (error) {
       return console.log('sdfd');
+    }
+  }
+
+  checkingUserName() {
+    if (this.registerObj.NombreUsuario.length > 0) {
+      try {
+        this.http
+          .post('http://localhost:3000/nombreUsuarioLibre', this.registerObj)
+          .pipe(
+            catchError((error) => {
+              console.log('error is: ', error);
+              if (error.status === 400) {
+                window.alert('There are fields that must be filled');
+              }
+              return error;
+            })
+          )
+          .subscribe((res: any) => {
+            console.log(res);
+            if (res) {
+              if (res.length === 0) {
+                console.log('Usuario libre');
+                this.usernameFree = true;
+              } else {
+                console.log('Usuario ocupado');
+                this.usernameFree = false;
+              }
+            } else {
+              console.log('error 401');
+            }
+          });
+      } catch (error) {
+        return console.log('sdfd');
+      }
+    }
+  }
+
+  checkingEmail() {
+    if (this.registerObj.Email.length > 0) {
+      try {
+        this.http
+          .post('http://localhost:3000/correoLibre', this.registerObj)
+          .pipe(
+            catchError((error) => {
+              console.log('error is: ', error);
+              if (error.status === 400) {
+                window.alert('There are fields that must be filled');
+              }
+              return error;
+            })
+          )
+          .subscribe((res: any) => {
+            console.log(res);
+            if (res) {
+              if (res.length === 0) {
+                console.log('Email libre');
+                this.emailFree = true;
+              } else {
+                console.log('Email ocupado');
+                this.emailFree = false;
+              }
+            } else {
+              console.log('error 401');
+            }
+          });
+      } catch (error) {
+        return console.log('sdfd');
+      }
     }
   }
 }

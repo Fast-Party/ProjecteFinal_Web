@@ -23,6 +23,7 @@ export class PlanCardModel {
     'RatingAutor': number
     'IsFollowing': number
     'Verificado0': boolean
+    'Localidad': string
 
     'RutaImagenPlan': string
     'ImagenLogoAutor': string

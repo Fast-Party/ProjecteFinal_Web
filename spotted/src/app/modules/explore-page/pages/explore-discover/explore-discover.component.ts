@@ -34,7 +34,7 @@ export class ExploreDiscoverComponent {
       const body = { IdUsuario: this.idUsuario };
       try {
         this.http
-          .post('http://localhost:3000/getPlanes', body)
+          .post('http://localhost:3000/getPlanesDescubrir', body)
           .pipe(
             catchError((error) => {
               console.log('error is: ', error);
