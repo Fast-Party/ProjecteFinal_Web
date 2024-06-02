@@ -35,7 +35,7 @@ export class ExploreTrendComponent {
       const body = { IdUsuario: this.idUsuario };
       try {
         this.http
-          .post('http://localhost:3000/getPlanes', body)
+          .post('http://localhost:3000/getPlanesTendencias', body)
           .pipe(
             catchError((error) => {
               console.log('error is: ', error);

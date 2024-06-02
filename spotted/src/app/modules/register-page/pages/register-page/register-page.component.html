@@ -17,18 +17,20 @@
             class="input-container"
             [class.remove-delay]="applyDelay"
             [class.input-container-error]="
-              RegisterForm.get('NombreUsuario')?.invalid &&
-              (RegisterForm.get('NombreUsuario')?.touched ||
-                RegisterForm.get('NombreUsuario')?.dirty)
+              (RegisterForm.get('NombreUsuario')?.invalid &&
+                (RegisterForm.get('NombreUsuario')?.touched ||
+                  RegisterForm.get('NombreUsuario')?.dirty)) ||
+              !usernameFree
             "
           >
             <input
               type="text"
-              id="input"
+              id="inputNombreUsuario"
               [(ngModel)]="registerObj.NombreUsuario"
               formControlName="NombreUsuario"
               required
               [class.remove-delay-input]="applyDelay"
+              (input)="checkingUserName()"
             />
             <label
               for="input"
@@ -39,30 +41,36 @@
             <div class="underline"></div>
             @if(RegisterForm.get('NombreUsuario')?.touched &&
             RegisterForm.get('NombreUsuario')?.hasError('required')) {
-            <p class="error-message-input">El nombre de usuario es obligatorio</p>
+            <p class="error-message-input">
+              El nombre de usuario es obligatorio
+            </p>
             }@else if (RegisterForm.get('NombreUsuario')?.dirty &&
             RegisterForm.get('NombreUsuario')!.hasError('maxlength')) {
             <p class="error-message-input">
               El nombre de usuario no puede tener más de 30 caracteres
             </p>
+            }@else if (!usernameFree) {
+            <p class="error-message-input">El nombre de usuario ya existe</p>
             }
           </div>
           <div
             class="input-container"
             [class.remove-delay]="applyDelay"
             [class.input-container-error]="
-              RegisterForm.get('Email')?.invalid &&
-              RegisterForm.get('Email')?.touched
+              (RegisterForm.get('Email')?.invalid &&
+                RegisterForm.get('Email')?.touched) ||
+              !emailFree
             "
           >
             <input
               type="text"
-              id="input"
+              id="inputEmail"
               [(ngModel)]="registerObj.Email"
               required
               formControlName="Email"
               [class.remove-delay-input]="applyDelay"
               [class.error-input]="applyAnimationEye"
+              (input)="checkingEmail()"
             />
             <label
               for="input"
@@ -73,10 +81,16 @@
             <div class="underline"></div>
             @if(RegisterForm.get('Email')?.touched &&
             RegisterForm.get('Email')?.hasError('required')) {
-            <p class="error-message-input">El correo electrónico es obligatorio</p>
+            <p class="error-message-input">
+              El correo electrónico es obligatorio
+            </p>
             }@else if (RegisterForm.get('Email')?.touched &&
             RegisterForm.get('Email')!.hasError('email')) {
-            <p class="error-message-input">El correo electrónico no es valido</p>
+            <p class="error-message-input">
+              El correo electrónico no es valido
+            </p>
+            }@else if (!emailFree) {
+            <p class="error-message-input">El correo electrónico ya existe</p>
             }
           </div>
           <div
@@ -110,7 +124,11 @@
             />
             }
             <label class="password-input">
-              <div (click)="togglePasswordVisibility()" class="input-eye" role="button">
+              <div
+                (click)="togglePasswordVisibility()"
+                class="input-eye"
+                role="button"
+              >
                 @if (!showPassword) {
                 <img
                   class="eye"
@@ -159,7 +177,7 @@
             [class.input-container-error]="
               !samePassword &&
               RegisterForm.get('RepetirContrasenya')?.touched &&
-                registerObj.Contrasenya !== ''
+              registerObj.Contrasenya !== ''
             "
           >
             @if (!showPassword) {
@@ -266,22 +284,18 @@
             </p>
             }
           </div>
-          <div 
-          class="container-input-date-label"
-          [class.container-input-date-label-error]="!isAgeValid"
+          <div
+            class="container-input-date-label"
+            [class.container-input-date-label-error]="!isAgeValid"
           >
             <label
               for="input"
               class="label-date"
               [class.remove-delay-input]="applyDelay"
               >Fecha de nacimiento
-            </label
-            >
+            </label>
             <div class="container-input-date">
-              <div 
-              class="input-container" 
-              [class.remove-delay]="applyDelay"
-              >
+              <div class="input-container" [class.remove-delay]="applyDelay">
                 <select
                   id="input"
                   formControlName="FechaNacimientoDia"
@@ -290,16 +304,20 @@
                 >
                   <option class="select-option" label="Día" value>Día</option>
                   @for (day of daysArray; track day) {
-                  <option class="select-option" label="{{ day }}" value="{{ day }}">
+                  <option
+                    class="select-option"
+                    label="{{ day }}"
+                    value="{{ day }}"
+                  >
                     {{ day }}
-                  }
+                    
+                  </option>
+                }
                 </select>
+
                 <div class="underline"></div>
               </div>
-              <div 
-              class="input-container" 
-              [class.remove-delay]="applyDelay"
-              >
+              <div class="input-container" [class.remove-delay]="applyDelay">
                 <select
                   id="input"
                   required
@@ -346,10 +364,7 @@
                 </select>
                 <div class="underline"></div>
               </div>
-              <div 
-              class="input-container" 
-              [class.remove-delay]="applyDelay"
-              >
+              <div class="input-container" [class.remove-delay]="applyDelay">
                 <select
                   id="input"
                   required
@@ -358,15 +373,23 @@
                 >
                   <option class="select-option" label="Año" value>Año</option>
                   @for (year of yearsArray; track year) {
-                  <option class="select-option" label="{{ year }}" value="{{ year }}">
+                  <option
+                    class="select-option"
+                    label="{{ year }}"
+                    value="{{ year }}"
+                  >
                     {{ year }}
+                  </option>
                   }
                 </select>
+
                 <div class="underline"></div>
               </div>
             </div>
             @if(!isAgeValid) {
-            <p class="error-message-input">La fecha de nacimiento no es valida</p>
+            <p class="error-message-input">
+              La fecha de nacimiento no es valida
+            </p>
             }
           </div>
           <div
@@ -374,7 +397,8 @@
             [class.remove-delay]="applyDelay"
             [class.input-container-error]="
               RegisterForm.get('Telefono')?.invalid &&
-              RegisterForm.get('Telefono')?.touched"
+              RegisterForm.get('Telefono')?.touched
+            "
           >
             <input
               type="tel"
