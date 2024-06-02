@@ -47,8 +47,10 @@ app-popup-without-account {
   height: 100%;
   z-index: 1000;
   display: none;
+
 }
 
 .popupVisible {
   display: block;
+  animation: appear 0.3s cubic-bezier(0.39, 0.575, 0.565, 1) both;
 }
