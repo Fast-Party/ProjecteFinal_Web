@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { AutorService } from '../../../../api/services/autor.service';
 import { PlanCardModel } from '../../../../models/plan.model';
+import { UserService } from '../../../../api/services/user.service';
 
 @Component({
   selector: 'app-autor-events',
@@ -13,11 +14,15 @@ import { PlanCardModel } from '../../../../models/plan.model';
   styleUrl: './autor-events.component.scss'
 })
 export class AutorEventsComponent implements OnInit{
+  idUsuario!: number;
   idAutor!: number;
   planesAutor: PlanCardModel[] = [];
-  constructor(private route: ActivatedRoute, private http: HttpClient, private autorService: AutorService ) {}
+  constructor(private route: ActivatedRoute, private http: HttpClient, private autorService: AutorService ,
+    private userService: UserService
+  ) {}
 
   ngOnInit():void {
+    this.idUsuario = this.userService.getIdUsuario();
     this.idAutor = this.autorService.getIdAutor();
     this.fetchPlanesAutor();
   }
