@@ -1,0 +1,125 @@
+@use "../../..//sass/variables.scss" as stl;
+
+.container--screen {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(stl.$base-color-black, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .popup--container_content {
+    //height: 20em;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 483px;
+    padding: 20px 16px;
+    background-color: stl.$base-color-white;
+    border-radius: 12px;
+    gap: 8px;
+
+    @media screen and (max-width: 480px) {
+      width: 95%;
+      padding: 16px;
+    }
+
+    .logo_app-btn_close {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      //background-color: red;
+      width: 100%;
+      padding-left: 4px;
+      margin-bottom: 20px;
+      img {
+        width: 28px;
+        height: 28px;
+      }
+
+      div[role="button"] {
+        margin: 0;
+        transition: 0.3s ease-in-out;
+        padding: 4px;
+        border-radius: 50%;
+        height: 32px;
+        cursor: pointer;
+        img {
+          width: 24px;
+          height: 24px;
+        }
+        &:hover {
+          background-color: rgba(stl.$base-color-black, 0.05);
+        }
+      }
+    }
+
+    .container--rest_content {
+      //background-color: red;
+      display: flex;
+        flex-direction: column;
+        gap: 28px;
+      h1 {
+        font-size: 36px;
+        font-weight: 700;
+        color: stl.$base-color-black;
+       
+        text-align: center;
+
+        @media screen and (max-width: 450px) {
+          font-size: 28px;
+        }
+
+        span {
+          color: stl.$base-color-black;
+          transition: 0.3s ease-in-out;
+          &:hover {
+            color: stl.$primary-color-500;
+          }
+        }
+      }
+
+      .user_without_account--options {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        align-self: stretch;
+        li {
+          display: flex;
+          gap: 8px;
+          cursor: pointer;
+          transition: 0.3s ease-in-out;
+          padding: 12px 8px;
+          justify-content: center;
+          align-self: stretch;
+          align-items: center;
+          border-radius: 4px;
+          position: relative;
+          @media screen and (max-width: 450px) {
+            img {
+              width: 18px !important;
+              height: 18px !important;
+            }
+
+            p {
+              font-size: 14px !important;
+            }
+          }
+          img {
+            width: 20px;
+            height: 20px;
+
+          }
+          p {
+            font-size: 15px;
+            font-weight: 500;
+            color: stl.$base-color-black;
+            //width: 100%;
+          }
+          &:hover {
+            background-color: rgba(stl.$base-color-black, 0.05);
+          }
+        }
+      }
+    }
+  }
+}

@@ -129,27 +129,6 @@
           .remove-delay {
             animation-delay: 0.1s !important;
           }
-
-          .input-container-error {
-            .label {
-              color: stl.$error-color-500 !important;
-              font-weight: 500 !important;
-            }
-
-            input[type="text"],
-            input[type="password"],
-            input[type="email"],
-            input[type="date"],
-            input[type="tel"] {
-              border-bottom: 1px solid stl.$error-color-500 !important;
-
-              &:focus ~ .underline,
-              &:valid ~ .underline {
-                background-color: stl.$error-color-500 !important;
-              }
-            }
-          }
-
           .input-container {
             position: relative;
             width: 100%;

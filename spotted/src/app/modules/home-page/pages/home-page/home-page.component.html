@@ -2,10 +2,10 @@
   <div class="tag_menu-filters">
     <div class="container-tag_menu">
       <div class="tag-for_you" role="button">
-        <a routerLink="for-you" routerLinkActive="tag-select">Para ti</a>
+        <a routerLink="for-you" routerLinkActive="tag-select" (click)="removeTagSelect()">Para ti</a>
       </div>
       <div class="tag-following" role="button">
-        <a routerLink="following" routerLinkActive="tag-select">Siguiendo</a>
+        <a class="a-tag-following" (click)="onClick()">Siguiendo</a>
       </div>
     </div>
     <div class="container-filters" role="button">

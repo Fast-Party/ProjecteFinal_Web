@@ -1,0 +1,29 @@
+<div class="container--screen">
+  <div class="popup--container_content">
+    <div class="logo_app-btn_close">
+      <img src="../../../assets/img/logo/Logo Linear Gradient.svg" alt="" />
+      <div role="button" (click)="closePopup()">
+        <img src="../../../assets/icons/regular/x.svg" alt="close_popup" />
+      </div>
+    </div>
+    <div class="container--rest_content">
+      <h1>Únete a <span>Fast Party</span></h1>
+      <div class="user_without_account--options">
+        <li role="button" [routerLink]="['/login']">
+          <img
+            src="../../../assets/icons/fill/sign-in-fill.svg"
+            alt="user_profile"
+          />
+          <p>Iniciar sesión</p>
+        </li>
+        <li role="button" routerLink="/register">
+          <img
+            src="../../../assets/icons/fill/user-plus-fill.svg"
+            alt="user_settings"
+          />
+          <p>Crear cuenta</p>
+        </li>
+      </div>
+    </div>
+  </div>
+</div>

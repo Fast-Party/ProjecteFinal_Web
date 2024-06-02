@@ -17,6 +17,7 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
+import { Notyf } from 'notyf';
 
 @Component({
   selector: 'app-profile-page',
@@ -46,6 +47,14 @@ export class ProfilePageComponent implements OnInit, AfterViewInit {
   isAgeValid: boolean = true;
 
   isEditing: boolean = false;
+
+  notyf = new Notyf({
+    duration: 3000,
+    position: {
+      x: 'right',
+      y: 'bottom',
+    },
+  });
 
   constructor(
     private route: ActivatedRoute,
@@ -164,6 +173,7 @@ export class ProfilePageComponent implements OnInit, AfterViewInit {
           .subscribe((res: any) => {
             if (res) {
               console.log('perfil', res);
+              this.notyf.success('Perfil actualizado');
               
             } else {
               console.log('couldnt post plan');
